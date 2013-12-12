@@ -4,5 +4,6 @@
 /logs/
 /htdocs/pixelpolishers
 /htdocs/stats
+/svn/
 /vendor/
 /composer.lock
