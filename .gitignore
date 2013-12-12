@@ -2,4 +2,4 @@
 /nbproject/private/
 /logs/
 /vendor/
-/scripts/composer/composer.phar
+/composer.lock

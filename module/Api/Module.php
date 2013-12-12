@@ -6,7 +6,7 @@
  * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
  */
 
-namespace Application;
+namespace Api;
 
 class Module
 {

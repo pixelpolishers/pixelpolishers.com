@@ -1,38 +1,22 @@
 <?php
+/**
+ * This file is part of pixelpolishers.com.
+ *
+ * @copyright Copyright (c) 2012-2013 Pixel Polishers. All rights reserved.
+ * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
+ */
+
+namespace Application;
+
 return array(
     'router' => array(
         'routes' => array(
-            'default' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route' => '/[:controller[/:action]]',
-                    'constraints' => array(
-                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'index',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route' => '/',
-                    'defaults' => array(
-                        'controller' => 'index',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
+            'www' => include 'routes.config.php',
         ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'index' => 'Application\Controller\IndexController',
-            'form' => 'Application\Controller\FormController',
-            'logger' => 'Application\Controller\LoggerController',
+            'Application\Controller\IndexController' => 'Application\Controller\IndexController',
         ),
     ),
     'view_manager' => array(

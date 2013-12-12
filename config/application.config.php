@@ -1,7 +1,15 @@
 <?php
+/**
+ * This file is part of pixelpolishers.com.
+ *
+ * @copyright Copyright (c) 2012-2013 Pixel Polishers. All rights reserved.
+ * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
+ */
 return array(
     'modules' => array(
+        'Api',
         'Application',
+        'MakeDocsZf2',
     ),
     'module_listener_options' => array(
         'config_glob_paths' => array(
@@ -12,11 +20,6 @@ return array(
         'module_paths' => array(
             './module',
             './vendor',
-        ),
-    ),
-    'service_manager' => array(
-        'use_defaults' => true,
-        'factories' => array(
         ),
     ),
 );
