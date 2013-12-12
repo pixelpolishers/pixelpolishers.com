@@ -1,5 +1,8 @@
+/.vhost
 /nbproject/
 /nbproject/private/
 /logs/
+/htdocs/pixelpolishers
+/htdocs/stats
 /vendor/
 /composer.lock
