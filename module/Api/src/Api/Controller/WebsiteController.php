@@ -29,12 +29,12 @@ class WebsiteController extends AbstractActionController
     {
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
+            file_put_contents(getcwd() . '/invalid.log', $remoteAddress->getIpAddress());
             throw new \RuntimeException('Invalid request.');
         }
 
-        file_put_contents(getcwd() . '/pre.log', 'test');
-
         $buildFile = getcwd() . '/build.sh';
+        file_put_contents(getcwd() . '/pre.log', $buildFile);
 
         if (is_file($buildFile)) {
             $process = new Process($buildFile);
