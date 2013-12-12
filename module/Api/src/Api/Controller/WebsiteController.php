@@ -32,10 +32,19 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('Invalid request.');
         }
 
+        file_put_contents(getcwd() . '/pre.log', 'test');
+
         $buildFile = getcwd() . '/build.sh';
 
         if (is_file($buildFile)) {
-            exec($buildFile);
+            $process = new Process($buildFile);
+            $process->run();
+
+            if (!$process->isSuccessful()) {
+                file_put_contents(getcwd() . '/error.log', $process->getErrorOutput());
+            }
+
+            file_put_contents(getcwd() . '/output.log', $process->getOutput());
         }
 
         return $this->getResponse();
