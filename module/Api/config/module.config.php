@@ -13,6 +13,9 @@ return array(
         'build' => array(
             'ip_range_from' => '192.30.252.0',
             'ip_range_till' => '192.30.252.255',
+            'refs' => array(
+                'refs/heads/master'
+            ),
         ),
     ),
     'router' => array(
