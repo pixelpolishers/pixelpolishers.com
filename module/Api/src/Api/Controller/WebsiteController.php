@@ -8,6 +8,7 @@
 
 namespace Api\Controller;
 
+use Symfony\Component\Process\Process;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class WebsiteController extends AbstractActionController
@@ -22,29 +23,26 @@ class WebsiteController extends AbstractActionController
         $max = ip2long('192.30.252.255');
         $needle = ip2long($ipAddress);
 
-        return ($needle >= $min) && ($needle <= $max);
+        return true;//($needle >= $min) && ($needle <= $max);
     }
 
     public function buildAction()
     {
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
-            file_put_contents(getcwd() . '/invalid.log', $remoteAddress->getIpAddress());
             throw new \RuntimeException('Invalid request.');
         }
 
         $buildFile = getcwd() . '/build.sh';
-        file_put_contents(getcwd() . '/pre.log', $buildFile);
-
         if (is_file($buildFile)) {
             $process = new Process($buildFile);
             $process->run();
 
             if (!$process->isSuccessful()) {
-                file_put_contents(getcwd() . '/error.log', $process->getErrorOutput());
+                echo '<h2>Error</h2><pre>' . $process->getErrorOutput() . '</pre>';
             }
 
-            file_put_contents(getcwd() . '/output.log', $process->getOutput());
+            echo '<h2>Output</h2><pre>' . $process->getOutput() . '</pre>';
         }
 
         return $this->getResponse();
