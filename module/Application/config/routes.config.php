@@ -17,16 +17,36 @@ return array(
             'subdomain' => 'www',
             'extension' => 'local|com',
         ),
+        'defaults' => array(
+            'subdomain' => 'www',
+            'extension' => $GLOBALS['extension'],
+        ),
     ),
     'child_routes' => array(
-        'default' => array(
+        'index' => array(
             'type' => 'Zend\Mvc\Router\Http\Segment',
             'options' => array(
-                'route' => '/[:controller[/:action]]',
-                'constraints' => array(
-                    'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                    'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                'route' => '/',
+                'defaults' => array(
+                    'controller' => 'Application\Controller\IndexController',
+                    'action' => 'index',
                 ),
+            ),
+        ),
+        'products' => array(
+            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'options' => array(
+                'route' => '/products',
+                'defaults' => array(
+                    'controller' => 'Application\Controller\IndexController',
+                    'action' => 'index',
+                ),
+            ),
+        ),
+        'company' => array(
+            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'options' => array(
+                'route' => '/company',
                 'defaults' => array(
                     'controller' => 'Application\Controller\IndexController',
                     'action' => 'index',

@@ -7,8 +7,10 @@
  */
 return array(
     'modules' => array(
+        'Account',
         'Api',
         'Application',
+        'Developers',
         'MakeDocsZf2',
     ),
     'module_listener_options' => array(

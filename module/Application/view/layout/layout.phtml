@@ -45,7 +45,14 @@
     </head>
     <body>
 
+        <ul>
+            <li><a href="<?php echo $this->url('account/index'); ?>">Account</a></li>
+            <li><a href="<?php echo $this->url('developers/index'); ?>">Developers</a></li>
+            <li><a href="<?php echo $this->url('www/products'); ?>">Products</a></li>
+            <li><a href="<?php echo $this->url('www/company'); ?>">Company</a></li>
+        </ul>
+
         <?php echo $this->content; ?>
-        
+
     </body>
 </html>
