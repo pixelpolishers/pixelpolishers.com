@@ -75,11 +75,6 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('Invalid request.');
         }
 
-        $f = fopen(getcwd() . '/payload.log', 'a+');
-        fwrite($f, print_r($_POST, true));
-        fwrite($f, PHP_EOL . PHP_EOL);
-        fclose($f);
-
         $buildFile = getcwd() . '/build.sh';
         if (is_file($buildFile)) {
             $process = new Process($buildFile);
