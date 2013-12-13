@@ -9,6 +9,12 @@
 namespace Api;
 
 return array(
+    'api_website' => array(
+        'build' => array(
+            'ip_range_from' => '192.30.252.0',
+            'ip_range_till' => '192.30.252.255',
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'api' => include 'routes.config.php',

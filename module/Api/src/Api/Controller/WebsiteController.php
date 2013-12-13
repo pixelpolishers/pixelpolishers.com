@@ -19,8 +19,10 @@ class WebsiteController extends AbstractActionController
             return true;
         }
 
-        $min = ip2long('192.30.252.0');
-        $max = ip2long('192.30.252.255');
+        $config = $this->getServiceLocator()->get('Config');
+
+        $min = ip2long($config['api_website']['build']['ip_range_from']);
+        $max = ip2long($config['api_website']['build']['ip_range_till']);
         $needle = ip2long($ipAddress);
 
         return ($needle >= $min) && ($needle <= $max);
