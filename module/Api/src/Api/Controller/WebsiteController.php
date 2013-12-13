@@ -33,6 +33,8 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('Invalid request.');
         }
 
+        echo '<h1>Auto Update</h1>';
+
         $buildFile = getcwd() . '/build.sh';
         if (is_file($buildFile)) {
             $process = new Process($buildFile);
