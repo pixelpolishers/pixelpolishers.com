@@ -23,7 +23,7 @@ class WebsiteController extends AbstractActionController
         $max = ip2long('192.30.252.255');
         $needle = ip2long($ipAddress);
 
-        return true;//($needle >= $min) && ($needle <= $max);
+        return ($needle >= $min) && ($needle <= $max);
     }
 
     public function buildAction()
@@ -33,7 +33,10 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('Invalid request.');
         }
 
-        echo '<h1>Auto Update</h1>';
+        $f = fopen(getcwd() . '/payload.log', 'a+');
+        fwrite($f, print_r($_POST, true));
+        fwrite($f, PHP_EOL . PHP_EOL);
+        fclose($f);
 
         $buildFile = getcwd() . '/build.sh';
         if (is_file($buildFile)) {
@@ -41,10 +44,8 @@ class WebsiteController extends AbstractActionController
             $process->run();
 
             if (!$process->isSuccessful()) {
-                echo '<h2>Error</h2><pre>' . $process->getErrorOutput() . '</pre>';
+                // TODO: Send an e-mail.
             }
-
-            echo '<h2>Output</h2><pre>' . $process->getOutput() . '</pre>';
         }
 
         return $this->getResponse();
