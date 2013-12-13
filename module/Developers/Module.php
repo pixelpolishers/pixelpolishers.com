@@ -26,4 +26,17 @@ class Module
         );
     }
 
+    public function onBootstrap($e)
+    {
+        $eventManager = $e->getApplication()->getEventManager()->getSharedManager();
+        $eventManager->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
+            $controller = $e->getTarget();
+            $controllerClass = get_class($controller);
+            $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
+
+            if ($moduleNamespace == 'Developers') {
+                $controller->layout('layout/developers');
+            }
+        }, 100);
+    }
 }

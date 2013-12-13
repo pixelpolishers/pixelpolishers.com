@@ -33,20 +33,20 @@ return array(
                 ),
             ),
         ),
-        'products' => array(
+        'company' => array(
             'type' => 'Zend\Mvc\Router\Http\Segment',
             'options' => array(
-                'route' => '/products',
+                'route' => '/company',
                 'defaults' => array(
                     'controller' => 'Application\Controller\IndexController',
                     'action' => 'index',
                 ),
             ),
         ),
-        'company' => array(
+        'technologies' => array(
             'type' => 'Zend\Mvc\Router\Http\Segment',
             'options' => array(
-                'route' => '/company',
+                'route' => '/technologies',
                 'defaults' => array(
                     'controller' => 'Application\Controller\IndexController',
                     'action' => 'index',

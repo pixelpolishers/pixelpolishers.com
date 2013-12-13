@@ -26,4 +26,27 @@ class Module
         );
     }
 
+    public function getViewHelperConfig()
+    {
+        return array(
+            'invokables' => array(
+                'ppSignInForm' => 'Account\View\Helper\SignInForm',
+                'ppSignUpForm' => 'Account\View\Helper\SignUpForm',
+            )
+        );
+    }
+
+    public function onBootstrap($e)
+    {
+        $eventManager = $e->getApplication()->getEventManager()->getSharedManager();
+        $eventManager->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
+            $controller = $e->getTarget();
+            $controllerClass = get_class($controller);
+            $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
+
+            if ($moduleNamespace == 'Account') {
+                $controller->layout('layout/account');
+            }
+        }, 100);
+    }
 }

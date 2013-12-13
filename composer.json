@@ -4,7 +4,8 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",
         "pixelpolishers/makedocs-zf2": "*",
-        "symfony/process": "*"
+        "symfony/process": "*",
+        "doctrine/doctrine-orm-module": "*"
     },
 	"require-dev": {
 		"phpunit/phpunit": "*"
