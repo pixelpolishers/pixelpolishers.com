@@ -9,14 +9,16 @@
 namespace Api;
 
 return array(
-    'api_website' => array(
-        'build' => array(
-            'ip_range_from' => '192.30.252.0',
-            'ip_range_till' => '192.30.252.255',
-            'refs' => array(
-                'refs/heads/master'
+    'api_auth' => array(
+        'base_url' => 'http://www.pixelpolishers.' . $GLOBALS['extension'],
+        'providers' => array(
+            "LinkedIn" => array(
+                "enabled" => true,
+                "keys" => array('key' => '', 'secret' => '')
             ),
         ),
+        'debug_mode' => false,
+        'debug_file' => '',
     ),
     'router' => array(
         'routes' => array(
@@ -26,6 +28,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Api\Controller\IndexController' => 'Api\Controller\IndexController',
+            'Api\Controller\AuthController' => 'Api\Controller\AuthController',
             'Api\Controller\WebsiteController' => 'Api\Controller\WebsiteController',
         ),
     ),

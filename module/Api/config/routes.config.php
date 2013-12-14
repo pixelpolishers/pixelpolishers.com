@@ -33,6 +33,16 @@ return array(
                 ),
             ),
         ),
+        'auth' => array(
+            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'options' => array(
+                'route' => '/auth',
+                'defaults' => array(
+                    'controller' => 'Api\Controller\AuthController',
+                    'action' => 'index',
+                ),
+            ),
+        ),
         'website' => array(
             'type' => 'Zend\Mvc\Router\Http\Segment',
             'options' => array(

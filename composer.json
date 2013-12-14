@@ -5,7 +5,8 @@
         "zendframework/zendframework": "2.2.*",
         "pixelpolishers/makedocs-zf2": "*",
         "symfony/process": "*",
-        "doctrine/doctrine-orm-module": "*"
+        "doctrine/doctrine-orm-module": "*",
+        "hybridauth/hybridauth": "*"
     },
 	"require-dev": {
 		"phpunit/phpunit": "*"

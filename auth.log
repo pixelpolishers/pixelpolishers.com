@@ -1,0 +1,155 @@
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Enter Hybrid_Auth::setup( GitHub ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth::setup( GitHub ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth::setup( GitHub ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Hybrid_Auth::setup( GitHub ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:19+01:00 -- Enter Hybrid_Provider_Adapter::factory( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:24:55+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Enter Hybrid_Auth::setup( GitHub ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth::setup( GitHub ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth::setup( GitHub ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Hybrid_Auth::setup( GitHub ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:04+01:00 -- Enter Hybrid_Provider_Adapter::factory( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Enter Hybrid_Auth::setup( GitHub ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth::setup( GitHub ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth::setup( GitHub ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Hybrid_Auth::setup( GitHub ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:25:56+01:00 -- Enter Hybrid_Provider_Adapter::factory( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Enter Hybrid_Auth::setup( GitHub ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth::setup( GitHub ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth::setup( GitHub ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Hybrid_Auth::setup( GitHub ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:13+01:00 -- Enter Hybrid_Provider_Adapter::factory( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:39+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:40+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:5:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Enter Hybrid_Auth::setup( GitHub ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth::setup( GitHub ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth::setup( GitHub ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Hybrid_Auth::setup( GitHub ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:26:54+01:00 -- Enter Hybrid_Provider_Adapter::factory( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:6:{s:8:"Facebook";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"GitHub";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:6:"Google";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:2:"id";s:0:"";s:6:"secret";s:0:"";}}s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}s:6:"OpenID";a:1:{s:7:"enabled";b:1;}s:7:"Twitter";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:0:"";s:6:"secret";s:0:"";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Enter Hybrid_Auth::setup( GitHub ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth::setup( GitHub ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth::setup( GitHub ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Hybrid_Auth::setup( GitHub ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:27:40+01:00 -- Enter Hybrid_Provider_Adapter::factory( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:13+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:1:{s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:14:"77o1doqhw0lt41";s:6:"secret";s:16:"BvzSHOUkG32bz0aj";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Enter Hybrid_Auth::authenticate( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth::authenticate( GitHub ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Enter Hybrid_Auth::setup( GitHub ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth::setup( GitHub ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth::setup( GitHub ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Hybrid_Auth::setup( GitHub ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:14+01:00 -- Enter Hybrid_Provider_Adapter::factory( GitHub )
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Enter Hybrid_Auth::initialize()
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth::initialize(). PHP version: 5.4.13
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth version: 2.1.1-dev
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth::initialize(). Hybrid_Auth called from: http://api.pixelpolishers.local/auth
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth initialize. dump used config:  -- a:8:{s:8:"base_url";s:31:"http://www.pixelpolishers.local";s:9:"providers";a:1:{s:8:"LinkedIn";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:14:"77o1doqhw0lt41";s:6:"secret";s:16:"BvzSHOUkG32bz0aj";}}}s:10:"debug_mode";b:1;s:10:"debug_file";s:44:"D:\pixelpolishers\pixelpolisher.com/auth.log";s:9:"path_base";s:83:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/";s:14:"path_libraries";s:94:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/thirdparty/";s:14:"path_resources";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/resources/";s:14:"path_providers";s:93:"D:\pixelpolishers\pixelpolisher.com\vendor\hybridauth\hybridauth\hybridauth\Hybrid/Providers/";}
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth initialize. dump current session:  -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth initialize: check if any error is stored on the endpoint...
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth initialize: no error found. initialization succeed.
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Enter Hybrid_Auth::authenticate( LinkedIn )
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth::authenticate( LinkedIn ), User not connected to the provider. Try to authenticate..
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Enter Hybrid_Auth::setup( LinkedIn ) -- 
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth::setup( LinkedIn ), no params given. Trying to get the sotred for this provider. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth::setup( LinkedIn ), no stored params found for this provider. Initialize a new one for new session
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Auth::setup( LinkedIn ). HybridAuth Callback URL set to:  -- http://api.pixelpolishers.local/auth
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Enter Hybrid_Provider_Adapter::factory( LinkedIn )
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Provider_Model::__construct( LinkedIn ) initialized. dump current adapter instance:  -- O:25:"Hybrid_Providers_LinkedIn":6:{s:10:"providerId";s:8:"LinkedIn";s:6:"config";a:2:{s:7:"enabled";b:1;s:4:"keys";a:2:{s:3:"key";s:14:"77o1doqhw0lt41";s:6:"secret";s:16:"BvzSHOUkG32bz0aj";}}s:6:"params";a:1:{s:15:"hauth_return_to";s:36:"http://api.pixelpolishers.local/auth";}s:8:"endpoint";N;s:4:"user";O:11:"Hybrid_User":3:{s:10:"providerId";s:8:"LinkedIn";s:9:"timestamp";i:1387024890;s:7:"profile";O:19:"Hybrid_User_Profile":22:{s:10:"identifier";N;s:10:"webSiteURL";N;s:10:"profileURL";N;s:8:"photoURL";N;s:11:"displayName";N;s:11:"description";N;s:9:"firstName";N;s:8:"lastName";N;s:6:"gender";N;s:8:"language";N;s:3:"age";N;s:8:"birthDay";N;s:10:"birthMonth";N;s:9:"birthYear";N;s:5:"email";N;s:13:"emailVerified";N;s:5:"phone";N;s:7:"address";N;s:7:"country";N;s:6:"region";N;s:4:"city";N;s:3:"zip";N;}}s:3:"api";O:8:"LinkedIn":7:{s:11:" * callback";N;s:8:" * token";N;s:18:" * application_key";s:14:"77o1doqhw0lt41";s:21:" * application_secret";s:16:"BvzSHOUkG32bz0aj";s:18:" * response_format";s:3:"xml";s:20:"last_request_headers";N;s:16:"last_request_url";N;}}
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Enter Hybrid_Provider_Adapter::login( LinkedIn ) 
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Enter [LinkedIn]::logout()
+DEBUG -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Hybrid_Provider_Adapter::login( LinkedIn ), redirect the user to login_start URL. -- 
+INFO -- 127.0.0.1 -- 2013-12-14T13:41:30+01:00 -- Enter Hybrid_Auth::redirect( http://www.pixelpolishers.local?hauth.start=LinkedIn&hauth.time=1387024890, PHP )
