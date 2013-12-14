@@ -24,7 +24,7 @@ return array(
     ),
     'child_routes' => array(
         'index' => array(
-            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
                 'route' => '/',
                 'defaults' => array(
@@ -34,22 +34,91 @@ return array(
             ),
         ),
         'company' => array(
-            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
                 'route' => '/company',
+                'defaults' => array(
+                    'controller' => 'Application\Controller\CompanyController',
+                    'action' => 'index',
+                ),
+            ),
+            'child_routes' => array(
+                'about' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/about',
+                        'defaults' => array(
+                            'action' => 'about',
+                        ),
+                    ),
+                ),
+                'careers' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/careers',
+                        'defaults' => array(
+                            'action' => 'careers',
+                        ),
+                    ),
+                ),
+                'contact' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/contact',
+                        'defaults' => array(
+                            'action' => 'contact',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'technologies' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/technologies',
                 'defaults' => array(
                     'controller' => 'Application\Controller\IndexController',
                     'action' => 'index',
                 ),
             ),
         ),
-        'technologies' => array(
-            'type' => 'Zend\Mvc\Router\Http\Segment',
+        'services' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'may_terminate' => true,
             'options' => array(
-                'route' => '/technologies',
+                'route' => '/services',
                 'defaults' => array(
-                    'controller' => 'Application\Controller\IndexController',
+                    'controller' => 'Application\Controller\ServicesController',
                     'action' => 'index',
+                ),
+            ),
+            'child_routes' => array(
+                'consulting' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/consulting',
+                        'defaults' => array(
+                            'action' => 'consulting',
+                        ),
+                    ),
+                ),
+                'training' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/training',
+                        'defaults' => array(
+                            'action' => 'training',
+                        ),
+                    ),
+                ),
+                'certification' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/certification',
+                        'defaults' => array(
+                            'action' => 'certification',
+                        ),
+                    ),
                 ),
             ),
         ),

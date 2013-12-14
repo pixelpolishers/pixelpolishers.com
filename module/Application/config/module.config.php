@@ -17,6 +17,9 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\IndexController' => 'Application\Controller\IndexController',
+            'Application\Controller\CompanyController' => 'Application\Controller\CompanyController',
+            'Application\Controller\TechnologyController' => 'Application\Controller\TechnologyController',
+            'Application\Controller\ServicesController' => 'Application\Controller\ServicesController',
         ),
     ),
     'view_manager' => array(
