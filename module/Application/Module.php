@@ -8,6 +8,8 @@
 
 namespace Application;
 
+use Zend\Mvc\MvcEvent;
+
 class Module
 {
     public function getConfig()
@@ -26,4 +28,16 @@ class Module
         );
     }
 
+    public function onBootstrap(MvcEvent $e)
+    {
+        if (extension_loaded('intl')) {
+            /** @var HelperPluginManager $helperPluginManger */
+            $helperPluginManger = $e->getApplication()->getServiceManager()->get('ViewHelperManager');
+            $helperPluginManger->addInitializer(function($helper) {
+                if ($helper instanceof TranslatorAwareInterface) {
+                    $helper->setTranslatorEnabled(false);
+                }
+            });
+        }
+    }
 }

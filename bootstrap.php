@@ -22,11 +22,5 @@ chdir(__DIR__);
 // Setup autoloading:
 include 'vendor/autoload.php';
 
-// Make sure we have all the needed extensions:
-if (!extension_loaded('intl')) {
-    echo 'Failed to load the website. We need the intl PHP extension.';
-    exit;
-}
-
 // Run the application!
 Zend\Mvc\Application::init(include 'config/application.config.php')->run()->send();
