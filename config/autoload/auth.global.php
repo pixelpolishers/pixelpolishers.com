@@ -10,8 +10,6 @@ if (!extension_loaded('intl')) {
     $factories = array(
         'MvcTranslator' => 'Application\Service\TranslatorServiceFactory',
     );
-} else {
-    $factories = array();
 }
 
 return array(
