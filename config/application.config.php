@@ -7,10 +7,17 @@
  */
 return array(
     'modules' => array(
-        'Account',
-        'Api',
-        'Application',
-        'Developers',
+        'PixPolLicense',
+        'PixPolLicenseDoctrineORM',
+        'PixPolSubdomainAccount',
+        'PixPolSubdomainApi',
+        'PixPolSubdomainDevelopers',
+        'PixPolSubdomainWww',
+        'PixPolUser',
+        'PixPolUserDoctrineORM',
+        'DoctrineModule',
+        'DoctrineORMModule',
+        'DoctrineDataFixtureModule',
         'MakeDocsZf2',
     ),
     'module_listener_options' => array(

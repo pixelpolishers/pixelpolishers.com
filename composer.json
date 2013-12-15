@@ -5,6 +5,7 @@
         "zendframework/zendframework": "2.2.*",
         "pixelpolishers/makedocs-zf2": "*",
         "symfony/process": "*",
+        "hounddog/doctrine-data-fixture-module": "*",
         "doctrine/doctrine-orm-module": "*",
         "hybridauth/hybridauth": "*"
     },
