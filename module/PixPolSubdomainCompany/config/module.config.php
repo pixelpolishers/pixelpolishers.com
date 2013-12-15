@@ -11,7 +11,7 @@ namespace PixPolSubdomainCompany;
 return array(
     'router' => array(
         'routes' => array(
-            'api' => include 'routes.config.php',
+            'company' => include 'routes.config.php',
         ),
     ),
     'controllers' => array(
