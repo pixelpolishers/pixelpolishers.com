@@ -38,45 +38,26 @@ class WebsiteController extends AbstractActionController
 
     public function buildAction()
     {
-        $f = fopen('data/logs/api-website-build.log', 'a+');
-        $exception = null;
-
-        try {
-            $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
-            fwrite($f, '[' . date('Y-m-d H:i:s') . '][' . $remoteAddress->getIpAddress() . '] ');
-            if (!$this->isValidIp($remoteAddress->getIpAddress())) {
-                fwrite($f, 'Invalid IP' . PHP_EOL);
-                throw new \RuntimeException('Invalid request.');
-            }
-
-            $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
-            if (!$this->isValidPayload($payload)) {
-                fwrite($f, 'Invalid payload' . PHP_EOL);
-                throw new \RuntimeException('Invalid request.');
-            }
-
-            $buildFile = getcwd() . '/build.sh';
-            if (is_file($buildFile)) {
-                $process = new Process($buildFile);
-                $process->run();
-
-                if (!$process->isSuccessful()) {
-                    // TODO: Send an e-mail.
-                    fwrite($f, 'Failed: ' . $process->getErrorOutput() . PHP_EOL);
-                } else {
-                    fwrite($f, 'OK' . PHP_EOL);
-                }
-            } else {
-                fwrite($f, 'Build file does not exist.'. PHP_EOL);
-            }
-        } catch (\Exception $e) {
-            $exception = $e;
+        $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
+        if (!$this->isValidIp($remoteAddress->getIpAddress())) {
+            throw new \RuntimeException('Invalid request.');
         }
 
-        fclose($f);
+        $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
+        if (!$this->isValidPayload($payload)) {
+            throw new \RuntimeException('Invalid request.');
+        }
 
-        if ($exception) {
-            throw $exception;
+        $buildFile = getcwd() . '/build.sh';
+        if (!is_file($buildFile)) {
+            throw new \RuntimeException('No build file found.');
+        }
+
+        $process = new Process($buildFile);
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            // TODO: Send an e-mail.
         }
 
         return $this->getResponse();
