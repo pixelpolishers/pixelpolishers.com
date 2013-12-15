@@ -31,7 +31,7 @@ class WebsiteController extends AbstractActionController
         if ($payload) {
             $json = json_decode($payload);
 
-            return in_array($json->ref, array('master'));
+            return in_array($json->ref, array('refs/heads/master'));
         }
         return false;
     }
