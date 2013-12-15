@@ -56,11 +56,14 @@ class WebsiteController extends AbstractActionController
 
     private function isValidPayload($payload)
     {
-        $json = json_decode($payload);
+        if ($payload) {
+            $json = json_decode($payload);
 
-        $config = $this->getApiWebsiteBuildConfig();
+            $config = $this->getApiWebsiteBuildConfig();
 
-        return in_array($json->ref, $config['refs']);
+            return in_array($json->ref, $config['refs']);
+        }
+        return false;
     }
 
     public function buildAction()
