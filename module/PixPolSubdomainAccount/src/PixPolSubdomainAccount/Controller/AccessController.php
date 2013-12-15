@@ -19,6 +19,10 @@ class AccessController extends AbstractActionController
 
     public function signinAction()
     {
+        if ($this->ppUserAuth()->hasIdentity()) {
+            return $this->redirect()->toRoute('account/index');
+        }
+
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form = $this->getServiceLocator()->get('PixPolSubdomainAccount\Form\SignInForm');
@@ -37,6 +41,10 @@ class AccessController extends AbstractActionController
 
     public function signupAction()
     {
+        if ($this->ppUserAuth()->hasIdentity()) {
+            return $this->redirect()->toRoute('account/index');
+        }
+
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form = $this->getServiceLocator()->get('PixPolSubdomainAccount\Form\SignUpForm');
@@ -52,6 +60,10 @@ class AccessController extends AbstractActionController
 
     public function signoutAction()
     {
+        if ($this->ppUserAuth()->hasIdentity()) {
+            return $this->redirect()->toRoute('account/index');
+        }
+
         $this->ppUserAuth()->signOut();
         return array();
     }
