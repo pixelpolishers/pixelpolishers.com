@@ -68,24 +68,45 @@ class WebsiteController extends AbstractActionController
 
     public function buildAction()
     {
-        $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
-        if (!$this->isValidIp($remoteAddress->getIpAddress())) {
-            throw new \RuntimeException('Invalid request.');
-        }
+        $f = fopen('data/logs/api-website-build.log', 'a+');
+        $exception = null;
 
-        $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
-        if (!$this->isValidPayload($payload)) {
-            throw new \RuntimeException('Invalid request.');
-        }
-
-        $buildFile = getcwd() . '/build.sh';
-        if (is_file($buildFile)) {
-            $process = new Process($buildFile);
-            $process->run();
-
-            if (!$process->isSuccessful()) {
-                // TODO: Send an e-mail.
+        try {
+            $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
+            fwrite($f, '[' . date('Y-m-d H:i:s') . '][' . $remoteAddress->getIpAddress() . '] ');
+            if (!$this->isValidIp($remoteAddress->getIpAddress())) {
+                fwrite($f, 'Invalid IP' . PHP_EOL);
+                throw new \RuntimeException('Invalid request.');
             }
+
+            $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
+            if (!$this->isValidPayload($payload)) {
+                fwrite($f, 'Invalid payload' . PHP_EOL);
+                throw new \RuntimeException('Invalid request.');
+            }
+
+            $buildFile = getcwd() . '/build.sh';
+            if (is_file($buildFile)) {
+                $process = new Process($buildFile);
+                $process->run();
+
+                if (!$process->isSuccessful()) {
+                    // TODO: Send an e-mail.
+                    fwrite($f, 'Failed: ' . $process->getErrorOutput() . PHP_EOL);
+                } else {
+                    fwrite($f, 'OK' . PHP_EOL);
+                }
+            } else {
+                fwrite($f, 'Build file does not exist.'. PHP_EOL);
+            }
+        } catch (\Exception $e) {
+            $exception = $e;
+        }
+
+        fclose($f);
+
+        if ($exception) {
+            throw $exception;
         }
 
         return $this->getResponse();
