@@ -8,7 +8,7 @@
 
 if (!extension_loaded('intl')) {
     $factories = array(
-        'MvcTranslator' => 'Application\Service\TranslatorServiceFactory',
+        'MvcTranslator' => 'PixPolSubdomainWww\Service\TranslatorServiceFactory',
     );
 } else {
     $factories = array();
