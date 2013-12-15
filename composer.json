@@ -1,4 +1,7 @@
 {
+	"name": "pixelpolishers/pixelpolishers.com",
+	"description": "The website pixelpolishers.com",
+	"license": "proprietary",
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
