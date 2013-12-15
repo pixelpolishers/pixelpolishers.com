@@ -13,42 +13,14 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class WebsiteController extends AbstractActionController
 {
-    private $config;
-
-    private function getApiWebsiteBuildConfig()
-    {
-        if ($this->config === null) {
-            $this->config = array(
-                'ip_range_from' => '',
-                'ip_range_till' => '',
-                'refs' => array(),
-            );
-
-            $config = $this->getServiceLocator()->get('Config');
-            if (!array_key_exists('api_website', $config)) {
-                return $this->config;
-            }
-
-            $api_website = $config['api_website'];
-            if (!array_key_exists('build', $api_website)) {
-                return $this->config;
-            }
-
-            $this->config = $api_website['build'];
-        }
-        return $this->config;
-    }
-
     private function isValidIp($ipAddress)
     {
         if ($ipAddress === '127.0.0.1') {
             return true;
         }
 
-        $config = $this->getApiWebsiteBuildConfig();
-
-        $min = ip2long($config['ip_range_from']);
-        $max = ip2long($config['ip_range_till']);
+        $min = ip2long('192.30.252.0');
+        $max = ip2long('192.30.252.255');
         $needle = ip2long($ipAddress);
 
         return ($needle >= $min) && ($needle <= $max);
@@ -59,9 +31,7 @@ class WebsiteController extends AbstractActionController
         if ($payload) {
             $json = json_decode($payload);
 
-            $config = $this->getApiWebsiteBuildConfig();
-
-            return in_array($json->ref, $config['refs']);
+            return in_array($json->ref, array('master'));
         }
         return false;
     }
