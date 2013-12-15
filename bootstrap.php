@@ -10,11 +10,11 @@
 $GLOBALS['extension'] = substr($_SERVER['HTTP_HOST'], strrpos($_SERVER['HTTP_HOST'], '.') + 1);
 
 // Enable PHP errors when we're debugging:
-if ($GLOBALS['extension'] == 'local') {
+//if ($GLOBALS['extension'] == 'local') {
     error_reporting(E_ALL);
     ini_set('display_errors', true);
     ini_set('display_startup_errors', true);
-}
+//}
 
 // Change the current working direction:
 chdir(__DIR__);
