@@ -15,6 +15,10 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        if (!$this->ppUserAuth()->hasIdentity()) {
+            return $this->redirect()->toRoute('account/index');
+        }
+        
         $viewModel = new ViewModel();
         return $viewModel;
     }
