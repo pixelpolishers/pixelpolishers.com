@@ -9,6 +9,7 @@
 namespace PixPolUserDoctrineORM;
 
 use PixPolUserDoctrineORM\Mapper\DoctrineORMMapper;
+use PixPolUserDoctrineORM\Provider\RoleProvider;
 
 return array(
     'data-fixture' => array(
@@ -38,6 +39,10 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
+            'PixPolUserRoleProvider' => function($sm) {
+                $em = $sm->get('Doctrine\ORM\EntityManager');
+                return new RoleProvider($em);
+            },
             'PixPolUserMapper' => function($sm) {
                 $em = $sm->get('Doctrine\ORM\EntityManager');
                 return new DoctrineORMMapper($em);

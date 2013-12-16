@@ -12,11 +12,6 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class AccessController extends AbstractActionController
 {
-    private function getUserService()
-    {
-        return $this->getServiceLocator()->get('PixPolUserService');
-    }
-
     public function signinAction()
     {
         if ($this->ppUserAuth()->hasIdentity()) {
@@ -50,8 +45,7 @@ class AccessController extends AbstractActionController
             $form = $this->getServiceLocator()->get('PixPolSubdomainAccount\Form\SignUpForm');
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $userService = $this->getUserService();
-                $userService->signUp($form->getData());
+                $this->ppUserService()->signUp($form->getData());
                 return $this->redirect()->toRoute('account/signin');
             }
         }
