@@ -60,7 +60,7 @@ class AccessController extends AbstractActionController
 
     public function signoutAction()
     {
-        if ($this->ppUserAuth()->hasIdentity()) {
+        if (!$this->ppUserAuth()->hasIdentity()) {
             return $this->redirect()->toRoute('account/index');
         }
 
