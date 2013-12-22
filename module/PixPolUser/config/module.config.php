@@ -8,11 +8,10 @@
 
 namespace PixPolUser;
 
+use Zend\Session\Config\SessionConfig;
 use PixPolUser\Controller\Plugin\UserAccess;
 use PixPolUser\Controller\Plugin\UserAuthentication;
 use PixPolUser\Controller\Plugin\UserService as UserServicePlugin;
-use PixPolUser\Service\AccessService;
-use PixPolUser\Service\UserService;
 
 return array(
     'controller_plugins' => array(
@@ -30,16 +29,26 @@ return array(
             },
         ),
     ),
+    'session_manager' => array(
+        'enable_default_container_manager' => true,
+    ),
     'service_manager' => array(
         'factories' => array(
-            'PixPolAccessService' => function($sm) {
-                $authService = $sm->get('Zend\Authentication\AuthenticationService');
-                $provider = $sm->get('PixPolUserRoleProvider');
-                return new AccessService($provider, $authService->getIdentity());
-            },
-            'PixPolUserService' => function($sm) {
-                $mapper = $sm->get('PixPolUserMapper');
-                return new UserService($mapper);
+            'PixPolAccessService' => 'PixPolUser\Service\AccessServiceFactory',
+            'PixPolGuardListener' => 'PixPolUser\Guard\GuardListenerFactory',
+            'PixPolPermissionService' => 'PixPolUser\Service\PermissionServiceFactory',
+            'PixPolRoleService' => 'PixPolUser\Service\RoleServiceFactory',
+            'PixPolUserService' => 'PixPolUser\Service\UserServiceFactory',
+            'Zend\Session\SessionManager' => 'Zend\Session\Service\SessionManagerFactory',
+            'Zend\Session\Config\ConfigInterface' => function($sm) {
+                $instance = new SessionConfig();
+                $instance->setUseCookies(true);
+                if (array_key_exists('extension', $GLOBALS)) {
+                    $instance->setCookieDomain('.pixelpolishers.' . $GLOBALS['extension']);
+                } else {
+                    $instance->setCookieDomain('.pixelpolishers.' . 'com');
+                }
+                return $instance;
             },
         ),
     ),

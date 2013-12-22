@@ -1,0 +1,40 @@
+<h2>Roles</h2>
+
+<?php if (count($this->permissions) == 0) { ?>
+<p>You need to create permissions before you can create a role.</p>
+<?php } else { ?>
+<p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
+
+<ul>
+<?php foreach ($this->roles as $role) { ?>
+    <li><a href="<?php echo $this->url('company/access/role/update', array(
+        'id' => $role->getId(),
+    )); ?>"><?php echo $role->getName(); ?></a></li>
+<?php } ?>
+</ul>
+
+<p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
+<?php } ?>
+
+<h2>Permissions</h2>
+
+<?php if (count($this->permissions) == 0) { ?>
+<p><a href="<?php echo $this->url('company/access/permission/create'); ?>">Create the first permission</a></p>
+<?php } else { ?>
+<p><a href="<?php echo $this->url('company/access/permission/create'); ?>">Create</a></p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Module</th>
+    </tr>
+<?php foreach ($this->permissions as $permission) { ?>
+    <tr>
+        <td><?php echo $permission->getName(); ?></td>
+        <td><?php echo $permission->getModule(); ?></td>
+    </li>
+<?php } ?>
+</table>
+
+<p><a href="<?php echo $this->url('company/access/permission/create'); ?>">Create</a></p>
+<?php } ?>

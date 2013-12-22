@@ -8,6 +8,9 @@
 
 namespace PixPolSubdomainCompany;
 
+use PixPolUser\Entity\Permission;
+use PixPolUser\Service\PermissionService;
+
 class Module
 {
     public function getConfig()
@@ -29,6 +32,12 @@ class Module
     public function onBootstrap($e)
     {
         $eventManager = $e->getApplication()->getEventManager()->getSharedManager();
+        $eventManager->attach('PixPolUser\Service\PermissionService', PermissionService::EVENT_FIND_PERMISSIONS, function($e) {
+            $permissions = $e->getTarget();
+            $permissions[] = new Permission(__NAMESPACE__, 'role_create');
+            $permissions[] = new Permission(__NAMESPACE__, 'role_update');
+            $permissions[] = new Permission(__NAMESPACE__, 'role_delete');
+        });
         $eventManager->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
             $controller = $e->getTarget();
             $controllerClass = get_class($controller);

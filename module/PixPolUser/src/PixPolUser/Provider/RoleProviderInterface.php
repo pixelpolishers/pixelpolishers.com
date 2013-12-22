@@ -10,7 +10,7 @@ namespace PixPolUser\Provider;
 
 use PixPolUser\Service\AccessService;
 
-interface RoleProviderInterface
+interface RoleProviderInterface2
 {
     public function provide(AccessService $accessService);
 }

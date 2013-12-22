@@ -14,6 +14,8 @@ return array(
         'PixPolSubdomainCompany',
         'PixPolSubdomainDevelopers',
         'PixPolSubdomainWww',
+        'PixPolTag',
+        'PixPolTagDoctrineORM',
         'PixPolUser',
         'PixPolUserDoctrineORM',
         'DoctrineModule',

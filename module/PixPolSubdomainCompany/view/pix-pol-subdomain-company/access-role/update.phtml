@@ -1,0 +1,15 @@
+<h2>Update Role</h2>
+
+<?php
+
+$this->form->prepare();
+
+echo $this->form()->openTag($this->form);
+echo $this->formRow($this->form->get('name'));
+echo $this->formRow($this->form->get('description'));
+echo $this->formRow($this->form->get('permissions'));
+echo $this->formRow($this->form->get('save'));
+echo '<a href="' . $this->url('company/access/role/delete', array(
+    'id' => $this->role->getId(),
+)) . '">Delete</a>';
+echo $this->form()->closeTag();

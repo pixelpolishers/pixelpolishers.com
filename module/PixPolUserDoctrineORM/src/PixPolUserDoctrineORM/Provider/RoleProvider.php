@@ -9,6 +9,7 @@
 namespace PixPolUserDoctrineORM\Provider;
 
 use Doctrine\ORM\EntityManager;
+use PixPolUser\Entity\Permission;
 use PixPolUser\Provider\RoleProviderInterface;
 use PixPolUser\Service\AccessService;
 
@@ -28,8 +29,21 @@ class RoleProvider implements RoleProviderInterface
         foreach ($repository->findAll() as $role) {
             $rbacRole = $accessService->addRole($role->getName())->getRole($role->getName());
 
-            foreach ($role->getPermissions() as $permission) {
-                $rbacRole->addPermission($permission->getName());
+            $this->providePermissions($rbacRole, $role->getPermissions());
+        }
+    }
+
+    private function providePermissions($role, $permissions)
+    {
+        foreach ($permissions as $permission) {
+            if (is_array($permission)) {
+                $this->providePermissions($role, $permission);
+            } else {
+                if ($permission instanceof Permission) {
+                    $permission = $permission->getName();
+                }
+
+                $role->addPermission($permission);
             }
         }
     }

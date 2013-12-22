@@ -7,7 +7,11 @@
  */
 
 // Set the extension value, this is used in the routes and makes debugging easier:
-$GLOBALS['extension'] = substr($_SERVER['HTTP_HOST'], strrpos($_SERVER['HTTP_HOST'], '.') + 1);
+if (isset($_SERVER['HTTP_HOST'])) {
+    $GLOBALS['extension'] = substr($_SERVER['HTTP_HOST'], strrpos($_SERVER['HTTP_HOST'], '.') + 1);
+} else {
+    $GLOBALS['extension'] = 'local';
+}
 
 // Enable PHP errors when we're debugging:
 //if ($GLOBALS['extension'] == 'local') {
@@ -24,3 +28,4 @@ include 'vendor/autoload.php';
 
 // Run the application!
 Zend\Mvc\Application::init(include 'config/application.config.php')->run()->send();
+

@@ -10,9 +10,9 @@ namespace PixPolUserDoctrineORM\Mapper;
 
 use Doctrine\ORM\EntityManager;
 use PixPolUser\Entity\User;
-use PixPolUser\Mapper\MapperInterface;
+use PixPolUser\Mapper\UserMapperInterface;
 
-class DoctrineORMMapper implements MapperInterface
+class DoctrineORMUserMapper implements UserMapperInterface
 {
     private $em;
 

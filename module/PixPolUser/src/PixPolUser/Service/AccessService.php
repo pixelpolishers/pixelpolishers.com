@@ -23,24 +23,28 @@ class AccessService extends Rbac
         $provider->provide($this);
     }
 
-    public function canCurrentUser($permission)
+    public function canCurrentUser($permission, $assertion = null)
     {
         if (!$this->currentUser) {
             return false;
         }
-        
-        return $this->canUser($this->currentUser, $permission);
+
+        return $this->canUser($this->currentUser, $permission, $assertion);
     }
 
-    public function canUser(User $user, $permission)
+    public function canUser(User $user, $permission, $assertion = null)
     {
         foreach ($user->getRoles() as $role) {
-            $rbacRole = $this->getRole($role->getName());
-            if ($rbacRole && $rbacRole->hasPermission($permission)) {
+            if ($this->isGranted($role->getName(), $permission, $assertion)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public function getCurrentUser()
+    {
+        return $this->currentUser;
     }
 }

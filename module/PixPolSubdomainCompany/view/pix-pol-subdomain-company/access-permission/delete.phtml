@@ -1,0 +1,24 @@
+<h2>Delete Permission</h2>
+
+<p>
+    Are you sure you want to delete this permission? It may result in some parts of the website not
+    working anymore.
+</p>
+
+<p>
+    This permission is used by the following roles:
+</p>
+
+<ul>
+    <li>todo</li>
+</ul>
+
+<p>
+    <?php
+    $this->form->prepare();
+    echo $this->form()->openTag($this->form);
+    echo $this->formRow($this->form->get('submit')->setValue('Delete Permantly'));
+    echo $this->form()->closeTag();
+    ?>
+    <a href="<?php echo $this->url('company/access'); ?>">Go back</a>
+</p>

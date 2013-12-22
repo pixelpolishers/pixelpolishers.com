@@ -9,7 +9,7 @@
 namespace PixPolUser\Service;
 
 use PixPolUser\Entity\User;
-use PixPolUser\Mapper\MapperInterface;
+use PixPolUser\Mapper\UserMapperInterface;
 use Zend\Crypt\Password\Bcrypt;
 
 class UserService
@@ -17,7 +17,7 @@ class UserService
     private $mapper;
     private $password;
 
-    public function __construct(MapperInterface $mapper)
+    public function __construct(UserMapperInterface $mapper)
     {
         $this->mapper = $mapper;
         $this->password = new Bcrypt();

@@ -8,7 +8,7 @@
 
 namespace PixPolUser\Validator;
 
-use PixPolUser\Mapper\MapperInterface;
+use PixPolUser\Mapper\UserMapperInterface;
 use Zend\Validator\AbstractValidator;
 
 abstract class AbstractUser extends AbstractValidator
@@ -23,10 +23,10 @@ abstract class AbstractUser extends AbstractValidator
 
     private $mapper;
 
-    public function __construct(MapperInterface $mapper)
+    public function __construct(UserMapperInterface $mapper)
     {
         parent::__construct();
-        
+
         $this->mapper = $mapper;
     }
 

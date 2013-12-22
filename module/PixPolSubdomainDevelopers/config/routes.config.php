@@ -33,5 +33,35 @@ return array(
                 ),
             ),
         ),
+        'programs' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/programs',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainDevelopers\Controller\ProgramsController',
+                    'action' => 'index',
+                ),
+            ),
+        ),
+        'connect' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/connect',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainDevelopers\Controller\ConnectController',
+                    'action' => 'index',
+                ),
+            ),
+        ),
+        'docs' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/docs',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainDevelopers\Controller\DocsController',
+                    'action' => 'index',
+                ),
+            ),
+        ),
     ),
 );

@@ -9,6 +9,13 @@
 namespace Developers;
 
 return array(
+    'pixpoluser_guards' => array(
+        'PixPolUser\Guard\RouteGuard' => array(
+            'developers/index' => array(
+                'permission1', 'permission2', 'permission3',
+            ),
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'developers' => include 'routes.config.php',
@@ -17,6 +24,9 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'PixPolSubdomainDevelopers\Controller\IndexController' => 'PixPolSubdomainDevelopers\Controller\IndexController',
+            'PixPolSubdomainDevelopers\Controller\ConnectController' => 'PixPolSubdomainDevelopers\Controller\ConnectController',
+            'PixPolSubdomainDevelopers\Controller\DocsController' => 'PixPolSubdomainDevelopers\Controller\DocsController',
+            'PixPolSubdomainDevelopers\Controller\ProgramsController' => 'PixPolSubdomainDevelopers\Controller\ProgramsController',
         ),
     ),
     'view_manager' => array(

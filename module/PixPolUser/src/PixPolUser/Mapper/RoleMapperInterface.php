@@ -8,11 +8,13 @@
 
 namespace PixPolUser\Mapper;
 
-use PixPolUser\Entity\User;
+use PixPolUser\Entity\Role;
 
-interface MapperInterface
+interface RoleMapperInterface
 {
-    public function findByEmail($email);
+    public function find($id);
+    public function findAll();
 
-    public function persist(User $user);
+    public function persist(Role $role);
+    public function remove(Role $role);
 }

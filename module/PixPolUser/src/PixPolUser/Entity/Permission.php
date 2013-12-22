@@ -10,26 +10,22 @@ namespace PixPolUser\Entity;
 
 class Permission
 {
-    private $id;
+    private $module;
     private $name;
 
-    public function getId()
+    public function __construct($module, $name)
     {
-        return $this->id;
+        $this->module = $module;
+        $this->name = $name;
     }
 
-    public function setId($id)
+    public function getModule()
     {
-        $this->id = $id;
+        return $this->module;
     }
 
     public function getName()
     {
         return $this->name;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
     }
 }

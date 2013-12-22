@@ -8,18 +8,12 @@
 
 namespace PixPolUser\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 class Role
 {
     private $id;
     private $name;
+    private $description;
     private $permissions;
-
-    public function __construct()
-    {
-        $this->clearPermissions();
-    }
 
     public function getId()
     {
@@ -41,19 +35,32 @@ class Role
         $this->name = $name;
     }
 
-    public function addPermission(Permission $permission)
+    public function getDescription()
     {
-        $this->permissions->add($permission);
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function addPermission($permission)
+    {
+        if ($permission instanceof Permission) {
+            $permission = $permission->getName();
+        }
+        $this->permissions[] = $permission;
     }
 
     public function clearPermissions()
     {
-        $this->permissions = new ArrayCollection();
+        $this->permissions = array();
     }
 
     public function getPermissions()
     {
-        return $this->permissions;
+        return (array)$this->permissions;
     }
 
     public function setPermissions($permissions)
@@ -64,8 +71,14 @@ class Role
         }
     }
 
-    public function removePermission(Permission $permission)
+    public function removePermission($permission)
     {
-        $this->permissions->removeElement($permission);
+        if ($permission instanceof Permission) {
+            $permission = $permission->getName();
+        }
+
+        $key = array_search($permission, $this->permissions);
+
+        unset($this->permissions[$key]);
     }
 }

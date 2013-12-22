@@ -8,7 +8,9 @@
 
 namespace PixPolUserDoctrineORM;
 
-use PixPolUserDoctrineORM\Mapper\DoctrineORMMapper;
+use PixPolUserDoctrineORM\Mapper\DoctrineORMPermissionMapper;
+use PixPolUserDoctrineORM\Mapper\DoctrineORMRoleMapper;
+use PixPolUserDoctrineORM\Mapper\DoctrineORMUserMapper;
 use PixPolUserDoctrineORM\Provider\RoleProvider;
 
 return array(
@@ -39,13 +41,21 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
+            'PixPolPermissionMapper' => function($sm) {
+                $em = $sm->get('Doctrine\ORM\EntityManager');
+                return new DoctrineORMPermissionMapper($em);
+            },
+            'PixPolRoleMapper' => function($sm) {
+                $em = $sm->get('Doctrine\ORM\EntityManager');
+                return new DoctrineORMRoleMapper($em);
+            },
             'PixPolUserRoleProvider' => function($sm) {
                 $em = $sm->get('Doctrine\ORM\EntityManager');
                 return new RoleProvider($em);
             },
             'PixPolUserMapper' => function($sm) {
                 $em = $sm->get('Doctrine\ORM\EntityManager');
-                return new DoctrineORMMapper($em);
+                return new DoctrineORMUserMapper($em);
             },
             'Zend\Authentication\AuthenticationService' => function($sm) {
                 return $sm->get('doctrine.authenticationservice.orm_default');

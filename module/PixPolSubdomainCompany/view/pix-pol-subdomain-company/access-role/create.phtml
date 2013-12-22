@@ -1,0 +1,12 @@
+<h2>Create Role</h2>
+
+<?php
+
+$this->form->prepare();
+
+echo $this->form()->openTag($this->form);
+echo $this->formRow($this->form->get('name'));
+echo $this->formRow($this->form->get('description'));
+echo $this->formRow($this->form->get('permissions'));
+echo $this->formRow($this->form->get('save'));
+echo $this->form()->closeTag();

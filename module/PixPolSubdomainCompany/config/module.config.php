@@ -17,6 +17,16 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'PixPolSubdomainCompany\Controller\IndexController' => 'PixPolSubdomainCompany\Controller\IndexController',
+            'PixPolSubdomainCompany\Controller\AccessController' => 'PixPolSubdomainCompany\Controller\AccessController',
+            'PixPolSubdomainCompany\Controller\AccessRoleController' => 'PixPolSubdomainCompany\Controller\AccessRoleController',
+        ),
+    ),
+    'service_manager' => array(
+        'invokables' => array(
+            'PixPolSubdomainCompany\Form\SubmitForm' => 'PixPolSubdomainCompany\Form\SubmitForm',
+        ),
+        'factories' => array(
+            'PixPolSubdomainCompany\Form\RoleForm' => 'PixPolSubdomainCompany\Form\RoleFormFactory',
         ),
     ),
     'view_manager' => array(
