@@ -12,3 +12,8 @@
 <p>
     Registration date: <?php echo $this->user->getRegistrationDate()->format('r'); ?>
 </p>
+<p>
+    Tags: <?php $tags = array(); foreach ($this->user->getTags() as $tag) {
+        $tags[] = $tag->getName();
+    } echo $tags ? implode(', ', $tags) : '<em>none</em>'; ?>
+</p>

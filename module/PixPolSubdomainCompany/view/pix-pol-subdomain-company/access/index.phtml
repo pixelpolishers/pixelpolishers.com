@@ -19,6 +19,7 @@
 <?php } else { ?>
 <p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
 
+<?php if (count($this->roles) != 0) { ?>
 <ul>
 <?php foreach ($this->roles as $role) { ?>
     <li><a href="<?php echo $this->url('company/access/role/update', array(
@@ -28,6 +29,7 @@
 </ul>
 
 <p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
+<?php } ?>
 <?php } ?>
 
 <h2>Permissions</h2>

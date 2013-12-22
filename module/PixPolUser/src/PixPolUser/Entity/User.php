@@ -10,6 +10,7 @@ namespace PixPolUser\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use PixPolTag\Entity\Tag;
 
 class User
 {
@@ -20,10 +21,12 @@ class User
     private $surname;
     private $registrationDate;
     private $roles;
+    private $tags;
 
     public function __construct()
     {
         $this->clearRoles();
+        $this->clearTags();
     }
 
     public function getId()
@@ -96,16 +99,19 @@ class User
 
     public function addRole(Role $role)
     {
-        $this->roles->add($role);
+        $this->getRoles()->add($role);
     }
 
     public function clearRoles()
     {
-        $this->roles = new ArrayCollection();
+        $this->getRoles()->clear();
     }
 
     public function getRoles()
     {
+        if ($this->roles === null) {
+            $this->roles = new ArrayCollection();
+        }
         return $this->roles;
     }
 
@@ -119,6 +125,37 @@ class User
 
     public function removeRole(Role $role)
     {
-        $this->roles->removeElement($role);
+        $this->getRoles()->removeElement($role);
+    }
+
+    public function addTag(Tag $tag)
+    {
+        $this->getTags()->add($tag);
+    }
+
+    public function clearTags()
+    {
+        $this->getTags()->clear();
+    }
+
+    public function getTags()
+    {
+        if ($this->tags === null) {
+            $this->tags = new ArrayCollection();
+        }
+        return $this->tags;
+    }
+
+    public function setTags($tags)
+    {
+        $this->clearTags();
+        foreach ($tags as $tag) {
+            $this->addTag($tag);
+        }
+    }
+
+    public function removeTag(Tag $tag)
+    {
+        $this->getTags()->removeElement($tag);
     }
 }
