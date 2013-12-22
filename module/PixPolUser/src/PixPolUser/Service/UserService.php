@@ -56,9 +56,9 @@ class UserService
 
     public function getLatest($amount)
     {
-        return $this->mapper->findBy(array(), $amount, array(
+        return $this->mapper->findBy(array(), array(
             'id' => 'DESC',
-        ));
+        ), $amount, 0);
     }
 
     public function signUp(User $user)

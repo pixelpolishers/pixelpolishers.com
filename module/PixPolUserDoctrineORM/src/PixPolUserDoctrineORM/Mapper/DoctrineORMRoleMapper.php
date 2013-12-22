@@ -8,20 +8,12 @@
 
 namespace PixPolUserDoctrineORM\Mapper;
 
-use Doctrine\ORM\EntityManager;
 use PixPolDoctrineORM\Mapper\AbstractMapper;
 use PixPolUser\Entity\Role;
 use PixPolUser\Mapper\RoleMapperInterface;
 
 class DoctrineORMRoleMapper extends AbstractMapper implements RoleMapperInterface
 {
-    private $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-
     public function getClassName()
     {
         return 'PixPolUser\Entity\Role';

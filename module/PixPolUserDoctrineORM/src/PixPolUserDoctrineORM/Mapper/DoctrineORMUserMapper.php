@@ -8,20 +8,12 @@
 
 namespace PixPolUserDoctrineORM\Mapper;
 
-use Doctrine\ORM\EntityManager;
 use PixPolDoctrineORM\Mapper\AbstractMapper;
 use PixPolUser\Entity\User;
 use PixPolUser\Mapper\UserMapperInterface;
 
 class DoctrineORMUserMapper extends AbstractMapper implements UserMapperInterface
 {
-    private $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
-
     public function getClassName()
     {
         return 'PixPolUser\Entity\User';

@@ -1,6 +1,8 @@
 <h2>Newest Users</h2>
 
 <?php if (count($this->latestUsers) == 0) { ?>
+<p>No users yet.</p>
+<?php } else { ?>
 <ul>
 <?php foreach ($this->latestUsers as $user) { ?>
     <li><a href="<?php echo $this->url('company/access/user/view', array(

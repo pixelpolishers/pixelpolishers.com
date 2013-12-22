@@ -19,7 +19,7 @@ class AccessController extends AbstractActionController
         $permissionService = $this->getServiceLocator()->get('PixPolPermissionService');
 
         return array(
-            'latestUsers' => $userService->getLatestUsers(10),
+            'latestUsers' => $userService->getLatest(10),
             'permissions' => $permissionService->findAll(),
             'roles' => $roleService->findAll(),
         );

@@ -8,10 +8,18 @@
 
 namespace PixPolDoctrineORM\Mapper;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 
 abstract class AbstractMapper implements ObjectRepository
 {
+    protected $em;
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
     public function find($id)
     {
         $repository = $this->em->getRepository($this->getClassName());
