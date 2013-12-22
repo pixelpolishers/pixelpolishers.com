@@ -7,12 +7,17 @@
  */
 return array(
     'makedocs' => array(
-        'input' => __DIR__ . '/../../../input',
-        'builders' => array(
-            'html' => array(
-                'baseUrl' => 'http://pixelpolishers.com/{language}/docs/{project}/{version}',
-                'themeDirectory' => realpath(__DIR__ . '/../../vendor/pixelpolishers/makedocs/themes/default'),
-                'outputDirectory' => __DIR__ . '/../../../output/html',
+        'resolver' => array(
+            'name' => 'Resolver',
+            'branch' => 'develop',
+            'repository' => 'https://github.com/pixelpolishers/resolver.git',
+            'input' => __DIR__ . '/../../data/makedocs/resolver/src',
+            'builders' => array(
+                'html' => array(
+                    'baseUrl' => 'http://pixelpolishers.com/{language}/docs/{project}/{version}',
+                    'themeDirectory' => realpath(__DIR__ . '/../../vendor/pixelpolishers/makedocs/themes/default'),
+                    'outputDirectory' => __DIR__ . '/../../data/makedocs/resolver/output/html',
+                ),
             ),
         ),
     ),
