@@ -49,7 +49,16 @@ class UserService
 
     public function findByEmail($email)
     {
-        return $this->mapper->findByEmail($email);
+        return $this->mapper->findBy(array(
+            'email' => $email
+        ));
+    }
+
+    public function getLatest($amount)
+    {
+        return $this->mapper->findBy(array(), $amount, array(
+            'id' => 'DESC',
+        ));
     }
 
     public function signUp(User $user)

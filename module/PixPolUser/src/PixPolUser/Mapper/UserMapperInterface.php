@@ -8,11 +8,11 @@
 
 namespace PixPolUser\Mapper;
 
+use Doctrine\Common\Persistence\ObjectRepository;
 use PixPolUser\Entity\User;
 
-interface UserMapperInterface
+interface UserMapperInterface extends ObjectRepository
 {
-    public function findByEmail($email);
-
     public function persist(User $user);
+    public function remove(User $user);
 }

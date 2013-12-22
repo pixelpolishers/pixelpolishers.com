@@ -9,10 +9,11 @@
 namespace PixPolUserDoctrineORM\Mapper;
 
 use Doctrine\ORM\EntityManager;
+use PixPolDoctrineORM\Mapper\AbstractMapper;
 use PixPolUser\Entity\User;
 use PixPolUser\Mapper\UserMapperInterface;
 
-class DoctrineORMUserMapper implements UserMapperInterface
+class DoctrineORMUserMapper extends AbstractMapper implements UserMapperInterface
 {
     private $em;
 
@@ -21,18 +22,20 @@ class DoctrineORMUserMapper implements UserMapperInterface
         $this->em = $em;
     }
 
-    public function findByEmail($email)
+    public function getClassName()
     {
-        $repository = $this->em->getRepository('PixPolUser\Entity\User');
-
-        return $repository->findOneBy(array(
-            'email' => $email,
-        ));
+        return 'PixPolUser\Entity\User';
     }
 
     public function persist(User $user)
     {
         $this->em->persist($user);
+        $this->em->flush();
+    }
+
+    public function remove(User $user)
+    {
+        $this->em->remove($user);
         $this->em->flush();
     }
 }

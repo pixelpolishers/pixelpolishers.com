@@ -7,6 +7,7 @@
  */
 return array(
     'modules' => array(
+        'PixPolDoctrineORM',
         'PixPolLicense',
         'PixPolLicenseDoctrineORM',
         'PixPolSubdomainAccount',

@@ -9,10 +9,11 @@
 namespace PixPolUserDoctrineORM\Mapper;
 
 use Doctrine\ORM\EntityManager;
+use PixPolDoctrineORM\Mapper\AbstractMapper;
 use PixPolUser\Entity\Role;
 use PixPolUser\Mapper\RoleMapperInterface;
 
-class DoctrineORMRoleMapper implements RoleMapperInterface
+class DoctrineORMRoleMapper extends AbstractMapper implements RoleMapperInterface
 {
     private $em;
 
@@ -21,18 +22,9 @@ class DoctrineORMRoleMapper implements RoleMapperInterface
         $this->em = $em;
     }
 
-    public function find($id)
+    public function getClassName()
     {
-        $repository = $this->em->getRepository('PixPolUser\Entity\Role');
-
-        return $repository->find($id);
-    }
-
-    public function findAll()
-    {
-        $repository = $this->em->getRepository('PixPolUser\Entity\Role');
-
-        return $repository->findAll();
+        return 'PixPolUser\Entity\Role';
     }
 
     public function persist(Role $role)

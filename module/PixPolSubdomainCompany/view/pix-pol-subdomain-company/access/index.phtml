@@ -1,3 +1,15 @@
+<h2>Newest Users</h2>
+
+<?php if (count($this->latestUsers) == 0) { ?>
+<ul>
+<?php foreach ($this->latestUsers as $user) { ?>
+    <li><a href="<?php echo $this->url('company/access/user/view', array(
+        'id' => $user->getId(),
+    )); ?>"><?php echo $user->getDisplayName(); ?></a></li>
+<?php } ?>
+</ul>
+<?php } ?>
+
 <h2>Roles</h2>
 
 <?php if (count($this->permissions) == 0) { ?>
