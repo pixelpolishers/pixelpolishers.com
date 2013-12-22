@@ -35,13 +35,15 @@ class Module
         $eventManager->attach('PixPolUser\Service\PermissionService', PermissionService::EVENT_FIND_PERMISSIONS, function($e) {
             $permissions = $e->getTarget();
 
-            $permissions[] = new Permission(__NAMESPACE__, 'license_create');
-            $permissions[] = new Permission(__NAMESPACE__, 'license_update');
-            $permissions[] = new Permission(__NAMESPACE__, 'license_delete');
+            $permissions[] = new Permission(__NAMESPACE__, 'LicenseCreate');
+            $permissions[] = new Permission(__NAMESPACE__, 'LicenseUpdate');
+            $permissions[] = new Permission(__NAMESPACE__, 'LicenseDelete');
 
-            $permissions[] = new Permission(__NAMESPACE__, 'role_create');
-            $permissions[] = new Permission(__NAMESPACE__, 'role_update');
-            $permissions[] = new Permission(__NAMESPACE__, 'role_delete');
+            $permissions[] = new Permission(__NAMESPACE__, 'RoleCreate');
+            $permissions[] = new Permission(__NAMESPACE__, 'RoleUpdate');
+            $permissions[] = new Permission(__NAMESPACE__, 'RoleDelete');
+            
+            $permissions[] = new Permission(__NAMESPACE__, 'PermissionView');
         });
         $eventManager->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
             $controller = $e->getTarget();

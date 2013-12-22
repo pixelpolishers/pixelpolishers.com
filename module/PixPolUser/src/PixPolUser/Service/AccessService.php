@@ -9,18 +9,15 @@
 namespace PixPolUser\Service;
 
 use PixPolUser\Entity\User;
-use PixPolUser\Provider\RoleProviderInterface;
 use Zend\Permissions\Rbac\Rbac;
 
 class AccessService extends Rbac
 {
     private $currentUser;
 
-    public function __construct(RoleProviderInterface $provider, User $currentUser = null)
+    public function __construct(User $currentUser = null)
     {
         $this->currentUser = $currentUser;
-
-        $provider->provide($this);
     }
 
     public function canCurrentUser($permission, $assertion = null)

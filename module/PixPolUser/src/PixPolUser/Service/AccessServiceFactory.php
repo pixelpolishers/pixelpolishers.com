@@ -17,8 +17,18 @@ class AccessServiceFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $authService = $serviceLocator->get('Zend\Authentication\AuthenticationService');
-        $provider = $serviceLocator->get('PixPolUserRoleProvider');
+        $roleService = $serviceLocator->get('PixPolRoleService');
 
-        return new AccessService($provider, $authService->getIdentity());
+        $instance = new AccessService($authService->getIdentity());
+
+        foreach ($roleService->findAll() as $role) {
+            $rbacRole = $instance->addRole($role->getName())->getRole($role->getName());
+
+            foreach ($role->getPermissions() as $permission) {
+                $rbacRole->addPermission($permission);
+            }
+        }
+
+        return $instance;
     }
 }

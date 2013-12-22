@@ -12,12 +12,15 @@
 </ul>
 <?php } ?>
 
+<?php if ($this->ppUserCan('RoleCreate') || $this->ppUserCan('RoleDelete') || $this->ppUserCan('RoleUpdate')) { ?>
 <h2>Roles</h2>
 
 <?php if (count($this->permissions) == 0) { ?>
 <p>You need to create permissions before you can create a role.</p>
 <?php } else { ?>
+<?php if ($this->ppUserCan('RoleCreate')) { ?>
 <p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
+<?php } ?>
 
 <?php if (count($this->roles) != 0) { ?>
 <ul>
@@ -28,9 +31,16 @@
 <?php } ?>
 </ul>
 
+<?php if ($this->ppUserCan('RoleCreate')) { ?>
 <p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
 <?php } ?>
+
 <?php } ?>
+<?php } ?>
+
+<?php } ?>
+
+<?php if ($this->ppUserCan('PermissionView')) { ?>
 
 <h2>Permissions</h2>
 
@@ -49,4 +59,6 @@
     </li>
 <?php } ?>
 </table>
+<?php } ?>
+
 <?php } ?>

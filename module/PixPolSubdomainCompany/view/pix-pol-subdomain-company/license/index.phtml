@@ -1,8 +1,19 @@
 <h2>Licenses</h2>
 
 <?php if (count($this->licenses) == 0) { ?>
-<p>No licenses yet. <a href="<?php echo $this->url('company/license/create'); ?>">Create one?</a></p>
+
+<p>No licenses yet.
+
+<?php if ($this->ppUserCan('LicenseCreate')) { ?>
+    <a href="<?php echo $this->url('company/license/create'); ?>">Create one?</a></p>
+<?php } ?>
+
 <?php } else { ?>
+
+<?php if ($this->ppUserCan('LicenseCreate')) { ?>
+    <a href="<?php echo $this->url('company/license/create'); ?>">Create</a></p>
+<?php } ?>
+
 <ul>
 <?php foreach ($this->licenses as $license) { ?>
     <li><a href="<?php echo $this->url('company/license/update', array(
@@ -10,4 +21,9 @@
     )); ?>"><?php echo $license->getName(); ?></a></li>
 <?php } ?>
 </ul>
+
+<?php if ($this->ppUserCan('LicenseCreate')) { ?>
+    <a href="<?php echo $this->url('company/license/create'); ?>">Create</a></p>
+<?php } ?>
+
 <?php } ?>
