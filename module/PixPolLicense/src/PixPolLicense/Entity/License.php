@@ -8,11 +8,14 @@
 
 namespace PixPolLicense\Entity;
 
+use PixPolUser\Entity\User;
+
 class License
 {
     private $id;
     private $name;
     private $description;
+    private $users;
 
     public function __construct()
     {
@@ -46,5 +49,36 @@ class License
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    public function addUser(User $user)
+    {
+        $this->getUsers()->add($user);
+    }
+
+    public function clearUsers()
+    {
+        $this->getUsers()->clear();
+    }
+
+    public function getUsers()
+    {
+        if ($this->users === null) {
+            $this->users = new ArrayCollection();
+        }
+        return $this->users;
+    }
+
+    public function setUsers($users)
+    {
+        $this->clearUsers();
+        foreach ($users as $user) {
+            $this->addUser($user);
+        }
+    }
+
+    public function removeUser(User $user)
+    {
+        $this->getUsers()->removeElement($user);
     }
 }

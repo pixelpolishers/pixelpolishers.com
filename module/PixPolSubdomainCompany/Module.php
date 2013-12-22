@@ -34,6 +34,11 @@ class Module
         $eventManager = $e->getApplication()->getEventManager()->getSharedManager();
         $eventManager->attach('PixPolUser\Service\PermissionService', PermissionService::EVENT_FIND_PERMISSIONS, function($e) {
             $permissions = $e->getTarget();
+
+            $permissions[] = new Permission(__NAMESPACE__, 'license_create');
+            $permissions[] = new Permission(__NAMESPACE__, 'license_update');
+            $permissions[] = new Permission(__NAMESPACE__, 'license_delete');
+
             $permissions[] = new Permission(__NAMESPACE__, 'role_create');
             $permissions[] = new Permission(__NAMESPACE__, 'role_update');
             $permissions[] = new Permission(__NAMESPACE__, 'role_delete');
