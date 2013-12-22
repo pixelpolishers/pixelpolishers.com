@@ -37,8 +37,6 @@
 <?php if (count($this->permissions) == 0) { ?>
 <p><a href="<?php echo $this->url('company/access/permission/create'); ?>">Create the first permission</a></p>
 <?php } else { ?>
-<p><a href="<?php echo $this->url('company/access/permission/create'); ?>">Create</a></p>
-
 <table>
     <tr>
         <th>Name</th>
@@ -51,6 +49,4 @@
     </li>
 <?php } ?>
 </table>
-
-<p><a href="<?php echo $this->url('company/access/permission/create'); ?>">Create</a></p>
 <?php } ?>
