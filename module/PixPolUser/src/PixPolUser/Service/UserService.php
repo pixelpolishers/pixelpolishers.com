@@ -20,31 +20,12 @@ class UserService
     public function __construct(UserMapperInterface $mapper)
     {
         $this->mapper = $mapper;
-        $this->password = new Bcrypt();
+        $this->password = new UserPassword();
     }
 
-    private function generateRandomPassword($length = 8)
+    public function getPassword()
     {
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $count = strlen($chars);
-
-        for ($i = 0, $result = ''; $i < $length; $i++) {
-            $index = rand(0, $count - 1);
-            $result .= substr($chars, $index, 1);
-        }
-
-        return $result;
-    }
-
-    public function verifyPassword($user, $password)
-    {
-        if ($user instanceof User) {
-            $hash = $user->getPassword();
-        } else {
-            $hash = $user;
-        }
-
-        return $this->password->verify($password, $hash);
+        return $this->password;
     }
 
     public function find($id)
@@ -69,9 +50,9 @@ class UserService
     public function signUp(User $user)
     {
         // Create a random password:
-        $password = 'test'; //$this->generateRandomPassword();
+        $password = 'test'; //$this->getPassword()->generateRandomPassword();
         // TODO: Send a welcome e-mail to the user.
-        $user->setPassword($this->password->create($password));
+        $user->setPassword($this->getPassword()->create($password));
 
         // Set the registration date:
         $user->setRegistrationDate(new \DateTime());

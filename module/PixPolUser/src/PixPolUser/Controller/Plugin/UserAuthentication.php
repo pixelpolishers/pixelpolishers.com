@@ -100,7 +100,7 @@ class UserAuthentication extends AbstractPlugin implements ServiceManagerAwareIn
         $adapter->setIdentityValue($identity);
         $adapter->setCredentialValue($credential);
         $adapter->getOptions()->setCredentialCallable(function($identity, $credentialValue) use($self) {
-            return $self->getUserService()->verifyPassword($identity, $credentialValue);
+            return $self->getUserService()->getPassword()->verify($identity, $credentialValue);
         });
 
         $authResult = $authService->authenticate($adapter);
