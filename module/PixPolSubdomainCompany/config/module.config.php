@@ -19,6 +19,7 @@ return array(
             'PixPolSubdomainCompany\Controller\IndexController' => 'PixPolSubdomainCompany\Controller\IndexController',
             'PixPolSubdomainCompany\Controller\AccessController' => 'PixPolSubdomainCompany\Controller\AccessController',
             'PixPolSubdomainCompany\Controller\AccessRoleController' => 'PixPolSubdomainCompany\Controller\AccessRoleController',
+            'PixPolSubdomainCompany\Controller\AccessUserController' => 'PixPolSubdomainCompany\Controller\AccessUserController',
         ),
     ),
     'service_manager' => array(

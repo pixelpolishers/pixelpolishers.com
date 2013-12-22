@@ -8,7 +8,7 @@
 
 namespace PixPolUser\Validator;
 
-use PixPolUser\Mapper\UserMapperInterface;
+use PixPolUser\Service\UserService;
 use Zend\Validator\AbstractValidator;
 
 abstract class AbstractUser extends AbstractValidator
@@ -21,18 +21,18 @@ abstract class AbstractUser extends AbstractValidator
         self::ERROR_USER_EXISTS => 'The user already exists',
     );
 
-    private $mapper;
+    private $userService;
 
-    public function __construct(UserMapperInterface $mapper)
+    public function __construct(UserService $userService)
     {
         parent::__construct();
 
-        $this->mapper = $mapper;
+        $this->userService = $userService;
     }
 
     protected function getUser($value)
     {
-        return $this->mapper->findByEmail($value);
+        return $this->userService->findByEmail($value);
     }
 
 }

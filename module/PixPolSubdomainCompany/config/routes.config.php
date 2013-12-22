@@ -44,6 +44,27 @@ return array(
             ),
             'may_terminate' => true,
             'child_routes' => array(
+                'user' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/user',
+                        'defaults' => array(
+                            'controller' => 'PixPolSubdomainCompany\Controller\AccessUserController',
+                        ),
+                    ),
+                    'may_terminate' => false,
+                    'child_routes' => array(
+                        'view' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/view/:id',
+                                'defaults' => array(
+                                    'action' => 'view',
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
                 'role' => array(
                     'type' => 'Zend\Mvc\Router\Http\Literal',
                     'options' => array(

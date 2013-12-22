@@ -47,9 +47,14 @@ class UserService
         return $this->password->verify($password, $hash);
     }
 
+    public function find($id)
+    {
+        return $this->mapper->find($id);
+    }
+
     public function findByEmail($email)
     {
-        return $this->mapper->findBy(array(
+        return $this->mapper->findOneBy(array(
             'email' => $email
         ));
     }
@@ -67,6 +72,9 @@ class UserService
         $password = 'test'; //$this->generateRandomPassword();
         // TODO: Send a welcome e-mail to the user.
         $user->setPassword($this->password->create($password));
+
+        // Set the registration date:
+        $user->setRegistrationDate(new \DateTime());
 
         // Persist the user:
         $this->mapper->persist($user);

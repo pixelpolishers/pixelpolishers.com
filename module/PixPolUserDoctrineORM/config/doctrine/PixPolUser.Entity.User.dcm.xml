@@ -10,6 +10,7 @@
         <field name="password" type="string" column="password" />
         <field name="name" type="string" column="name" />
         <field name="surname" type="string" column="surname" />
+        <field name="registrationDate" type="datetime" column="registrationDate" />
 
         <many-to-many field="roles" target-entity="Role">
             <join-table name="user_role">

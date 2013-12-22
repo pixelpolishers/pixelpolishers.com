@@ -8,6 +8,7 @@
 
 namespace PixPolUser\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class User
@@ -17,6 +18,7 @@ class User
     private $password;
     private $name;
     private $surname;
+    private $registrationDate;
     private $roles;
 
     public function __construct()
@@ -77,6 +79,19 @@ class User
     public function getDisplayName()
     {
         return $this->name . ' ' . $this->surname;
+    }
+
+    public function getRegistrationDate()
+    {
+        return $this->registrationDate;
+    }
+
+    public function setRegistrationDate($registrationDate)
+    {
+        if (!($registrationDate instanceof DateTime)) {
+            $registrationDate = new DateTime($registrationDate);
+        }
+        $this->registrationDate = $registrationDate;
     }
 
     public function addRole(Role $role)

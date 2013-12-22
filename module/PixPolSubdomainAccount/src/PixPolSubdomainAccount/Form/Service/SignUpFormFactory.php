@@ -19,8 +19,8 @@ class SignUpFormFactory implements FactoryInterface
     {
         $form = new SignUpForm();
 
-        $mapper = $serviceLocator->get('PixPolUserMapper');
-        $validator = new NoUserExists($mapper);
+        $userService = $serviceLocator->get('PixPolUserService');
+        $validator = new NoUserExists($userService);
         $form->getInputFilter()->get('email')->getValidatorChain()->attach($validator);
 
         return $form;

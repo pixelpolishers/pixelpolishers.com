@@ -1,0 +1,14 @@
+<h2>User: <?php echo $this->user->getDisplayName(); ?></h2>
+
+<p>
+    Name: <?php echo $this->user->getName(); ?>
+</p>
+<p>
+    Surname: <?php echo $this->user->getSurname(); ?>
+</p>
+<p>
+    E-mail: <?php echo $this->user->getEmail(); ?>
+</p>
+<p>
+    Registration date: <?php echo $this->user->getRegistrationDate()->format('r'); ?>
+</p>
