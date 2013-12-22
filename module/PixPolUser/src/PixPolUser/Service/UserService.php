@@ -47,6 +47,16 @@ class UserService
         ), $amount, 0);
     }
 
+    public function persist(User $user)
+    {
+        $this->mapper->persist($user);
+    }
+
+    public function remove(User $user)
+    {
+        $this->mapper->remove($user);
+    }
+
     public function signUp(User $user)
     {
         // Create a random password:

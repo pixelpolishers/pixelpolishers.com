@@ -33,6 +33,16 @@ return array(
                 ),
             ),
         ),
+        'password' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/password',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainAccount\Controller\IndexController',
+                    'action' => 'password',
+                ),
+            ),
+        ),
         'signin' => array(
             'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(

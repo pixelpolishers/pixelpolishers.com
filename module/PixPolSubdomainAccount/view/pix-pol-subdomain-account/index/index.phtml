@@ -4,9 +4,10 @@
 <p>
     Display name: <?php echo $this->user->getDisplayName(); ?>
 </p>
-<p>
-    <a href="<?php echo $this->url('account/signout'); ?>">Sign out</a>
-</p>
+<ul>
+    <li><a href="<?php echo $this->url('account/password'); ?>">Change Password</a></li>
+    <li><a href="<?php echo $this->url('account/signout'); ?>">Sign out</a></li>
+</ul>
 <?php } else { ?>
 
 <p>

@@ -8,6 +8,7 @@
 
 namespace PixPolUser\Service;
 
+use PixPolUser\Entity\User;
 use Zend\Crypt\Password\Bcrypt;
 
 class UserPassword

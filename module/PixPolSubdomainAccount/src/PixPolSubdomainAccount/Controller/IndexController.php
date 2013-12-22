@@ -18,4 +18,32 @@ class IndexController extends AbstractActionController
             'user' => $this->ppUserAuth()->getIdentity(),
         );
     }
+
+    public function passwordAction()
+    {
+        $user = $this->ppUserAuth()->getIdentity();
+
+        $form = $this->getServiceLocator()->get('PixPolSubdomainAccount\Form\PasswordForm');
+        $form->setAttribute('action', $this->url()->fromRoute('account/password'));
+
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            if ($form->isValid()) {
+                $service = $this->getServiceLocator()->get('PixPolUserService');
+                $password = $service->getPassword()->create($form->get('password')->getValue());
+                $user->setPassword($password);
+                $service->persist($user);
+
+                return $this->redirect()->toRoute('account/index');
+            }
+        }
+
+        return array(
+            'form' => $form,
+            'user' => $user,
+        );
+    }
+
 }
