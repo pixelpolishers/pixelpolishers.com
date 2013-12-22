@@ -104,45 +104,6 @@ return array(
                         ),
                     ),
                 ),
-                'permission' => array(
-                    'type' => 'Zend\Mvc\Router\Http\Literal',
-                    'options' => array(
-                        'route' => '/permission',
-                        'defaults' => array(
-                            'controller' => 'PixPolSubdomainCompany\Controller\AccessPermissionController',
-                            'action' => 'index',
-                        ),
-                    ),
-                    'child_routes' => array(
-                        'create' => array(
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array(
-                                'route' => '/create',
-                                'defaults' => array(
-                                    'action' => 'create',
-                                ),
-                            ),
-                        ),
-                        'delete' => array(
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array(
-                                'route' => '/delete/:id',
-                                'defaults' => array(
-                                    'action' => 'delete',
-                                ),
-                            ),
-                        ),
-                        'update' => array(
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array(
-                                'route' => '/update/:id',
-                                'defaults' => array(
-                                    'action' => 'update',
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
             ),
         ),
     ),
