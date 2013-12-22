@@ -8,6 +8,11 @@
 
 namespace PixPolLicense\Mapper;
 
-interface MapperInterface
+use Doctrine\Common\Persistence\ObjectRepository;
+use PixPolLicense\Entity\License;
+
+interface MapperInterface extends ObjectRepository
 {
+    public function persist(License $license);
+    public function remove(License $license);
 }

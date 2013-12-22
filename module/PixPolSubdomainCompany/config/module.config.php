@@ -20,6 +20,7 @@ return array(
             'PixPolSubdomainCompany\Controller\AccessController' => 'PixPolSubdomainCompany\Controller\AccessController',
             'PixPolSubdomainCompany\Controller\AccessRoleController' => 'PixPolSubdomainCompany\Controller\AccessRoleController',
             'PixPolSubdomainCompany\Controller\AccessUserController' => 'PixPolSubdomainCompany\Controller\AccessUserController',
+            'PixPolSubdomainCompany\Controller\LicenseController' => 'PixPolSubdomainCompany\Controller\LicenseController',
         ),
     ),
     'service_manager' => array(
@@ -27,6 +28,7 @@ return array(
             'PixPolSubdomainCompany\Form\SubmitForm' => 'PixPolSubdomainCompany\Form\SubmitForm',
         ),
         'factories' => array(
+            'PixPolSubdomainCompany\Form\LicenseForm' => 'PixPolSubdomainCompany\Form\LicenseFormFactory',
             'PixPolSubdomainCompany\Form\RoleForm' => 'PixPolSubdomainCompany\Form\RoleFormFactory',
         ),
     ),
