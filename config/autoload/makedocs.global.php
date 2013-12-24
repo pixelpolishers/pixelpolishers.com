@@ -14,7 +14,7 @@ return array(
             'input' => __DIR__ . '/../../data/makedocs/resolver/src',
             'builders' => array(
                 'html' => array(
-                    'baseUrl' => 'http://pixelpolishers.com/{language}/docs/{project}/{version}',
+                    'baseUrl' => './',
                     'themeDirectory' => realpath(__DIR__ . '/../../vendor/pixelpolishers/makedocs/themes/default'),
                     'outputDirectory' => __DIR__ . '/../../data/makedocs/resolver/output/html',
                 ),
