@@ -110,6 +110,15 @@ return array(
                         ),
                     ),
                 ),
+                'website' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/website',
+                        'defaults' => array(
+                            'action' => 'website',
+                        ),
+                    ),
+                ),
             ),
         ),
         'technologies' => array(

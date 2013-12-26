@@ -1,0 +1,200 @@
+* {
+    -moz-box-sizing: border-box;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+dl, ol, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+
+a {
+    color: #2980B9;
+    text-decoration: none;
+}
+
+article {
+    background-color: #FFF;
+    color: #262624;
+    padding: 20px 0px;
+}
+
+article p {
+    line-height: 28px;
+    margin-bottom: 12px;
+}
+
+body {
+    background-color: #262624;
+    color: #FFF;
+    font-family: arial, verdana;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    overflow-y: scroll;
+}
+
+footer {
+    padding: 1em 0;
+}
+
+footer a {
+    color: #969694;
+}
+
+footer h3 {
+    color: #F0EEE8;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+}
+
+footer p {
+    color: #D2D2D6;
+}
+
+footer .upper {
+    border-bottom: 4px solid #373735;
+    margin-bottom: 1em;
+    padding: 2rem 0;
+}
+
+footer .lower {
+    color: #676765;
+    font-family: 'NovecentowideLightBold', 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+footer .lower a {
+    font-weight: bold;
+}
+
+footer .lower .copyright { float: left; }
+footer .lower .credit { float: right; font-size: 0.8em; }
+
+footer .column {
+    box-sizing: border-box;
+    float: left;
+    line-height: 2em;
+    width: 33.3333%;
+}
+
+footer .column .icon a {
+    background-repeat: no-repeat;
+    background-position: 0px 2px;
+    display: block;
+    padding-left: 25px;
+}
+
+footer .column .location a { background-image: url('/img/icons/location.png'); }
+footer .column .linkedin a { background-image: url('/img/icons/linkedin.png'); }
+footer .column .facebook a { background-image: url('/img/icons/facebook.png'); }
+footer .column .twitter a { background-image: url('/img/icons/twitter.png'); }
+footer .column .skype a { background-image: url('/img/icons/skype.png'); }
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 12px;
+}
+
+header {
+    background-color: #373735;
+}
+
+header #logo a span { display: none; }
+header #logo a {
+    background-image: url('/img/logo/transparent-white.png');
+    display: block;
+    height: 33px;
+    width: 173px;
+}
+
+#title-menu {
+    float: left;
+    padding: 1em 0;
+}
+
+#main-menu {
+    border-right: 1px solid #FFF;
+    float: right;
+}
+
+#main-menu li {
+    border-left: 1px solid #FFF;
+    float: left;
+}
+
+#main-menu a {
+    color: #FFF;
+    display: inline-block;
+    font-family: verdana;
+    padding: 20px 12px;
+    text-align: center;
+}
+
+#main-menu a:hover {
+    background-color: #444;
+}
+
+#main-menu > ul > li ul{
+    display: none;
+}
+
+body.blue header { background-color: #2980B9; color: #FCFCFC; }
+body.blue header #main-menu a { background-color: #2693D6; color: #FFF; }
+body.blue header #main-menu a:hover { background-color: #4BA6DE; }
+
+body.brown header { background-color: brown; color: #FCFCFC; }
+body.brown header #main-menu a { background-color: brown; color: #FFF; }
+body.brown header #main-menu a:hover { background-color: brown; }
+
+body.green header { background-color: #008000; color: #FCFCFC; }
+body.green header #main-menu a { background-color: #11A00F; color: #FFF; }
+body.green header #main-menu a:hover { background-color: #14BA13; }
+
+body.gold header { background-color: gold; color: #FCFCFC; }
+body.gold header #main-menu a { background-color: gold; color: #FFF; }
+body.gold header #main-menu a:hover { background-color: gold; }
+
+body.orange header { background-color: orange; color: #FCFCFC; }
+body.orange header #main-menu a { background-color: orange; color: #FFF; }
+body.orange header #main-menu a:hover { background-color: orange; }
+
+body.pink header { background-color: pink; color: #FCFCFC; }
+body.pink header #main-menu a { background-color: pink; color: #FFF; }
+body.pink header #main-menu a:hover { background-color: pink; }
+
+body.purple header { background-color: purple; color: #FCFCFC; }
+body.purple header #main-menu a { background-color: purple; color: #FFF; }
+body.purple header #main-menu a:hover { background-color: purple; }
+
+body.red header { background-color: #D30505; color: #FCFCFC; }
+body.red header #main-menu a { background-color: #B50202; color: #FFF; }
+body.red header #main-menu a:hover { background-color: #D30505; }
+
+body.silver header { background-color: silver; color: #FCFCFC; }
+body.silver header #main-menu a { background-color: silver; color: #FFF; }
+body.silver header #main-menu a:hover { background-color: silver; }
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.container {
+    margin: 0 auto;
+    width: 800px;
+}
