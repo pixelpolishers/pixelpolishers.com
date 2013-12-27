@@ -200,6 +200,7 @@ header #logo a {
 #main-menu li {
     border-left: 1px solid #FFF;
     float: left;
+    position: relative;
 }
 
 #main-menu a {
@@ -214,45 +215,93 @@ header #logo a {
     background-color: #444;
 }
 
-#main-menu > ul > li ul{
+#main-menu ul ul {
     display: none;
+    position: absolute;
+}
+
+#main-menu li li {
+    border-left: none;
+    border-bottom: 1px solid #F4A9A9;
+}
+
+#main-menu li li a {
+    text-align: left;
+}
+
+#main-menu li:hover ul {
+    display: block;
+    position: absolute;
+}
+
+#main-menu ul ul li > a {
+    padding: 3px 10px;
+    width: 150px;
+}
+
+#sub-menu li {
+    float: left;
+}
+
+#sub-menu a {
+    display: block;
+    font-size: 11px;
+    padding: 3px 10px 3px 0px;
 }
 
 body.blue header { background-color: #2980B9; color: #FCFCFC; }
 body.blue header #main-menu a { background-color: #2693D6; color: #FFF; }
 body.blue header #main-menu a:hover { background-color: #4BA6DE; }
+body.blue #sub-menu { background-color: #890000; }
+body.blue #sub-menu a { color: #FFF; }
 
 body.brown header { background-color: brown; color: #FCFCFC; }
 body.brown header #main-menu a { background-color: brown; color: #FFF; }
 body.brown header #main-menu a:hover { background-color: brown; }
+body.brown #sub-menu { background-color: #890000; }
+body.brown #sub-menu a { color: #FFF; }
 
 body.green header { background-color: #008000; color: #FCFCFC; }
 body.green header #main-menu a { background-color: #11A00F; color: #FFF; }
 body.green header #main-menu a:hover { background-color: #14BA13; }
+body.green #sub-menu { background-color: #890000; }
+body.green #sub-menu a { color: #FFF; }
 
 body.gold header { background-color: gold; color: #FCFCFC; }
 body.gold header #main-menu a { background-color: gold; color: #FFF; }
 body.gold header #main-menu a:hover { background-color: gold; }
+body.gold #sub-menu { background-color: #890000; }
+body.gold #sub-menu a { color: #FFF; }
 
 body.orange header { background-color: orange; color: #FCFCFC; }
 body.orange header #main-menu a { background-color: orange; color: #FFF; }
 body.orange header #main-menu a:hover { background-color: orange; }
+body.orange #sub-menu { background-color: #890000; }
+body.orange #sub-menu a { color: #FFF; }
 
 body.pink header { background-color: pink; color: #FCFCFC; }
 body.pink header #main-menu a { background-color: pink; color: #FFF; }
 body.pink header #main-menu a:hover { background-color: pink; }
+body.pink #sub-menu { background-color: #890000; }
+body.pink #sub-menu a { color: #FFF; }
 
 body.purple header { background-color: purple; color: #FCFCFC; }
 body.purple header #main-menu a { background-color: purple; color: #FFF; }
 body.purple header #main-menu a:hover { background-color: purple; }
+body.purple #sub-menu { background-color: #890000; }
+body.purple #sub-menu a { color: #FFF; }
 
 body.red header { background-color: #D30505; color: #FCFCFC; }
 body.red header #main-menu a { background-color: #B50202; color: #FFF; }
 body.red header #main-menu a:hover { background-color: #D30505; }
+body.red #sub-menu { background-color: #890000; }
+body.red #sub-menu a { color: #FFF; }
 
 body.silver header { background-color: silver; color: #FCFCFC; }
 body.silver header #main-menu a { background-color: silver; color: #FFF; }
 body.silver header #main-menu a:hover { background-color: silver; }
+body.silver #sub-menu { background-color: #890000; }
+body.silver #sub-menu a { color: #FFF; }
 
 .clearfix:before,
 .clearfix:after,
