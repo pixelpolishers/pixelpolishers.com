@@ -160,10 +160,19 @@ textarea {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+textarea {
     display: block;
+    font-family: verdana, arial, courier;
+    font-size: 12px;
     margin: 6px 0px;
     width: 90%;
+}
+
+textarea {
+    height: 300px;
+    padding: 4px;
+    resize: vertical;
 }
 
 .agreement-box {
@@ -342,4 +351,22 @@ body.silver #sub-menu a { color: #FFF; }
 .errors {
     color: red;
     margin-bottom: 10px;
+}
+
+.status {
+    background-color: #F9F9F9;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.status.error {
+    background-color: #FFF2F2;
+    border-color: #D30505;
+}
+
+.status.success {
+    background-color: #DDFFDD;
+    border-color: #3AD238;
 }

@@ -1,40 +1,40 @@
 <h1>Contact us</h1>
+
+<?php if ($this->flashMessenger()->hasErrorMessages()) {
+echo '<div class="status error">' . $this->flashMessenger()->render('error') . '</div>';
+} ?>
+
+<?php if ($this->flashMessenger()->hasMessages()) {
+echo '<div class="status success">' . $this->flashMessenger()->render() . '</div>';
+} ?>
+
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et iaculis justo, at aliquet
-    ipsum. Ut sed dolor ac risus porttitor vehicula quis vitae enim. Mauris vel fermentum ligula.
-    Nam in faucibus sem. Donec id tristique odio. Nam molestie ac metus quis hendrerit. Integer id
-    justo ut dui mollis ornare nec in magna. Integer in luctus lectus. Nullam in ligula id odio
-    hendrerit pretium vestibulum vel massa. Maecenas lobortis dolor vel massa venenatis, ut commodo
-    dolor aliquam. Vestibulum suscipit, sem eget hendrerit bibendum, nisi nisi placerat urna, eget
-    molestie eros leo eget orci. In tincidunt sodales mauris, a pellentesque lacus luctus imperdiet.
-    Aenean id augue scelerisque, fermentum orci nec, tempor sem. Vestibulum varius pulvinar lectus,
-    vitae laoreet ipsum sagittis laoreet. Nullam a orci libero.
+    Since we currently are in a startup phase, we do not have an office yet. Nevertheless you can
+    contact us via all social network channels or via de contact form below.
 </p>
-<p>
-    Vivamus non tristique massa. Vestibulum quis adipiscing leo. Phasellus ut nibh id odio malesuada
-    ultricies a eget lectus. Praesent quis hendrerit leo. Donec rhoncus id nisi sed suscipit.
-    Suspendisse faucibus rutrum nibh, vitae porta odio aliquet vehicula. Quisque vitae viverra elit,
-    non fermentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-    inceptos himenaeos. Mauris sit amet vulputate leo. Nam id luctus sapien, quis luctus est.
-    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas
-    et risus nec dui feugiat rutrum ut in lacus. Fusce tristique ullamcorper iaculis. Aliquam
-    lobortis leo id leo fermentum faucibus. Vestibulum congue diam a nunc pretium venenatis.
-</p>
-<p>
-    Ut mi libero, viverra eget semper sit amet, luctus sed sapien. Nullam semper enim at imperdiet
-    interdum. Curabitur varius est vitae lorem pharetra, nec vestibulum mauris posuere. Aenean rutrum
-    luctus augue, ut viverra eros luctus nec. Vestibulum quis porta libero. Curabitur et ante mi.
-    Nulla a massa leo. Phasellus sed malesuada diam.
-</p>
-<p>
-    Etiam lobortis, nibh sit amet euismod lacinia, ligula dolor egestas nibh, eget ultrices justo
-    odio vitae ligula. Nam congue felis eu augue sollicitudin, at faucibus neque lacinia. Vestibulum
-    quis placerat metus, sed dignissim neque. Praesent ac lobortis sapien. Suspendisse at scelerisque
-    nisl, sit amet aliquam urna. Quisque commodo ipsum vitae enim tristique, laoreet molestie purus
-    condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-    egestas. Ut tempus non augue in viverra. Ut id turpis tempus, rutrum massa nec, iaculis nibh.
-    Proin vitae nisi consequat, hendrerit enim et, pellentesque lorem. Etiam auctor ipsum a
-    vestibulum commodo. Quisque aliquet mollis mi et posuere. Donec fermentum arcu sit amet enim
-    bibendum rutrum. Donec massa tellus, pretium ac ullamcorper et, rhoncus id diam. Donec dignissim
-    lacus vel est lacinia consequat.
-</p>
+
+<?php
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+echo $this->formLabel($form->get('subject'));
+echo $this->formText($form->get('subject'));
+echo $this->formElementErrors($form->get('subject'), array('class' => 'errors'));
+
+echo $this->formLabel($form->get('name'));
+echo $this->formText($form->get('name'));
+echo $this->formElementErrors($form->get('name'), array('class' => 'errors'));
+
+echo $this->formLabel($form->get('email'));
+echo $this->formText($form->get('email'));
+echo $this->formElementErrors($form->get('email'), array('class' => 'errors'));
+
+echo $this->formLabel($form->get('message'));
+echo $this->formTextarea($form->get('message'));
+echo $this->formElementErrors($form->get('message'), array('class' => 'errors'));
+
+echo $this->formSubmit($form->get('send'));
+
+echo $this->form()->closeTag();
