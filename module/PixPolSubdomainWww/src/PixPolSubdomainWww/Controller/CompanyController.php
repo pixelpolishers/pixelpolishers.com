@@ -43,8 +43,8 @@ class CompanyController extends AbstractActionController
 
                 $subject = $form->get('subject')->getValue();
                 $message = wordwrap($form->get('message')->getValue(), 70, "\r\n");
-                $headers = 'From: webmaster@example.com' . "\r\n" .
-                        'Reply-To: webmaster@example.com' . "\r\n" .
+                $headers = 'From: no-reply@pixelpolishers.com' . "\r\n" .
+                        'Reply-To: ' . $form->get('email')->getValue() . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
 
                 if (@mail($config['contact']['address'], $subject, $message, $headers)) {
