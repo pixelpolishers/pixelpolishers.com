@@ -63,7 +63,6 @@
                 <nav id="main-menu">
                     <ul>
                         <?php if ($this->ppHasIdentity()) { ?>
-                        <li><a href="<?php echo $this->url('account/password'); ?>">Password</a></li>
                         <li><a href="<?php echo $this->url('account/signout'); ?>">Sign out</a></li>
                         <?php } else { ?>
                         <li><a href="<?php echo $this->url('developers/index'); ?>">Developers</a></li>
@@ -73,6 +72,18 @@
                 </nav>
             </div>
         </header>
+
+        <?php if ($this->placeholder('submenu')) { ?>
+        <nav id="sub-menu" class="clearfix">
+            <div class="container">
+                <ul>
+                    <?php foreach ($this->placeholder('submenu') as $route => $label) { ?>
+                    <li><a href="<?php echo $this->url($route); ?>"><?php echo $label; ?></a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </nav>
+        <?php } ?>
 
         <article>
             <div class="container">

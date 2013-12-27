@@ -26,6 +26,7 @@ class PasswordForm extends Form
 
         $this->addPasswordElement();
         $this->addPasswordValidationElement();
+        $this->addCurrentPassword();
         $this->addSubmitElement();
     }
 
@@ -49,6 +50,16 @@ class PasswordForm extends Form
         $input->getValidatorChain()->attachByName('Identical', array(
             'token' => 'password',
         ));
+        $this->inputFilter->add($input);
+    }
+
+    private function addCurrentPassword($name = 'currentPassword')
+    {
+        $element = new Password($name);
+        $element->setLabel('Current password');
+        $this->add($element);
+
+        $input = new Input($name);
         $this->inputFilter->add($input);
     }
 

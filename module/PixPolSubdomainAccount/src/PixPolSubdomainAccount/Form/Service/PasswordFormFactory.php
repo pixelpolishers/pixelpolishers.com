@@ -9,6 +9,7 @@
 namespace PixPolSubdomainAccount\Form\Service;
 
 use PixPolSubdomainAccount\Form\PasswordForm;
+use PixPolUser\Validator\VerifyPassword;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -16,6 +17,17 @@ class PasswordFormFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new PasswordForm();
+        $form = new PasswordForm();
+
+        $userAuthService = $serviceLocator->get('PixPolAccessService');
+        $identity = $userAuthService->getCurrentUser();
+
+        $passwordValidator = new VerifyPassword($serviceLocator->get('PixPolUserService'), $identity->getEmail());
+
+        $passwordField = $form->getInputFilter()->get('currentPassword');
+        $validatorChain = $passwordField->getValidatorChain();
+        $validatorChain->attach($passwordValidator);
+
+        return $form;
     }
 }

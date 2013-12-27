@@ -34,6 +34,7 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
+            'CurrentPassword' => 'PixPolUser\View\Helper\UserCanFactory2',
             'PixPolAccessService' => 'PixPolUser\Service\AccessServiceFactory',
             'PixPolGuardListener' => 'PixPolUser\Guard\GuardListenerFactory',
             'PixPolPermissionService' => 'PixPolUser\Service\PermissionServiceFactory',

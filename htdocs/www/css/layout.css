@@ -280,7 +280,7 @@ body.green a { color: #008000; }
 body.green header { background-color: #008000; color: #FCFCFC; }
 body.green header #main-menu a { background-color: #11A00F; color: #FFF; }
 body.green header #main-menu a:hover { background-color: #14BA13; }
-body.green #sub-menu { background-color: #890000; }
+body.green #sub-menu { background-color: #70BA4F; }
 body.green #sub-menu a { color: #FFF; }
 body.green footer a { color: #969694; }
 
@@ -389,4 +389,14 @@ body.silver footer a { color: #969694; }
 .status.success {
     background-color: #DDFFDD;
     border-color: #3AD238;
+}
+
+.profile-photo {
+    background-color: #D6EECC;
+    border: 1px solid #008000;
+    display: inline-block;
+    float: left;
+    margin: 0px 24px 0px 0px;
+    padding: 12px;
+    min-width: 128px;
 }

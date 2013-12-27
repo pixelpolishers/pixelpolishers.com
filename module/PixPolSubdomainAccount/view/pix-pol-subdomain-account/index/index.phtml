@@ -1,11 +1,25 @@
 <?php if ($this->user) { ?>
-<p>
-    Display name: <?php echo $this->user->getDisplayName(); ?>
-</p>
+
+<?php $this->placeholder('submenu')->exchangeArray(array(
+    'account/index' => 'Dashboard',
+    'account/password' => 'Password',
+)); ?>
+
+<div class="clearfix">
+<div class="profile-photo">
+    <?php echo $this->gravatar($this->user->getEmail(), array(
+        'img_size' => 128
+    )); ?>
+</div>
+
+<h1><?php echo $this->user->getDisplayName(); ?></h1>
+
 <ul>
-    <li><a href="<?php echo $this->url('account/password'); ?>">Change Password</a></li>
-    <li><a href="<?php echo $this->url('account/signout'); ?>">Sign out</a></li>
+    <li>You are a member since <?php echo $this->user->getRegistrationDate()->format('F jS, Y'); ?></li>
 </ul>
+
+</div>
+
 <?php } else { ?>
 
 <p>

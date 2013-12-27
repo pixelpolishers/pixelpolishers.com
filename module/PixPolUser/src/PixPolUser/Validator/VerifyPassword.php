@@ -23,7 +23,7 @@ class VerifyPassword extends AbstractValidator
     private $service;
     private $input;
 
-    public function __construct(UserService $service, Input $input)
+    public function __construct(UserService $service, $input)
     {
         parent::__construct();
 
@@ -35,8 +35,14 @@ class VerifyPassword extends AbstractValidator
     {
         $this->setValue($value);
 
-        $user = $this->service->findByEmail($this->input->getValue());
-        if ($user !== null && $this->service->verifyPassword($user, $value)) {
+        if ($this->input instanceof Input) {
+            $input = $this->input->getValue();
+        } else {
+            $input = $this->input;
+        }
+
+        $user = $this->service->findByEmail($input);
+        if ($user !== null && $this->service->getPassword()->verify($user, $value)) {
             return true;
         }
 
