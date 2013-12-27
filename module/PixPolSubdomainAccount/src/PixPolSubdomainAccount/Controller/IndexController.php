@@ -22,6 +22,9 @@ class IndexController extends AbstractActionController
     public function passwordAction()
     {
         $user = $this->ppUserAuth()->getIdentity();
+        if (!$user) {
+            return $this->redirect()->toRoute('account/signin');
+        }
 
         $form = $this->getServiceLocator()->get('PixPolSubdomainAccount\Form\PasswordForm');
         $form->setAttribute('action', $this->url()->fromRoute('account/password'));
