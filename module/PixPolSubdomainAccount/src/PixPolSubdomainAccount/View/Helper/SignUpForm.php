@@ -20,7 +20,7 @@ class SignUpForm extends AbstractHelper
         $this->signUpForm = $form;
     }
 
-    public function __invoke()
+    public function __invoke($showCancel = false)
     {
         $result = '';
 
@@ -31,10 +31,29 @@ class SignUpForm extends AbstractHelper
 
         $result .= $this->view->form()->openTag($this->signUpForm);
 
-        $result .= $this->view->formRow($this->signUpForm->get('name'));
-        $result .= $this->view->formRow($this->signUpForm->get('surname'));
-        $result .= $this->view->formRow($this->signUpForm->get('email'));
-        $result .= $this->view->formRow($this->signUpForm->get('emailValidation'));
+        $result .= $this->view->formLabel($this->signUpForm->get('name'));
+        $result .= $this->view->formText($this->signUpForm->get('name'));
+        $result .= $this->view->formElementErrors($this->signUpForm->get('name'), array(
+            'class' => 'errors'
+        ));
+
+        $result .= $this->view->formLabel($this->signUpForm->get('surname'));
+        $result .= $this->view->formText($this->signUpForm->get('surname'));
+        $result .= $this->view->formElementErrors($this->signUpForm->get('surname'), array(
+            'class' => 'errors'
+        ));
+
+        $result .= $this->view->formLabel($this->signUpForm->get('email'));
+        $result .= $this->view->formText($this->signUpForm->get('email'));
+        $result .= $this->view->formElementErrors($this->signUpForm->get('email'), array(
+            'class' => 'errors'
+        ));
+
+        $result .= $this->view->formLabel($this->signUpForm->get('emailValidation'));
+        $result .= $this->view->formText($this->signUpForm->get('emailValidation'));
+        $result .= $this->view->formElementErrors($this->signUpForm->get('emailValidation'), array(
+            'class' => 'errors'
+        ));
 
         $result .= '<p>';
         $result .= 'Make sure you enter a valid e-mail address, your password will be e-mailed to
@@ -44,12 +63,19 @@ class SignUpForm extends AbstractHelper
         $result .= '<div class="agreement-box">';
         $result .= $this->view->formCheckbox($this->signUpForm->get('agree'));
         $result .= $this->view->formLabel($this->signUpForm->get('agree'));
+        $result .= $this->view->formElementErrors($this->signUpForm->get('agree'), array(
+            'class' => 'errors'
+        ));
         $result .= '</div>';
 
         $result .= $this->view->formSubmit($this->signUpForm->get('signup'));
+        if ($showCancel) {
+            $result .= '&nbsp;<a href="' . $this->view->url('account/index') . '">Cancel</a>';
+        }
 
         $result .= $this->view->form()->closeTag();
 
         return $result;
     }
+
 }

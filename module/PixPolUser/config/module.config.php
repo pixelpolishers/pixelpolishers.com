@@ -55,6 +55,7 @@ return array(
     'view_helpers' => array(
         'factories' => array(
             'ppUserCan' => 'PixPolUser\View\Helper\UserCanFactory',
+            'ppHasIdentity' => 'PixPolUser\View\Helper\HasIdentityFactory',
         ),
     ),
 );

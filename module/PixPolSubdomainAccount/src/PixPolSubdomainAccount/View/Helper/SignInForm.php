@@ -20,7 +20,7 @@ class SignInForm extends AbstractHelper
         $this->signInForm = $form;
     }
 
-    public function __invoke()
+    public function __invoke($showCancel = false)
     {
         $result = '';
 
@@ -31,9 +31,22 @@ class SignInForm extends AbstractHelper
 
         $result .= $this->view->form()->openTag($this->signInForm);
 
-        $result .= $this->view->formRow($this->signInForm->get('identity'));
-        $result .= $this->view->formRow($this->signInForm->get('credential'));
+        $result .= $this->view->formLabel($this->signInForm->get('identity'));
+        $result .= $this->view->formText($this->signInForm->get('identity'));
+        $result .= $this->view->formElementErrors($this->signInForm->get('identity'), array(
+            'class' => 'errors'
+        ));
+
+        $result .= $this->view->formLabel($this->signInForm->get('credential'));
+        $result .= $this->view->formPassword($this->signInForm->get('credential'));
+        $result .= $this->view->formElementErrors($this->signInForm->get('credential'), array(
+            'class' => 'errors'
+        ));
+
         $result .= $this->view->formRow($this->signInForm->get('signin'));
+        if ($showCancel) {
+            $result .= '&nbsp;<a href="' . $this->view->url('account/index') . '">Cancel</a>';
+        }
 
         $result .= $this->view->form()->closeTag();
 

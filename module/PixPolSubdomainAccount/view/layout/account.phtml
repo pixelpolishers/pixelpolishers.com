@@ -62,8 +62,13 @@
 
                 <nav id="main-menu">
                     <ul>
+                        <?php if ($this->ppHasIdentity()) { ?>
+                        <li><a href="<?php echo $this->url('account/password'); ?>">Password</a></li>
+                        <li><a href="<?php echo $this->url('account/signout'); ?>">Sign out</a></li>
+                        <?php } else { ?>
                         <li><a href="<?php echo $this->url('developers/index'); ?>">Developers</a></li>
                         <li><a href="<?php echo $this->url('www/index'); ?>">Website</a></li>
+                        <?php } ?>
                     </ul>
                 </nav>
             </div>
