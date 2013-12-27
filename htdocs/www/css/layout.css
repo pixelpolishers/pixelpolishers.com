@@ -34,7 +34,7 @@ article p {
 body {
     background-color: #262624;
     color: #FFF;
-    font-family: arial, verdana;
+    font-family: verdana, arial, courier;
     font-size: 0.8em;
     line-height: 1.7em;
     overflow-y: scroll;
@@ -105,6 +105,74 @@ footer .column .skype a { background-image: url('/img/icons/skype.png'); }
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 12px;
+}
+
+h1 { font-size: 20px; }
+h2 { font-size: 18px; }
+h3 { font-size: 18px; font-weight: normal; }
+
+label {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -moz-user-select: none;
+    background-color: #EEEEEE;
+    background-image: linear-gradient(#FCFCFC, #EEEEEE);
+    background-repeat: repeat-x;
+    border: 1px solid #D5D5D5;
+    border-radius: 3px;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 7px 12px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea {
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
+    color: #333333;
+    min-height: 34px;
+    outline: medium none;
+    padding: 0px 8px;
+    vertical-align: middle;
+}
+
+input[type="text"],
+input[type="password"] {
+    display: block;
+    margin: 6px 0px;
+    width: 90%;
+}
+
+.agreement-box {
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+
+.agreement-box input {
+    margin-right: 10px;
 }
 
 header {
@@ -186,15 +254,38 @@ body.silver header { background-color: silver; color: #FCFCFC; }
 body.silver header #main-menu a { background-color: silver; color: #FFF; }
 body.silver header #main-menu a:hover { background-color: silver; }
 
-.clearfix:after {
-    content: ".";
+.clearfix:before,
+.clearfix:after,
+.container_12:before,
+.container_12:after {
+    content: '.';
     display: block;
+    font-size: 0;
     height: 0;
-    clear: both;
+    line-height: 0;
+    overflow: hidden;
     visibility: hidden;
+    width: 0;
+}
+
+.clearfix:after,
+.container_12:after {
+    clear: both;
 }
 
 .container {
     margin: 0 auto;
     width: 800px;
+}
+
+.left {
+    float: left;
+    margin-right: 10px;
+    width: 390px;
+}
+
+.right {
+    float: left;
+    margin-left: 10px;
+    width: 390px;
 }

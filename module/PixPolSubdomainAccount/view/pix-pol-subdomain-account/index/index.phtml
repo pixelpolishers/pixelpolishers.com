@@ -15,10 +15,16 @@
     to visit our forums, read our documentation and use the store.
 </p>
 
-<h2>Sign in</h2>
-<?php echo $this->ppSignInForm(); ?>
+<div class="clearfix">
+    <div class="left">
+        <h2>Sign in</h2>
+        <?php echo $this->ppSignInForm(); ?>
+    </div>
 
-<h2>Create an account</h2>
-<?php echo $this->ppSignUpForm(); ?>
+    <div class="right">
+        <h2>Create an account</h2>
+        <?php echo $this->ppSignUpForm(); ?>
+    </div>
+</div>
 
 <?php } ?>

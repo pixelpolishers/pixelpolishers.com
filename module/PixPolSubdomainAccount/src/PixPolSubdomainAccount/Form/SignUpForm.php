@@ -87,14 +87,15 @@ class SignUpForm extends Form
         $this->inputFilter->add($input);
     }
 
-    private function addAgreeElement()
+    private function addAgreeElement($name = 'agree')
     {
-        $agreeElement = new Checkbox('agree');
+        $agreeElement = new Checkbox($name);
         $agreeElement->setLabel('I agree to the Terms of Use and Privacy Policy.');
         $agreeElement->setCheckedValue('agreed');
+        $agreeElement->setAttribute('id', $name);
         $this->add($agreeElement);
 
-        $input = new Input('agree');
+        $input = new Input($name);
         $input->getValidatorChain()->attachByName('Identical', array(
             'token' => 'agreed',
         ));

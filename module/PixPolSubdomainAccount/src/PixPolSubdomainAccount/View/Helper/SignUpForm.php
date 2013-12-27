@@ -35,9 +35,18 @@ class SignUpForm extends AbstractHelper
         $result .= $this->view->formRow($this->signUpForm->get('surname'));
         $result .= $this->view->formRow($this->signUpForm->get('email'));
         $result .= $this->view->formRow($this->signUpForm->get('emailValidation'));
-        $result .= 'Make sure you enter a valid e-mail address, your password will be e-mailed to this address.';
-        $result .= $this->view->formRow($this->signUpForm->get('agree'), \Zend\Form\View\Helper\FormRow::LABEL_APPEND);
-        $result .= $this->view->formRow($this->signUpForm->get('signup'));
+
+        $result .= '<p>';
+        $result .= 'Make sure you enter a valid e-mail address, your password will be e-mailed to
+            this address.';
+        $result .= '</p>';
+
+        $result .= '<div class="agreement-box">';
+        $result .= $this->view->formCheckbox($this->signUpForm->get('agree'));
+        $result .= $this->view->formLabel($this->signUpForm->get('agree'));
+        $result .= '</div>';
+
+        $result .= $this->view->formSubmit($this->signUpForm->get('signup'));
 
         $result .= $this->view->form()->closeTag();
 

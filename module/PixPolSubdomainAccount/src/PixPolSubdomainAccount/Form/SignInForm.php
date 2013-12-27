@@ -30,30 +30,32 @@ class SignInForm extends Form
         $this->addSubmitElement();
     }
 
-    private function addIdentityElement()
+    private function addIdentityElement($name = 'identity')
     {
-        $element = new Text('identity');
+        $element = new Text($name);
         $element->setLabel('E-mail address');
+        $element->setAttribute('id', $name);
         $this->add($element);
 
-        $input = new Input('identity');
+        $input = new Input($name);
         $input->getValidatorChain()->attachByName('EmailAddress');
         $this->inputFilter->add($input);
     }
 
-    private function addCredentialElement()
+    private function addCredentialElement($name = 'credential')
     {
-        $element = new Password('credential');
+        $element = new Password($name);
         $element->setLabel('Password');
+        $element->setAttribute('id', $name);
         $this->add($element);
 
-        $input = new Input('credential');
+        $input = new Input($name);
         $this->inputFilter->add($input);
     }
 
-    private function addSubmitElement()
+    private function addSubmitElement($name = 'signin')
     {
-        $submitElement = new Submit('signin');
+        $submitElement = new Submit($name);
         $submitElement->setValue('Sign In');
         $this->add($submitElement);
     }
