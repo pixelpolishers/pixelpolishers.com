@@ -71,6 +71,18 @@
             </div>
         </header>
 
+        <nav id="sub-menu" class="clearfix">
+        <?php if (count($this->placeholder('submenu'))) { ?>
+            <div class="container">
+                <ul>
+                    <?php foreach ($this->placeholder('submenu') as $route => $label) { ?>
+                    <li><a href="<?php echo $this->url($route); ?>"><?php echo $label; ?></a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        <?php } ?>
+        </nav>
+
         <article>
             <div class="container">
                 <?php echo $this->content; ?>

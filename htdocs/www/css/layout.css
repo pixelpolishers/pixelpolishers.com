@@ -24,7 +24,7 @@ a {
 article {
     background-color: #FFF;
     color: #262624;
-    min-height: 450px;
+    min-height: 250px;
     padding: 20px 0px;
 }
 
@@ -251,6 +251,10 @@ header #logo a {
     width: 150px;
 }
 
+#sub-menu {
+    height: 28px;
+}
+
 #sub-menu li {
     float: left;
 }
@@ -265,7 +269,7 @@ body.blue a { color: #2980B9; }
 body.blue header { background-color: #2980B9; color: #FCFCFC; }
 body.blue header #main-menu a { background-color: #2693D6; color: #FFF; }
 body.blue header #main-menu a:hover { background-color: #4BA6DE; }
-body.blue #sub-menu { background-color: #890000; }
+body.blue #sub-menu { background-color: #91C8DD; }
 body.blue #sub-menu a { color: #FFF; }
 body.blue footer a { color: #969694; }
 

@@ -72,8 +72,8 @@
             </div>
         </header>
 
-        <?php if ($this->placeholder('submenu')) { ?>
         <nav id="sub-menu" class="clearfix">
+        <?php if (count($this->placeholder('submenu'))) { ?>
             <div class="container">
                 <ul>
                     <?php foreach ($this->placeholder('submenu') as $route => $label) { ?>
@@ -81,8 +81,8 @@
                     <?php } ?>
                 </ul>
             </div>
-        </nav>
         <?php } ?>
+        </nav>
 
         <article>
             <div class="container">
