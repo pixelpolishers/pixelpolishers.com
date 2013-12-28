@@ -42,7 +42,7 @@ class Module
             $permissions[] = new Permission(__NAMESPACE__, 'RoleCreate');
             $permissions[] = new Permission(__NAMESPACE__, 'RoleUpdate');
             $permissions[] = new Permission(__NAMESPACE__, 'RoleDelete');
-            
+
             $permissions[] = new Permission(__NAMESPACE__, 'PermissionView');
         });
         $eventManager->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
