@@ -24,6 +24,7 @@ a {
 article {
     background-color: #FFF;
     color: #262624;
+    min-height: 450px;
     padding: 20px 0px;
 }
 

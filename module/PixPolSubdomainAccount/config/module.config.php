@@ -24,6 +24,7 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'PixPolSubdomainAccount\Form\PasswordForm' => 'PixPolSubdomainAccount\Form\Service\PasswordFormFactory',
+            'PixPolSubdomainAccount\Form\ProfileForm' => 'PixPolSubdomainAccount\Form\Service\ProfileFormFactory',
             'PixPolSubdomainAccount\Form\SignInForm' => 'PixPolSubdomainAccount\Form\Service\SignInFormFactory',
             'PixPolSubdomainAccount\Form\SignUpForm' => 'PixPolSubdomainAccount\Form\Service\SignUpFormFactory',
         ),

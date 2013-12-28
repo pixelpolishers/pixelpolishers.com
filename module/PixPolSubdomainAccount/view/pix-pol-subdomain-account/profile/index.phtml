@@ -1,0 +1,36 @@
+<?php $this->placeholder('submenu')->exchangeArray(array(
+    'account/index' => 'Dashboard',
+    'account/profile' => 'Profile',
+    'account/password' => 'Password',
+)); ?>
+
+<h1>Update your Profile</h1>
+
+<?php
+
+$this->form->prepare();
+
+echo $this->form()->openTag($this->form);
+
+echo $this->formLabel($this->form->get('name'));
+echo $this->formText($this->form->get('name'));
+echo $this->formElementErrors($this->form->get('name'), array('class' => 'errors'));
+
+echo $this->formLabel($this->form->get('surname'));
+echo $this->formText($this->form->get('surname'));
+echo $this->formElementErrors($this->form->get('surname'), array('class' => 'errors'));
+
+echo $this->formLabel($this->form->get('email'));
+echo $this->formText($this->form->get('email'));
+echo $this->formElementErrors($this->form->get('email'), array('class' => 'errors'));
+
+echo $this->formLabel($this->form->get('emailValidation'));
+echo $this->formText($this->form->get('emailValidation'));
+echo $this->formElementErrors($this->form->get('emailValidation'), array('class' => 'errors'));
+
+echo $this->formLabel($this->form->get('currentPassword'));
+echo $this->formPassword($this->form->get('currentPassword'));
+echo $this->formElementErrors($this->form->get('currentPassword'), array('class' => 'errors'));
+
+echo $this->formRow($this->form->get('save'));
+echo $this->form()->closeTag($this->form);
