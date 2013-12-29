@@ -60,7 +60,9 @@
 
                 <nav id="main-menu">
                     <ul>
+                        <?php if ($this->ppHasIdentity()) { ?>
                         <li><a href="<?php echo $this->url('developers/index'); ?>">Dashboard</a></li>
+                        <?php } ?>
                         <li><a href="<?php echo $this->url('developers/programs'); ?>">Programs</a></li>
                         <li><a href="<?php echo $this->url('developers/connect'); ?>">Connect</a></li>
                         <li><a href="<?php echo $this->url('developers/docs'); ?>">Documentation</a></li>
