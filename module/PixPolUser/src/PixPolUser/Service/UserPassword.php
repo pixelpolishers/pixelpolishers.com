@@ -35,7 +35,7 @@ class UserPassword
             $result .= substr($chars, $index, 1);
         }
 
-        return $this->create($result);
+        return $result;
     }
 
     public function verify($user, $password)

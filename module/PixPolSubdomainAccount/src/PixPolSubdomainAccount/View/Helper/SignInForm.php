@@ -38,6 +38,7 @@ class SignInForm extends AbstractHelper
         ));
 
         $result .= $this->view->formLabel($this->signInForm->get('credential'));
+        $result .= ' (<a href="' . $this->view->url('account/request-password') . '">forgot your password?</a>)';
         $result .= $this->view->formPassword($this->signInForm->get('credential'));
         $result .= $this->view->formElementErrors($this->signInForm->get('credential'), array(
             'class' => 'errors'

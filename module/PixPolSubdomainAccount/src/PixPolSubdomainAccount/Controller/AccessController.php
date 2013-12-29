@@ -8,6 +8,7 @@
 
 namespace PixPolSubdomainAccount\Controller;
 
+use PixPolSubdomainAccount\Email\SignUp;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class AccessController extends AbstractActionController
@@ -45,7 +46,15 @@ class AccessController extends AbstractActionController
             $form = $this->getServiceLocator()->get('PixPolSubdomainAccount\Form\SignUpForm');
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $this->ppUserService()->signUp($form->getData());
+                $user = $form->getData();
+
+                $password = $this->ppUserService()->signUp($user);
+
+                $signUpEmail = new SignUp($user, $password);
+                $signUpEmail->setTopBarColor('#008000');
+                $signUpEmail->setSubBarColor('#70BA4F');
+                $signUpEmail->send();
+
                 return $this->redirect()->toRoute('account/signin');
             }
         }
@@ -61,4 +70,5 @@ class AccessController extends AbstractActionController
         $this->ppUserAuth()->signOut();
         return array();
     }
+
 }

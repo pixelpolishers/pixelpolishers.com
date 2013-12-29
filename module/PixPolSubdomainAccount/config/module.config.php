@@ -19,12 +19,14 @@ return array(
             'PixPolSubdomainAccount\Controller\IndexController' => 'PixPolSubdomainAccount\Controller\IndexController',
             'PixPolSubdomainAccount\Controller\AccessController' => 'PixPolSubdomainAccount\Controller\AccessController',
             'PixPolSubdomainAccount\Controller\ProfileController' => 'PixPolSubdomainAccount\Controller\ProfileController',
+            'PixPolSubdomainAccount\Controller\RequestController' => 'PixPolSubdomainAccount\Controller\RequestController',
         ),
     ),
     'service_manager' => array(
         'factories' => array(
             'PixPolSubdomainAccount\Form\PasswordForm' => 'PixPolSubdomainAccount\Form\Service\PasswordFormFactory',
             'PixPolSubdomainAccount\Form\ProfileForm' => 'PixPolSubdomainAccount\Form\Service\ProfileFormFactory',
+            'PixPolSubdomainAccount\Form\RequestPasswordForm' => 'PixPolSubdomainAccount\Form\Service\RequestPasswordFormFactory',
             'PixPolSubdomainAccount\Form\SignInForm' => 'PixPolSubdomainAccount\Form\Service\SignInFormFactory',
             'PixPolSubdomainAccount\Form\SignUpForm' => 'PixPolSubdomainAccount\Form\Service\SignUpFormFactory',
         ),

@@ -60,8 +60,8 @@ class UserService
     public function signUp(User $user)
     {
         // Create a random password:
-        $password = 'test'; //$this->getPassword()->generateRandomPassword();
-        // TODO: Send a welcome e-mail to the user.
+        $password = $this->getPassword()->createRandom();
+
         $user->setPassword($this->getPassword()->create($password));
 
         // Set the registration date:
@@ -69,6 +69,20 @@ class UserService
 
         // Persist the user:
         $this->mapper->persist($user);
+
+        return $password;
     }
 
+    public function resetPassword(User $user, $password = null)
+    {
+        // Create a random password:
+        if ($password === null) {
+            $password = $this->getPassword()->createRandom();
+        }
+
+        $user->setPassword($this->getPassword()->create($password));
+        $this->mapper->persist($user);
+
+        return $password;
+    }
 }
