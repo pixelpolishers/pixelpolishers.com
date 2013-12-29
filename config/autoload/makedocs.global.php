@@ -16,7 +16,7 @@ return array(
             'input' => __DIR__ . '/../../data/makedocs/src/resolver',
             'builders' => array(
                 'html' => array(
-                    'baseUrl' => 'http://developers.pixelpolishers.local/docs/manual/resolver/{version}',
+                    'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/resolver/{version}',
                     'themeDirectory' => realpath(__DIR__ . '/../../data/makedocs/theme'),
                     'outputDirectory' => __DIR__ . '/../../data/makedocs/output/resolver/html/{version}',
                 ),
@@ -31,7 +31,7 @@ return array(
             'input' => __DIR__ . '/../../data/makedocs/src/makedocs',
             'builders' => array(
                 'html' => array(
-                    'baseUrl' => 'http://developers.pixelpolishers.local/docs/manual/makedocs/{version}',
+                    'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/makedocs/{version}',
                     'themeDirectory' => realpath(__DIR__ . '/../../data/makedocs/theme'),
                     'outputDirectory' => __DIR__ . '/../../data/makedocs/output/makedocs/html/{version}',
                 ),
@@ -46,7 +46,7 @@ return array(
             'input' => __DIR__ . '/../../data/makedocs/src/website',
             'builders' => array(
                 'html' => array(
-                    'baseUrl' => 'http://developers.pixelpolishers.local/docs/manual/website/{version}',
+                    'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/website/{version}',
                     'themeDirectory' => realpath(__DIR__ . '/../../data/makedocs/theme'),
                     'outputDirectory' => __DIR__ . '/../../data/makedocs/output/website/html/{version}',
                 ),

@@ -18,6 +18,7 @@ if (!isset($_SERVER['argv'][1])) {
 }
 
 $refToBuild = $_SERVER['argv'][1];
+$GLOBALS['extension'] = isset($_SERVER['argv'][2]) ? $_SERVER['argv'][2] : 'local';
 
 // Run the application!
 $application = Zend\Mvc\Application::init(include 'config/application.config.php');
