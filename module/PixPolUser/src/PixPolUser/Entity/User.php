@@ -19,6 +19,10 @@ class User
     private $password;
     private $name;
     private $surname;
+    private $githubAccount;
+    private $twitterAccount;
+    private $facebookUrl;
+    private $linkedInUrl;
     private $registrationDate;
     private $roles;
     private $tags;
@@ -82,6 +86,46 @@ class User
     public function getDisplayName()
     {
         return $this->name . ' ' . $this->surname;
+    }
+
+    public function getGithubAccount()
+    {
+        return $this->githubAccount;
+    }
+
+    public function setGithubAccount($githubAccount)
+    {
+        $this->githubAccount = $githubAccount;
+    }
+
+    public function getTwitterAccount()
+    {
+        return $this->twitterAccount;
+    }
+
+    public function setTwitterAccount($twitterAccount)
+    {
+        $this->twitterAccount = $twitterAccount;
+    }
+
+    public function getFacebookUrl()
+    {
+        return $this->facebookUrl;
+    }
+
+    public function setFacebookUrl($facebookUrl)
+    {
+        $this->facebookUrl = $facebookUrl;
+    }
+
+    public function getLinkedInUrl()
+    {
+        return $this->linkedInUrl;
+    }
+
+    public function setLinkedInUrl($linkedInUrl)
+    {
+        $this->linkedInUrl = $linkedInUrl;
     }
 
     public function getRegistrationDate()

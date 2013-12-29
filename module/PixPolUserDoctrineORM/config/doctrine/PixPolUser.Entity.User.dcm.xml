@@ -10,6 +10,10 @@
         <field name="password" type="string" column="password" />
         <field name="name" type="string" column="name" />
         <field name="surname" type="string" column="surname" />
+        <field name="githubAccount" type="string" column="githubAccount" nullable="true" />
+        <field name="twitterAccount" type="string" column="twitterAccount" nullable="true" />
+        <field name="facebookUrl" type="string" column="facebookUrl" nullable="true" />
+        <field name="linkedInUrl" type="string" column="linkedInUrl" nullable="true" />
         <field name="registrationDate" type="datetime" column="registrationDate" />
 
         <many-to-many field="roles" target-entity="Role">
