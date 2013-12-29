@@ -30,6 +30,7 @@
         <link rel="apple-touch-icon-precomposed" href="<?php echo $this->basePath('/img/favicons/apple-touch-icon.png'); ?>" />
 
         <link type="text/css" rel="stylesheet" href="http://www.pixelpolishers.<?php echo $GLOBALS['extension']; ?><?php echo $this->basePath('/css/layout.css'); ?>" />
+        <?php echo $this->headLink(); ?>
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-git2.js"></script>
         <script type="text/javascript" src="http://www.pixelpolishers.<?php echo $GLOBALS['extension']; ?>/<?php echo $this->basePath('/js/pixelpolishers.js'); ?>"></script>
@@ -77,9 +78,15 @@
         <?php if (count($this->placeholder('submenu'))) { ?>
             <div class="container">
                 <ul>
-                    <?php foreach ($this->placeholder('submenu') as $route => $label) { ?>
-                    <li><a href="<?php echo $this->url($route); ?>"><?php echo $label; ?></a></li>
-                    <?php } ?>
+                    <?php foreach ($this->placeholder('submenu') as $route => $label) {
+                        if (is_array($label)) {
+                            $url = $this->url($route, $label['params']);
+                            $label = $label['label'];
+                        } else {
+                            $url = $this->url($route);
+                        }
+                        echo '<li><a href="' . $url . '">' . $label . '</a></li>';
+                    } ?>
                 </ul>
             </div>
         <?php } ?>

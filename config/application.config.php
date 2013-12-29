@@ -19,6 +19,8 @@ return array(
         'PixPolTagDoctrineORM',
         'PixPolUser',
         'PixPolUserDoctrineORM',
+        'PixPolWiki',
+        'PixPolWikiDoctrineORM',
         'DoctrineModule',
         'DoctrineORMModule',
         'DoctrineDataFixtureModule',

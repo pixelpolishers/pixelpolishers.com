@@ -17,7 +17,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
 a {
     color: #000;
-    font-weight: bold;
     text-decoration: none;
 }
 
@@ -40,6 +39,33 @@ body {
     font-size: 0.8em;
     line-height: 1.7em;
     overflow-y: scroll;
+}
+
+
+hr {
+    border: 0;
+    border-top: 1px solid #CCC;
+    display: block;
+    height: 1px;
+    margin: 20px 0;
+    padding: 0;
+}
+
+
+table {
+    border: 1px solid #E1E4E5;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #E1E4E5;
+    padding: 10px;
+}
+
+th {
+    background-color: #F1F1F1;
 }
 
 footer {
@@ -106,7 +132,7 @@ footer .column .twitter a { background-image: url('/img/icons/twitter.png'); }
 footer .column .skype a { background-image: url('/img/icons/skype.png'); }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 h1 { font-size: 20px; }
@@ -404,4 +430,13 @@ body.silver footer a { color: #969694; }
     margin: 0px 24px 0px 0px;
     padding: 12px;
     min-width: 128px;
+}
+
+.catalog li a {
+    background-color: #F9F9F9;
+    border: 1px solid #CCC;
+    display: block;
+    line-height: 50px;
+    margin-bottom: 20px;
+    text-align: center;
 }

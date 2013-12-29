@@ -1,0 +1,42 @@
+<div class="clearfix">
+    <nav id="manual-toc">
+        <div id="manual-header">
+            {{ project.title }}<br />
+            Table of Contents
+        </div>
+
+        <ul>
+            {% for toc in project.toc %}
+            {% if toc.url == page.url %}
+            <li class="current">
+                <a href="{{ toc.url }}">{{ toc.title|e }}</a>
+                {% if toc.childs %}
+                <ul>
+                    {% for tocChild in toc.childs %}
+                    <li><a href="{{ tocChild.url }}">{{ tocChild.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% else %}
+            <li>
+                <a href="{{ toc.url }}">{{ toc.title|e }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <section id="manual-content">
+        <div id="manual-content-section">
+            {{ page.content|raw }}
+        </div>
+
+        <div id="manual-footer">
+            Generated on {{ project.generated|date("r") }}
+            {% if project.github %}
+            | <a href="{{ project.github }}"><span class="fa fa-github"></span> Edit on GitHub</a>
+            {% endif %}
+        </div>
+    </section>
+</div>

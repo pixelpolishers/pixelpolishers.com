@@ -1,0 +1,182 @@
+<div class="clearfix">
+    <nav id="manual-toc">
+        <div id="manual-header">
+            Resolver<br />
+            Table of Contents
+        </div>
+
+        <ul>
+                                    <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest">Resolver</a>
+            </li>
+                                                <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/guide/installation">Installation Guide</a>
+            </li>
+                                                <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/guide/contribution">Contributors Guide</a>
+            </li>
+                                                <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/config">Configuration Reference</a>
+            </li>
+                                                <li class="current">
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/commands">Command Reference</a>
+                            </li>
+                                </ul>
+    </nav>
+
+    <section id="manual-content">
+        <div id="manual-content-section">
+            <h1 id="command-reference">Command Reference</h1>
+
+<h2 id="compile">compile</h2>
+
+<p>
+            With the <strong>compile</strong> command it's possible to compile the project including its
+            dependencies.
+        </p><h3 id="usage">Usage</h3>
+
+<p>
+            <code class="">resolver [options] compile</code>
+        </p><h3 id="arguments-and-options">Arguments and Options</h3>
+
+<table border="1">
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-w [path]</td>
+
+                		<td colspan="1" rowspan="1">--working-dir [path]</td>
+
+                		<td colspan="1" rowspan="1">Makes it possible to specify the working directory to execute in.</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-s</td>
+
+                		<td colspan="1" rowspan="1">--silent</td>
+
+                		<td colspan="1" rowspan="1">Disables all log messages</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-d</td>
+
+                		<td colspan="1" rowspan="1">--dependencies</td>
+
+                		<td colspan="1" rowspan="1">Only compiles the dependencies of the project.</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-p</td>
+
+                		<td colspan="1" rowspan="1">--project</td>
+
+                		<td colspan="1" rowspan="1">Only compiles the project and leaves the dependencies as is.</td>
+
+            	</tr>
+
+        </table><h3 id="exit-code">Exit Code</h3>
+
+<p>
+            This command will exit with the code 0 when it succeeds; 1 in case of an error.
+        </p><h2 id="generate">generate</h2>
+
+<p>
+            Generates IDE project files depending on your project configuration.
+        </p><h3 id="usage">Usage</h3>
+
+<p>
+            <code class="">resolver [options] generate [ide]</code>
+        </p><h3 id="arguments-and-options">Arguments and Options</h3>
+
+<table border="1">
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-w [path]</td>
+
+                		<td colspan="1" rowspan="1">--working-dir [path]</td>
+
+                		<td colspan="1" rowspan="1">Makes it possible to specify the working directory to execute in.</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-s</td>
+
+                		<td colspan="1" rowspan="1">--silent</td>
+
+                		<td colspan="1" rowspan="1">Disables all log messages</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1"></td>
+
+                		<td colspan="1" rowspan="1">[ide]</td>
+
+                		<td colspan="1" rowspan="1">The IDE to generate the project files for. Current supported IDE's are:
+                    <ul type="disc">
+	<li>vs2010</li>
+</ul>
+
+
+                </td>
+
+            	</tr>
+
+        </table><h3 id="exit-code">Exit Code</h3>
+
+<p>
+            This command will exit with the code 0 when it succeeds; 1 in case of an error.
+        </p><h2 id="update">update</h2>
+
+<p>
+            Updates the dependencies to the version configured in your config file. When the
+            dependencies are not installed yet, Resolver will install them.
+        </p><h3 id="usage">Usage</h3>
+
+<p>
+            <code class="">resolver [options] update</code>
+        </p><h3 id="arguments-and-options">Arguments and Options</h3>
+
+<table border="1">
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-w [path]</td>
+
+                		<td colspan="1" rowspan="1">--working-dir [path]</td>
+
+                		<td colspan="1" rowspan="1">Makes it possible to specify the working directory to execute in.</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">-s</td>
+
+                		<td colspan="1" rowspan="1">--silent</td>
+
+                		<td colspan="1" rowspan="1">Disables all log messages</td>
+
+            	</tr>
+
+        </table><h3 id="exit-code">Exit Code</h3>
+
+<p>
+            This command will exit with the code 0 when it succeeds; 1 in case of an error.
+        </p>
+        </div>
+
+        <div id="manual-footer">
+            Generated on Sun, 29 Dec 2013 23:31:20 +0100
+                        | <a href="https://github.com/pixelpolishers/resolver"><span class="fa fa-github"></span> Edit on GitHub</a>
+                    </div>
+    </section>
+</div>

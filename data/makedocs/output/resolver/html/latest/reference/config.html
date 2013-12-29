@@ -1,0 +1,133 @@
+<div class="clearfix">
+    <nav id="manual-toc">
+        <div id="manual-header">
+            Resolver<br />
+            Table of Contents
+        </div>
+
+        <ul>
+                                    <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest">Resolver</a>
+            </li>
+                                                <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/guide/installation">Installation Guide</a>
+            </li>
+                                                <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/guide/contribution">Contributors Guide</a>
+            </li>
+                                                <li class="current">
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/config">Configuration Reference</a>
+                                <ul>
+                                        <li><a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/config#introduction">Introduction</a></li>
+                                        <li><a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/config#types">Types</a></li>
+                                        <li><a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/config#root-members">Root Members</a></li>
+                                    </ul>
+                            </li>
+                                                <li>
+                <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/commands">Command Reference</a>
+            </li>
+                                </ul>
+    </nav>
+
+    <section id="manual-content">
+        <div id="manual-content-section">
+            <h1 id="configuration-reference">Configuration Reference</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>
+            All resolver projects should contain a configuration file. Resolver uses JSON to
+            configure a project, therefor a <strong>resolver.json</strong> is required within the
+            root of your project.
+        </p><h2 id="types">Types</h2>
+
+<p>
+            Some members within the configuration file are of a specific type. Resolver contains
+            the following types.
+        </p><table border="1">
+            	<tr>
+
+                		<th colspan="1" rowspan="1">Name</th>
+
+                		<th colspan="1" rowspan="1">Description</th>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1"><a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/type/configuration">Configuration</a></td>
+
+                		<td colspan="1" rowspan="1">An object containing members describing a project's configuration.</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1"><a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/type/project">Project</a></td>
+
+                		<td colspan="1" rowspan="1">An object containing members describing a project.</td>
+
+            	</tr>
+
+        </table><h2 id="root-members">Root Members</h2>
+
+<p>
+            The root of the configuration file can contain the following members.
+        </p><table border="1">
+            	<tr>
+
+                		<th colspan="1" rowspan="1">Name</th>
+
+                		<th colspan="1" rowspan="1">Type</th>
+
+                		<th colspan="1" rowspan="1">Description</th>
+
+                		<th colspan="1" rowspan="1">Required</th>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">name</td>
+
+                		<td colspan="1" rowspan="1">string</td>
+
+                		<td colspan="1" rowspan="1">The name of the project. This should be in the form of <strong>vendor/name</strong></td>
+
+                		<td colspan="1" rowspan="1">Yes</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">projects</td>
+
+                		<td colspan="1" rowspan="1">array</td>
+
+                		<td colspan="1" rowspan="1">The list with projects. This should be an array with objects of the type <a href="http://developers.pixelpolishers.local/docs/manual/resolver/latest/reference/type/project">Project</a></td>
+
+                		<td colspan="1" rowspan="1">No</td>
+
+            	</tr>
+
+            	<tr>
+
+                		<td colspan="1" rowspan="1">vendor</td>
+
+                		<td colspan="1" rowspan="1">string</td>
+
+                		<td colspan="1" rowspan="1">The path of the directory to store the dependencies in. The default value is <strong>vendor</strong></td>
+
+                		<td colspan="1" rowspan="1">No</td>
+
+            	</tr>
+
+        </table>
+        </div>
+
+        <div id="manual-footer">
+            Generated on Sun, 29 Dec 2013 23:31:20 +0100
+                        | <a href="https://github.com/pixelpolishers/resolver"><span class="fa fa-github"></span> Edit on GitHub</a>
+                    </div>
+    </section>
+</div>

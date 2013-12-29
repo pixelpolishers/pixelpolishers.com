@@ -9,13 +9,48 @@
 namespace PixPolSubdomainDevelopers\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
 class DocsController extends AbstractActionController
 {
     public function indexAction()
     {
-        $viewModel = new ViewModel();
-        return $viewModel;
+        return array();
+    }
+
+    public function manualAction()
+    {
+        $project= $this->params('project');
+        $version = $this-> params('version');
+        $page = $this->params('page', 'index');
+
+        if (!$project || !$page || !$version) {
+            return $this->notFoundAction();
+        }
+
+        $config = $this->getServiceLocator()->get('Config');
+        $docsConfig = $config['makedocs'];
+
+        if (!array_key_exists($project, $docsConfig)) {
+            return $this->notFoundAction();
+        }
+
+        $pageDir = $docsConfig[$project]['builders']['html']['outputDirectory'];
+        $pageDir = str_replace('{version}', $version, $pageDir);
+        $pageDir = realpath($pageDir);
+
+        if (!$pageDir) {
+            return $this->notFoundAction();
+        }
+
+        $pagePath = realpath($pageDir . '/' . $page . '.html');
+        if (!is_file($pagePath)) {
+            return $this->notFoundAction();
+        }
+
+        $content = file_get_contents($pagePath);
+
+        return array(
+            'content' => $content,
+        );
     }
 }

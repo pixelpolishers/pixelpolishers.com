@@ -12,6 +12,13 @@ chdir(__DIR__ . '/../');
 // Setup autoloading:
 include 'vendor/autoload.php';
 
+if (!isset($_SERVER['argv'][1])) {
+    echo 'Missing ref to build!' . PHP_EOL;
+    exit(1);
+}
+
+$refToBuild = $_SERVER['argv'][1];
+
 // Run the application!
 $application = Zend\Mvc\Application::init(include 'config/application.config.php');
 $config = $application->getConfig();
@@ -33,25 +40,36 @@ function detectConfigFile($path)
 }
 
 $driver = new \MakeDocs\Driver\GitDriver();
-foreach ($makeDocsConfig as $config) {
+foreach ($makeDocsConfig as $projectName => $config) {
     echo '[' . date('Y-m-d H:i:s') . '] Retrieving ' . $config['name'] . '...' . PHP_EOL;
 
-    $driverConfig = new \MakeDocs\Driver\DriverConfig();
-    $driverConfig->setDirectory($config['input']);
-    $driverConfig->setBranch($config['branch']);
-    $driverConfig->setRepository($config['repository']);
-    $driver->install($driverConfig);
+    try {
+        $driverConfig = new \MakeDocs\Driver\DriverConfig();
+        $driverConfig->setDirectory($config['input']);
+        $driverConfig->setBranch($refToBuild);
+        $driverConfig->setRepository($config['repository']);
+        $driver->install($driverConfig);
+    } catch (\Exception $e) {
+        echo '[' . date('Y-m-d H:i:s') . '] Failed: ' . $e->getMessage() . PHP_EOL;
+        continue;
+    }
+
+    $version = isset($config['alias'][$refToBuild]) ? $config['alias'][$refToBuild] : $refToBuild;
 
     $builders = array();
     foreach ($config['builders'] as $type => $builderConfig) {
         echo '[' . date('Y-m-d H:i:s') . '] Configuring builder ' . $type . '...' . PHP_EOL;
 
+        $baseUrl = str_replace('{version}', $version, $builderConfig['baseUrl']);
+
+        $outputDir = str_replace('{version}', $version, $builderConfig['outputDirectory']);
+
         switch ($type) {
             case 'html':
                 $builder = new \MakeDocs\Builder\Html\HtmlBuilder();
-                $builder->setBaseUrl($builderConfig['baseUrl']);
+                $builder->setBaseUrl($baseUrl);
                 $builder->setThemeDirectory($builderConfig['themeDirectory']);
-                $builder->setOutputDirectory($builderConfig['outputDirectory']);
+                $builder->setOutputDirectory($outputDir);
                 break;
             default:
                 throw new \RuntimeException('Invalid builder provided: ' . $type);

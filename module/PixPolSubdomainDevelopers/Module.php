@@ -34,7 +34,8 @@ class Module
             $controllerClass = get_class($controller);
             $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
 
-            if ($moduleNamespace == 'PixPolSubdomainDevelopers') {
+            $validNamespaces = array('PixPolSubdomainDevelopers', 'PixPolWiki');
+            if (in_arraY($moduleNamespace, $validNamespaces)) {
                 $controller->layout('layout/developers');
             }
         }, 100);

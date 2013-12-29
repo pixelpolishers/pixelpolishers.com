@@ -26,6 +26,7 @@ return array(
             'PixPolSubdomainDevelopers\Controller\IndexController' => 'PixPolSubdomainDevelopers\Controller\IndexController',
             'PixPolSubdomainDevelopers\Controller\ConnectController' => 'PixPolSubdomainDevelopers\Controller\ConnectController',
             'PixPolSubdomainDevelopers\Controller\DocsController' => 'PixPolSubdomainDevelopers\Controller\DocsController',
+            'PixPolSubdomainDevelopers\Controller\ManualController' => 'PixPolSubdomainDevelopers\Controller\ManualController',
             'PixPolSubdomainDevelopers\Controller\ProgramsController' => 'PixPolSubdomainDevelopers\Controller\ProgramsController',
         ),
     ),
