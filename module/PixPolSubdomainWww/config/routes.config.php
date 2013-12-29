@@ -126,7 +126,7 @@ return array(
             'options' => array(
                 'route' => '/technologies',
                 'defaults' => array(
-                    'controller' => 'PixPolSubdomainWww\Controller\IndexController',
+                    'controller' => 'PixPolSubdomainWww\Controller\TechnologyController',
                     'action' => 'index',
                 ),
             ),
