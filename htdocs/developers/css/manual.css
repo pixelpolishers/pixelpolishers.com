@@ -69,6 +69,10 @@ code {
     border-top: 1px solid #EBEBEB;
 }
 
+#manual-toc li.current > a {
+    font-weight: bold;
+}
+
 #manual-toc .current li {
     background-color: #FFF;
     border-top: 1px solid #EBEBEB;
