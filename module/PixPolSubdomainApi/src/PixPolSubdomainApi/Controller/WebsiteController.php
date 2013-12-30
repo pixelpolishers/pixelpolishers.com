@@ -39,7 +39,7 @@ class WebsiteController extends AbstractActionController
 
     public function buildDocsAction()
     {
-        $f = fopen('httocs/developers/docs.json', 'w');
+        $f = fopen('htdocs/developers/docs.json', 'w');
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
             fwrite($f, 'Invalid request!');
