@@ -24,69 +24,20 @@ $GLOBALS['extension'] = isset($_SERVER['argv'][2]) ? $_SERVER['argv'][2] : 'loca
 $application = Zend\Mvc\Application::init(include 'config/application.config.php');
 $config = $application->getConfig();
 
+// The make docs configuration:
 $makeDocsConfig = $config['makedocs'];
 
-function detectConfigFile($path)
-{
-    $it = new RecursiveDirectoryIterator($path);
-    $objects = new RecursiveIteratorIterator($it, RecursiveIteratorIterator::SELF_FIRST);
-
-    foreach ($objects as $fileInfo) {
-        if ($fileInfo->isFile() && $fileInfo->getFilename() == 'makedocs.json') {
-            return dirname(realpath($fileInfo->getPathname()));
-        }
-    }
-
-    return null;
-}
-
-$driver = new \MakeDocs\Driver\GitDriver();
-foreach ($makeDocsConfig as $projectName => $config) {
-    echo '[' . date('Y-m-d H:i:s') . '] Retrieving ' . $config['name'] . '...' . PHP_EOL;
+// Generate:
+foreach ($makeDocsConfig as $repositoryName => $config) {
+    echo '[' . date('Y-m-d H:i:s') . '] Building ' . $config['name'] . '...' . PHP_EOL;
 
     try {
-        $driverConfig = new \MakeDocs\Driver\DriverConfig();
-        $driverConfig->setDirectory($config['input']);
-        $driverConfig->setBranch($refToBuild);
-        $driverConfig->setRepository($config['repository']);
-        $driver->install($driverConfig);
+        $generator = new PixPolSubdomainApi\Service\DocsGenerator();
+        $generator->setReference($refToBuild);
+        $generator->setRepository($repositoryName);
+        $generator->generate($makeDocsConfig);
     } catch (\Exception $e) {
         echo '[' . date('Y-m-d H:i:s') . '] Failed: ' . $e->getMessage() . PHP_EOL;
-        continue;
-    }
-
-    $version = isset($config['alias'][$refToBuild]) ? $config['alias'][$refToBuild] : $refToBuild;
-
-    $builders = array();
-    foreach ($config['builders'] as $type => $builderConfig) {
-        echo '[' . date('Y-m-d H:i:s') . '] Configuring builder ' . $type . '...' . PHP_EOL;
-
-        $baseUrl = str_replace('{version}', $version, $builderConfig['baseUrl']);
-
-        $outputDir = str_replace('{version}', $version, $builderConfig['outputDirectory']);
-
-        switch ($type) {
-            case 'html':
-                $builder = new \MakeDocs\Builder\Html\HtmlBuilder();
-                $builder->setBaseUrl($baseUrl);
-                $builder->setThemeDirectory($builderConfig['themeDirectory']);
-                $builder->setOutputDirectory($outputDir);
-                break;
-            default:
-                throw new \RuntimeException('Invalid builder provided: ' . $type);
-        }
-
-        $builders[] = $builder;
-    }
-
-    try {
-        $makeDocs = new \MakeDocs\Generator\Generator();
-        $makeDocs->setInputDirectory(detectConfigFile($config['input']));
-        $makeDocs->setBuilders($builders);
-        $makeDocs->generate();
-    } catch (\Exception $e) {
-        echo '[' . date('Y-m-d H:i:s') . '] Failed to generate: ' . $e->getMessage() . PHP_EOL;
-        continue;
     }
 }
 

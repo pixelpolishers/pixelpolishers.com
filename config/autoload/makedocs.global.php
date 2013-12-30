@@ -10,7 +10,7 @@ return array(
         'resolver' => array(
             'name' => 'Resolver',
             'alias' => array(
-                'develop' => 'latest',
+                'refs/heads/develop' => 'latest',
             ),
             'repository' => 'https://github.com/pixelpolishers/resolver.git',
             'input' => __DIR__ . '/../../data/makedocs/src/resolver',
@@ -25,7 +25,7 @@ return array(
         'makedocs' => array(
             'name' => 'MakeDocs',
             'alias' => array(
-                'develop' => 'latest',
+                'refs/heads/develop' => 'latest',
             ),
             'repository' => 'https://github.com/pixelpolishers/makedocs.git',
             'input' => __DIR__ . '/../../data/makedocs/src/makedocs',
@@ -40,7 +40,7 @@ return array(
         'website' => array(
             'name' => 'Website',
             'alias' => array(
-                'develop' => 'latest',
+                'refs/heads/evelop' => 'latest',
             ),
             'repository' => 'https://github.com/pixelpolishers/pixelpolishers.com.git',
             'input' => __DIR__ . '/../../data/makedocs/src/website',

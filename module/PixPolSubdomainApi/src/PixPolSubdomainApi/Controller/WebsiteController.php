@@ -8,6 +8,7 @@
 
 namespace PixPolSubdomainApi\Controller;
 
+use PixPolSubdomainApi\Service\DocsGenerator;
 use Symfony\Component\Process\Process;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -40,24 +41,24 @@ class WebsiteController extends AbstractActionController
     {
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
-            throw new \RuntimeException('Invalid request.');
+            //throw new \RuntimeException('Invalid request.');
         }
 
-//        $refs = array('refs/heads/master', 'refs/heads/develop');
-//        $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
-//        if (!$this->isValidPayload($payload, $refs)) {
-//            throw new \RuntimeException('Invalid request.');
-//        }
-
-        $f = fopen('build-docs.log', 'a+');
-        if ($f) {
-            if (!isset($_POST['payload'])) {
-                fwrite($f, 'No payload...' . PHP_EOL . PHP_EOL);
-            } else {
-                fwrite($f, print_r($_POST['payload'], true) . PHP_EOL . PHP_EOL);
-            }
-            fclose($f);
+        $refs = array('refs/heads/master', 'refs/heads/develop');
+        $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
+        $payload = file_get_contents('payload.json');
+        if (!$this->isValidPayload($payload, $refs)) {
+            //throw new \RuntimeException('Invalid request.');
         }
+
+        $json = json_decode($payload);
+        $config = $this->getServiceLocator()->get('Config');
+
+        $generator = new DocsGenerator();
+        $generator->setReference($json->ref);
+        $generator->setRepository($json->repository->name);
+        $generator->generate($config['makedocs']);
+
         return $this->getResponse();
     }
 
