@@ -69,8 +69,13 @@ class DocsGenerator
             $builders[] = $builder;
         }
 
+        $inputDir = $this->detectConfigFile($config['input']);
+        if (!is_dir($inputDir)) {
+            throw new \RuntimeException('The input directory does not exist: ' . $inputDir);
+        }
+
         $makeDocs = new \MakeDocs\Generator\Generator();
-        $makeDocs->setInputDirectory($this->detectConfigFile($config['input']));
+        $makeDocs->setInputDirectory($inputDir);
         $makeDocs->setBuilders($builders);
         $makeDocs->generate();
     }
