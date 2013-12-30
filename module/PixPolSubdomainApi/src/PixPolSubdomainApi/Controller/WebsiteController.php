@@ -39,16 +39,24 @@ class WebsiteController extends AbstractActionController
 
     public function buildDocsAction()
     {
+        $f = fopen('httocs/developers/docs.json', 'w');
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
+            fwrite($f, 'Invalid request!');
+            fclose($f);
             throw new \RuntimeException('Invalid request.');
         }
 
         $refs = array('refs/heads/master', 'refs/heads/develop');
         $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
         if (!$this->isValidPayload($payload, $refs)) {
+            fwrite($f, 'Invalid ref: ' . print_r($payload, true));
+            fclose($f);
             throw new \RuntimeException('Invalid request.');
         }
+
+        fwrite($f, print_r($payload, true));
+        fclose($f);
 
         $json = json_decode($payload);
         $config = $this->getServiceLocator()->get('Config');
