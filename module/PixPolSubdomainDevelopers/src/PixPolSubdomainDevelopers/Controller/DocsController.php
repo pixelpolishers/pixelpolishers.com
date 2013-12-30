@@ -44,7 +44,9 @@ class DocsController extends AbstractActionController
 
         $pagePath = realpath($pageDir . '/' . $page . '.html');
         if (!is_file($pagePath)) {
-            return $this->notFoundAction();
+            echo 'File not found: "' . $pageDir . '/' . $page . '.html"';
+            exit;
+            //return $this->notFoundAction();
         }
 
         $content = file_get_contents($pagePath);
