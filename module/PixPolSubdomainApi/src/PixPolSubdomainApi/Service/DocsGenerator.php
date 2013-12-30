@@ -42,7 +42,7 @@ class DocsGenerator
         $driverConfig->setRepository($config['repository']);
 
         $driver = new GitDriver();
-        echo $driver->install($driverConfig) . PHP_EOL . PHP_EOL;
+        $driver->install($driverConfig);
 
         if (array_key_exists($this->reference, $config['alias'])) {
             $version = $config['alias'][$this->reference];
