@@ -41,14 +41,13 @@ class WebsiteController extends AbstractActionController
     {
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
-            //throw new \RuntimeException('Invalid request.');
+            throw new \RuntimeException('Invalid request.');
         }
 
         $refs = array('refs/heads/master', 'refs/heads/develop');
         $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
-        $payload = file_get_contents('payload.json');
         if (!$this->isValidPayload($payload, $refs)) {
-            //throw new \RuntimeException('Invalid request.');
+            throw new \RuntimeException('Invalid request.');
         }
 
         $json = json_decode($payload);
