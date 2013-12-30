@@ -79,10 +79,15 @@ foreach ($makeDocsConfig as $projectName => $config) {
         $builders[] = $builder;
     }
 
-    $makeDocs = new \MakeDocs\Generator\Generator();
-    $makeDocs->setInputDirectory(detectConfigFile($config['input']));
-    $makeDocs->setBuilders($builders);
-    $makeDocs->generate();
+    try {
+        $makeDocs = new \MakeDocs\Generator\Generator();
+        $makeDocs->setInputDirectory(detectConfigFile($config['input']));
+        $makeDocs->setBuilders($builders);
+        $makeDocs->generate();
+    } catch (\Exception $e) {
+        echo '[' . date('Y-m-d H:i:s') . '] Failed to generate: ' . $e->getMessage() . PHP_EOL;
+        continue;
+    }
 }
 
 echo '[' . date('Y-m-d H:i:s') . '] Done' . PHP_EOL;
