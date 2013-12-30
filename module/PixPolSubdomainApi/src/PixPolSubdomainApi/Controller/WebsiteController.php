@@ -26,17 +26,42 @@ class WebsiteController extends AbstractActionController
         return ($needle >= $min) && ($needle <= $max);
     }
 
-    private function isValidPayload($payload)
+    private function isValidPayload($payload, $refs = array('refs/heads/master'))
     {
         if ($payload) {
             $json = json_decode($payload);
 
-            return in_array($json->ref, array('refs/heads/master'));
+            return in_array($json->ref, $refs);
         }
         return false;
     }
 
-    public function buildAction()
+    public function buildDocsAction()
+    {
+        $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
+        if (!$this->isValidIp($remoteAddress->getIpAddress())) {
+            throw new \RuntimeException('Invalid request.');
+        }
+
+//        $refs = array('refs/heads/master', 'refs/heads/develop');
+//        $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
+//        if (!$this->isValidPayload($payload, $refs)) {
+//            throw new \RuntimeException('Invalid request.');
+//        }
+
+        $f = fopen('build-docs.log', 'a+');
+        if ($f) {
+            if (!isset($_POST['payload'])) {
+                fwrite($f, 'No payload...' . PHP_EOL . PHP_EOL);
+            } else {
+                fwrite($f, print_r($_POST['payload'], true) . PHP_EOL . PHP_EOL);
+            }
+            fclose($f);
+        }
+        return $this->getResponse();
+    }
+
+    public function buildWebsiteAction()
     {
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {

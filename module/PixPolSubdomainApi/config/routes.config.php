@@ -33,13 +33,23 @@ return array(
                 ),
             ),
         ),
-        'website' => array(
+        'build-website' => array(
             'type' => 'Zend\Mvc\Router\Http\Segment',
             'options' => array(
                 'route' => '/website/build',
                 'defaults' => array(
                     'controller' => 'PixPolSubdomainApi\Controller\WebsiteController',
-                    'action' => 'build',
+                    'action' => 'buildWebsite',
+                ),
+            ),
+        ),
+        'build-docs' => array(
+            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'options' => array(
+                'route' => '/website/build-docs',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainApi\Controller\WebsiteController',
+                    'action' => 'buildDocs',
                 ),
             ),
         ),
