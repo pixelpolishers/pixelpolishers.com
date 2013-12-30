@@ -39,6 +39,8 @@ class DocsController extends AbstractActionController
         $pageDir = realpath($pageDir);
 
         if (!$pageDir) {
+            echo 'Directory not found: "' . $pageDir . '/' . $page . '.html"';
+            exit;
             return $this->notFoundAction();
         }
 
