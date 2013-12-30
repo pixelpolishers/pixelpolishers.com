@@ -55,7 +55,7 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('Invalid request.');
         }
 
-        fwrite($f, print_r($payload, true));
+        fwrite($f, 'Payload: ' . print_r($payload, true));
         fclose($f);
 
         $json = json_decode($payload);
