@@ -1,19 +1,25 @@
+<?php $this->headLink()->appendStylesheet('/css/forum.css'); ?>
+
 <h1>Forum</h1>
 
 <?php foreach ($this->categories as $category) { ?>
-    <h2><a href="<?php echo $this->url('developers/forum/category', array(
-        'category' => $category->getId(),
-    )); ?>"><?php echo $category->getName(); ?></a></h2>
+    <h2><a href="<?php
+        echo $this->url('developers/forum/category', array(
+            'category' => $category->getId(),
+        ));
+        ?>"><?php echo $category->getName(); ?></a></h2>
 
-    <?php if (count($category->getBoards())) { ?>
+        <?php if (count($category->getBoards())) { ?>
         <ul>
-        <?php foreach ($category->getBoards() as $board) { ?>
-            <li>
-                <h3><a href="<?php echo $this->url('developers/forum/board', array(
-                    'board' => $board->getId(),
-                )); ?>"><?php echo $board->getName(); ?></a></h3>
-                <p><?php echo $board->getDescription(); ?></p>
-            </li>
+                    <?php foreach ($category->getBoards() as $board) { ?>
+                <li>
+                    <h3><a href="<?php
+                        echo $this->url('developers/forum/board', array(
+                            'board' => $board->getId(),
+                        ));
+                        ?>"><?php echo $board->getName(); ?></a></h3>
+                    <p><?php echo $board->getDescription(); ?></p>
+                </li>
         <?php } ?>
         </ul>
     <?php } ?>

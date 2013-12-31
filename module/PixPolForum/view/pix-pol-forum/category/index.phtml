@@ -1,5 +1,14 @@
 <h1>Forum</h1>
 
+<nav class="breadcrumb">
+    <ul>
+        <li><a href="<?php echo $this->url('developers/forum'); ?>">Forums</a></li>
+        <li><a href="<?php echo $this->url('developers/forum/category', array(
+            'category' => $this->category->getId(),
+        )); ?>"><?php echo $this->category->getName(); ?></a></li>
+    </ul>
+</nav>
+
 <h2><a href="<?php echo $this->url('developers/forum/category', array(
     'category' => $this->category->getId(),
 )); ?>"><?php echo $this->category->getName(); ?></a></h2>
