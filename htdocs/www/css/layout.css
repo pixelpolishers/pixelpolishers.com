@@ -69,6 +69,7 @@ th {
 }
 
 footer {
+    border-top: 5px solid #777;
     padding: 1em 0;
 }
 
