@@ -8,6 +8,8 @@
 return array(
     'modules' => array(
         'PixPolDoctrineORM',
+        'PixPolForum',
+        'PixPolForumDoctrineORM',
         'PixPolLicense',
         'PixPolLicenseDoctrineORM',
         'PixPolSubdomainAccount',

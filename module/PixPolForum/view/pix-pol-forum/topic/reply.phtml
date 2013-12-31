@@ -1,0 +1,17 @@
+<h1>Forum</h1>
+
+<h2>Reply to <?php echo $this->topic->getTitle(); ?></h2>
+
+<?php
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+echo $this->formLabel($form->get('content'));
+echo $this->formTextarea($form->get('content'));
+echo $this->formElementErrors($form->get('content'), array('class' => 'errors'));
+
+echo $this->formSubmit($form->get('reply'));
+
+echo $this->form()->closeTag();

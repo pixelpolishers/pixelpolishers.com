@@ -1,0 +1,34 @@
+<h1>Forum</h1>
+
+<h2>
+    <a href="<?php echo $this->url('developers/forum/board', array(
+        'board' => $this->board->getId(),
+    )); ?>"><?php echo $this->board->getName(); ?></a>
+</h2>
+
+<?php if (!count($this->board->getTopics())) { ?>
+<p>No topics yet. Be the first to <a href="<?php echo $this->url('developers/forum/topic/create', array(
+    'board' => $this->board->getId(),
+)); ?>">start a topic</a>!</p>
+<?php } else { ?>
+<p>
+    <a href="<?php echo $this->url('developers/forum/topic/create', array(
+        'board' => $this->board->getId(),
+    )); ?>">start a topic</a>
+</p>
+<ul>
+    <?php foreach ($this->board->getTopics() as $topic) { ?>
+    <li>
+        <a href="<?php echo $this->url('developers/forum/topic/read', array(
+            'topic' => $topic->getId(),
+        )); ?>"><?php echo $topic->getTitle(); ?></a>
+    </li>
+    <?php } ?>
+</ul>
+
+<p>
+    <a href="<?php echo $this->url('developers/forum/topic/create', array(
+        'board' => $this->board->getId(),
+    )); ?>">start a topic</a>
+</p>
+<?php } ?>

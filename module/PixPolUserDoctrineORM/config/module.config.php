@@ -14,9 +14,6 @@ use PixPolUserDoctrineORM\Mapper\DoctrineORMUserMapper;
 use PixPolUserDoctrineORM\Provider\RoleProvider;
 
 return array(
-    'data-fixture' => array(
-        __NAMESPACE__ . '\Fixture' => __DIR__ . '/../src/' . __NAMESPACE__ . '/Fixture',
-    ),
     'doctrine' => array(
         'authentication' => array(
             'orm_default' => array(
@@ -36,8 +33,11 @@ return array(
                 'drivers' => array(
                     'PixPolUser\Entity' => __NAMESPACE__,
                 )
-            )
-        )
+            ),
+        ),
+        'fixture' => array(
+            __NAMESPACE__ . '\Fixture' => __DIR__ . '/../src/' . __NAMESPACE__ . '/Fixture',
+        ),
     ),
     'service_manager' => array(
         'factories' => array(

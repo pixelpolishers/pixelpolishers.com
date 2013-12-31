@@ -5,6 +5,9 @@
  * @copyright Copyright (c) 2012-2013 Pixel Polishers. All rights reserved.
  * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
  */
+
+$GLOBALS['extension'] = isset($GLOBALS['extension']) ? $GLOBALS['extension'] : 'local';
+
 return array(
     'makedocs' => array(
         'resolver' => array(

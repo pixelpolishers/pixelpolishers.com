@@ -1,0 +1,21 @@
+<h1>Forum</h1>
+
+<h2>Create Topic</h2>
+
+<?php
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+echo $this->formLabel($form->get('title'));
+echo $this->formText($form->get('title'));
+echo $this->formElementErrors($form->get('title'), array('class' => 'errors'));
+
+echo $this->formLabel($form->get('content'));
+echo $this->formTextarea($form->get('content'));
+echo $this->formElementErrors($form->get('content'), array('class' => 'errors'));
+
+echo $this->formSubmit($form->get('create'));
+
+echo $this->form()->closeTag();

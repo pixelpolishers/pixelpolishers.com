@@ -1,0 +1,18 @@
+<h1>Forum</h1>
+
+<h2><a href="<?php echo $this->url('developers/forum/category', array(
+    'category' => $this->category->getId(),
+)); ?>"><?php echo $this->category->getName(); ?></a></h2>
+
+<?php if (count($this->category->getBoards())) { ?>
+    <ul>
+    <?php foreach ($this->category->getBoards() as $board) { ?>
+        <li>
+            <h3><a href="<?php echo $this->url('developers/forum/board', array(
+                'board' => $board->getId(),
+            )); ?>"><?php echo $board->getName(); ?></a></h3>
+            <p><?php echo $board->getDescription(); ?></p>
+        </li>
+    <?php } ?>
+    </ul>
+<?php } ?>

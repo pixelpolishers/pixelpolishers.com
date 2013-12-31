@@ -6,14 +6,18 @@
  * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
  */
 
-namespace PixPolSubdomainDevelopers\Controller;
+namespace PixPolForum\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-class IndexController extends AbstractActionController
+class CategoryController extends AbstractActionController
 {
     public function indexAction()
     {
-        return $this->redirect()->toRoute('developers/forum');
+        $id = $this->params('category');
+        
+        return array(
+            'category' => $this->ppForumCategory()->find($id),
+        );
     }
 }

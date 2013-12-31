@@ -1,0 +1,23 @@
+<h1><?php echo $this->topic->getBoard()->getName(); ?></h1>
+
+<h2><?php echo $this->topic->getTitle(); ?></h2>
+
+<p>
+    <a href="<?php echo $this->url('developers/forum/topic/reply', array(
+        'topic' => $this->topic->getId(),
+    )); ?>">Reply</a>
+</p>
+
+<ul>
+<?php foreach ($this->topic->getPosts() as $post) { ?>
+    <li>
+        <?php echo $post->getContent(); ?>
+    </li>
+<?php } ?>
+</ul>
+
+<p>
+    <a href="<?php echo $this->url('developers/forum/topic/reply', array(
+        'topic' => $this->topic->getId(),
+    )); ?>">Reply</a>
+</p>
