@@ -1,0 +1,21 @@
+<nav class="forum-breadcrumb clearfix">
+    <ul class="breadcrumb">
+        <li><a href="<?php echo $this->url('developers/forum'); ?>">All forums</a></li>
+
+        <?php if ($this->category) { ?>
+        <li><a href="<?php echo $this->url('developers/forum/category', array(
+            'category' => $this->category->getId(),
+        )); ?>"><?php echo $this->category->getName(); ?></a></li>
+        <?php } ?>
+
+        <?php if ($this->board) { ?>
+        <li><a href="<?php echo $this->url('developers/forum/board', array(
+            'board' => $this->board->getId(),
+        )); ?>"><?php echo $this->board->getName(); ?></a></li>
+        <?php } ?>
+
+        <?php if ($this->topic) { ?>
+        <li><a href=""><?php echo $this->topic->getTitle(); ?></a></li>
+        <?php } ?>
+    </ul>
+</nav>

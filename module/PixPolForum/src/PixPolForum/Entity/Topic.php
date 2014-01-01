@@ -12,6 +12,8 @@ class Topic
 {
     private $id;
     private $board;
+    private $sticky;
+    private $locked;
     private $title;
     private $posts;
     private $createdOn;
@@ -36,6 +38,36 @@ class Topic
     public function setBoard($board)
     {
         $this->board = $board;
+    }
+
+    public function getSticky()
+    {
+        return $this->sticky;
+    }
+
+    public function isSticky()
+    {
+        return $this->getSticky();
+    }
+
+    public function setSticky($sticky)
+    {
+        $this->sticky = $sticky;
+    }
+
+    public function getLocked()
+    {
+        return $this->locked;
+    }
+
+    public function isLocked()
+    {
+        return $this->getLocked();
+    }
+
+    public function setLocked($locked)
+    {
+        $this->locked = $locked;
     }
 
     public function getTitle()

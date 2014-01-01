@@ -43,6 +43,16 @@ return array(
                 ),
             ),
         ),
+        'view-profile' => array(
+            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'options' => array(
+                'route' => '/profile/:user',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainAccount\Controller\ProfileController',
+                    'action' => 'view',
+                ),
+            ),
+        ),
         'password' => array(
             'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(

@@ -2,6 +2,8 @@
 
 <h1>Forum</h1>
 
+<?php echo $this->partial('partials/breadcrumb', array()); ?>
+
 <?php foreach ($this->categories as $category) { ?>
     <h2><a href="<?php
         echo $this->url('developers/forum/category', array(

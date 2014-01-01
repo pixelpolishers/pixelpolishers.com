@@ -15,9 +15,13 @@ class BoardController extends AbstractActionController
     public function indexAction()
     {
         $id = $this->params('board');
+        $board = $this->ppForumBoard()->find($id);
+        if (!$board) {
+            return $this->redirect()->toRoute('developers/forum');
+        }
 
         return array(
-            'board' => $this->ppForumBoard()->find($id),
+            'board' => $board,
         );
     }
 }

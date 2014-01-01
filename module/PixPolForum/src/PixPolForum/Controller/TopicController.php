@@ -57,6 +57,9 @@ class TopicController extends AbstractActionController
     {
         $id = $this->params('topic');
         $topic = $this->ppForumTopic()->find($id);
+        if (!$topic) {
+            return $this->redirect()->toRoute('developers/forum');
+        }
 
         return array(
             'topic' => $topic,
@@ -71,6 +74,9 @@ class TopicController extends AbstractActionController
 
         $id = $this->params('topic');
         $topic = $this->ppForumTopic()->find($id);
+        if (!$topic) {
+            return $this->redirect()->toRoute('developers/forum');
+        }
 
         $form = $this->getServiceLocator()->get('PixPolForum\Form\ReplyForm');
 

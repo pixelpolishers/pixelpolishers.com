@@ -15,9 +15,13 @@ class CategoryController extends AbstractActionController
     public function indexAction()
     {
         $id = $this->params('category');
-        
+        $category = $this->ppForumCategory()->find($id);
+        if (!$category) {
+            return $this->redirect()->toRoute('developers/forum');
+        }
+
         return array(
-            'category' => $this->ppForumCategory()->find($id),
+            'category' => $category,
         );
     }
 }

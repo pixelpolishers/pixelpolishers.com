@@ -1,0 +1,42 @@
+<nav class="topic-nav clearfix <?php echo $this->class; ?>">
+    <ul>
+        <li>
+            <a href="<?php
+            echo $this->url('developers/forum/topic/reply', array(
+                'topic' => $this->topic->getId(),
+            ));
+            ?>">Reply</a>
+        </li>
+        <li>
+            <a href="<?php
+            echo $this->url('developers/forum/topic/edit', array(
+                'topic' => $this->topic->getId(),
+            ));
+            ?>">Edit</a>
+        </li>
+        <li>
+            <a href="<?php
+            echo $this->url('developers/forum/topic/delete', array(
+                'topic' => $this->topic->getId(),
+            ));
+            ?>">Delete</a>
+        </li>
+        <?php if ($this->topic->isLocked()) { ?>
+        <li>
+            <a href="<?php
+            echo $this->url('developers/forum/topic/unlock', array(
+                'topic' => $this->topic->getId(),
+            ));
+            ?>">Unlock</a>
+        </li>
+        <?php } else { ?>
+        <li>
+            <a href="<?php
+            echo $this->url('developers/forum/topic/lock', array(
+                'topic' => $this->topic->getId(),
+            ));
+            ?>">Lock</a>
+        </li>
+        <?php } ?>
+    </ul>
+</nav>

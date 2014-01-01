@@ -1,10 +1,13 @@
+<?php $this->headLink()->appendStylesheet('/css/forum.css'); ?>
+
 <h1>Forum</h1>
 
-<h2>
-    <a href="<?php echo $this->url('developers/forum/board', array(
-        'board' => $this->board->getId(),
-    )); ?>"><?php echo $this->board->getName(); ?></a>
-</h2>
+<?php echo $this->partial('partials/breadcrumb', array(
+    'category' => $this->board->getCategory(),
+    'board' => $this->board
+)); ?>
+
+<h2><?php echo $this->board->getName(); ?></h2>
 
 <?php if (!count($this->board->getTopics())) { ?>
 <p>No topics yet. Be the first to <a href="<?php echo $this->url('developers/forum/topic/create', array(

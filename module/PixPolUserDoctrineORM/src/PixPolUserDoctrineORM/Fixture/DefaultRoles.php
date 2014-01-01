@@ -9,11 +9,17 @@
 namespace PixPolUserDoctrineORM\Fixture;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use PixPolUser\Entity\Role;
 
-class DefaultRoles implements FixtureInterface
+class DefaultRoles extends AbstractFixture implements OrderedFixtureInterface
 {
+    public function getOrder()
+    {
+        return 500;
+    }
+
     public function load(ObjectManager $manager)
     {
 //        $this->createRole($manager, 'owner', array(

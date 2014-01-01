@@ -1,23 +1,48 @@
-<h1><?php echo $this->topic->getBoard()->getName(); ?></h1>
+<?php $this->headLink()->appendStylesheet('/css/forum.css'); ?>
 
-<h2><?php echo $this->topic->getTitle(); ?></h2>
+<h1>Forum</h1>
 
-<p>
-    <a href="<?php echo $this->url('developers/forum/topic/reply', array(
-        'topic' => $this->topic->getId(),
-    )); ?>">Reply</a>
-</p>
+<?php
+echo $this->partial('partials/breadcrumb', array(
+    'category' => $this->topic->getBoard()->getCategory(),
+    'board' => $this->topic->getBoard(),
+    'topic' => $this->topic,
+));
+?>
 
-<ul>
-<?php foreach ($this->topic->getPosts() as $post) { ?>
-    <li>
-        <?php echo $post->getContent(); ?>
-    </li>
-<?php } ?>
+<h2 id="topic-title"><?php echo $this->topic->getTitle(); ?></h2>
+
+    <?php echo $this->partial('partials/topic-nav'); ?>
+
+<ul id="topic-posts">
+    <?php foreach ($this->topic->getPosts() as $k => $post) { ?>
+        <li class="clearfix <?php echo $k % 2 == 0 ? '' : 'odd'; ?>" id="post<?php echo $k + 1; ?>">
+            <div class="meta">
+                <a href="<?php echo $this->url('account/view-profile', array(
+                    'user' => $post->getCreatedBy()->getId(),
+                )); ?>"><?php echo $this->gravatar($post->getCreatedBy()->getEmail()); ?></a>
+                
+                <a href="<?php echo $this->url('account/view-profile', array(
+                    'user' => $post->getCreatedBy()->getId(),
+                )); ?>"><?php echo $post->getCreatedBy()->getDisplayName(); ?></a>
+            </div>
+            <div class="content">
+                <div class="content-body">
+                    <?php echo $this->ppForumContent($post->getContent()); ?>
+                </div>
+                <div class="content-meta">
+                    <?php echo $this->ppForumDate($post->getCreatedOn()); ?>
+                    |
+                    <a href="#post<?php echo $k + 1; ?>">#<?php echo $k + 1; ?></a>
+                </div>
+            </div>
+        </li>
+    <?php } ?>
 </ul>
 
-<p>
-    <a href="<?php echo $this->url('developers/forum/topic/reply', array(
-        'topic' => $this->topic->getId(),
-    )); ?>">Reply</a>
-</p>
+<?php
+echo $this->partial('partials/topic-nav', array(
+    'topic' => $this->topic,
+    'class' => 'footer',
+));
+?>

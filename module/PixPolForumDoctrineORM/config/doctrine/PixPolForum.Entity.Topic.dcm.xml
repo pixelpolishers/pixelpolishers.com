@@ -6,17 +6,15 @@
         <id name="id" type="bigint" column="id">
             <generator strategy="IDENTITY"/>
         </id>
+        <field name="locked" type="boolean" column="locked" />
+        <field name="sticky" type="boolean" column="sticky" />
         <field name="title" type="string" column="title" />
 
         <many-to-one field="board" target-entity="PixPolForum\Entity\Board">
             <join-column name="board_id" referenced-column-name="id" on-delete="CASCADE" />
         </many-to-one>
 
-        <one-to-many target-entity="PixPolForum\Entity\Post" mapped-by="topic" field="posts">
-            <order-by>
-                <order-by-field name="createdOn" direction="ASC" />
-            </order-by>
-        </one-to-many>
+        <one-to-many target-entity="PixPolForum\Entity\Post" mapped-by="topic" field="posts" />
 
         <many-to-one field="createdBy" target-entity="PixPolUser\Entity\User">
             <join-column name="createdBy" referenced-column-name="id" on-delete="CASCADE" />

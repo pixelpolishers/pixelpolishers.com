@@ -80,4 +80,10 @@ return array(
             },
         ),
     ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'ppForumContent' => 'PixPolForum\View\ContentHelper',
+            'ppForumDate' => 'PixPolForum\View\DateHelper',
+        ),
+    ),
 );

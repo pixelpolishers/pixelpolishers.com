@@ -1,17 +1,12 @@
+<?php $this->headLink()->appendStylesheet('/css/forum.css'); ?>
+
 <h1>Forum</h1>
 
-<nav class="breadcrumb">
-    <ul>
-        <li><a href="<?php echo $this->url('developers/forum'); ?>">Forums</a></li>
-        <li><a href="<?php echo $this->url('developers/forum/category', array(
-            'category' => $this->category->getId(),
-        )); ?>"><?php echo $this->category->getName(); ?></a></li>
-    </ul>
-</nav>
+<?php echo $this->partial('partials/breadcrumb', array(
+    'category' => $this->category,
+)); ?>
 
-<h2><a href="<?php echo $this->url('developers/forum/category', array(
-    'category' => $this->category->getId(),
-)); ?>"><?php echo $this->category->getName(); ?></a></h2>
+<h2><?php echo $this->category->getName(); ?></h2>
 
 <?php if (count($this->category->getBoards())) { ?>
     <ul>

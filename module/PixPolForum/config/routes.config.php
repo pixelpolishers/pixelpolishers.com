@@ -71,6 +71,46 @@ return array(
                                 ),
                             ),
                         ),
+                        'delete' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/delete/:topic',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\TopicController',
+                                    'action' => 'delete',
+                                ),
+                            ),
+                        ),
+                        'edit' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/edit/:topic',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\TopicController',
+                                    'action' => 'edit',
+                                ),
+                            ),
+                        ),
+                        'lock' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/lock/:topic',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\TopicController',
+                                    'action' => 'lock',
+                                ),
+                            ),
+                        ),
+                        'unlock' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/unlock/:topic',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\TopicController',
+                                    'action' => 'unlock',
+                                ),
+                            ),
+                        ),
                         'reply' => array(
                             'type' => 'Zend\Mvc\Router\Http\Segment',
                             'options' => array(
