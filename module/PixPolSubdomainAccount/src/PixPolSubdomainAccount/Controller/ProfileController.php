@@ -41,4 +41,19 @@ class ProfileController extends AbstractActionController
         );
     }
 
+    public function viewAction()
+    {
+        $id = $this->params('user');
+
+        $service = $this->getServiceLocator()->get('PixPolUserService');
+        $user = $service->find($id);
+
+        if (!$user) {
+            return $this->notFoundAction();
+        }
+
+        return array(
+            'user' => $this->ppUserAuth()->getIdentity(),
+        );
+    }
 }
