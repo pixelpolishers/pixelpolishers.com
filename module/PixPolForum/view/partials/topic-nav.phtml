@@ -1,42 +1,52 @@
+<?php
+
+$items = array();
+
+if ($this->ppForumCanReply($this->topic)) {
+    $url = $this->url('developers/forum/topic/reply', array(
+        'topic' => $this->topic->getId(),
+    ));
+
+    $items[$url] = 'Reply';
+}
+
+if ($this->ppForumCanReply($this->topic)) {
+    $url = $this->url('developers/forum/topic/edit', array(
+        'topic' => $this->topic->getId(),
+    ));
+
+    $items[$url] = 'Edit';
+}
+
+if ($this->ppForumCanReply($this->topic)) {
+    $url = $this->url('developers/forum/topic/delete', array(
+        'topic' => $this->topic->getId(),
+    ));
+
+    $items[$url] = 'Delete';
+}
+
+if ($this->ppForumCanUnlock($this->topic) && $this->topic->isLocked()) {
+    $url = $this->url('developers/forum/topic/unlock', array(
+        'topic' => $this->topic->getId(),
+    ));
+
+    $items[$url] = 'Delete';
+} else if ($this->ppForumCanLock($this->topic) && !$this->topic->isLocked()) {
+    $url = $this->url('developers/forum/topic/lock', array(
+        'topic' => $this->topic->getId(),
+    ));
+
+    $items[$url] = 'Delete';
+}
+
+?>
 <nav class="topic-nav clearfix <?php echo $this->class; ?>">
+    <?php if (count($items) != 0) { ?>
     <ul>
-        <li>
-            <a href="<?php
-            echo $this->url('developers/forum/topic/reply', array(
-                'topic' => $this->topic->getId(),
-            ));
-            ?>">Reply</a>
-        </li>
-        <li>
-            <a href="<?php
-            echo $this->url('developers/forum/topic/edit', array(
-                'topic' => $this->topic->getId(),
-            ));
-            ?>">Edit</a>
-        </li>
-        <li>
-            <a href="<?php
-            echo $this->url('developers/forum/topic/delete', array(
-                'topic' => $this->topic->getId(),
-            ));
-            ?>">Delete</a>
-        </li>
-        <?php if ($this->topic->isLocked()) { ?>
-        <li>
-            <a href="<?php
-            echo $this->url('developers/forum/topic/unlock', array(
-                'topic' => $this->topic->getId(),
-            ));
-            ?>">Unlock</a>
-        </li>
-        <?php } else { ?>
-        <li>
-            <a href="<?php
-            echo $this->url('developers/forum/topic/lock', array(
-                'topic' => $this->topic->getId(),
-            ));
-            ?>">Lock</a>
-        </li>
+        <?php foreach ($items as $url => $label) { ?>
+        <li><a href="<?php echo $url; ?>"><?php echo $label; ?></a></li>
         <?php } ?>
     </ul>
+    <?php } ?>
 </nav>

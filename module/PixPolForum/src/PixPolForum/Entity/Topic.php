@@ -80,6 +80,13 @@ class Topic
         $this->title = $title;
     }
 
+    public function getPost($index)
+    {
+        $posts = $this->getPosts();
+
+        return $posts[$index];
+    }
+
     public function getPosts()
     {
         return $this->posts;

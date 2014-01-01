@@ -81,6 +81,28 @@ return array(
         ),
     ),
     'view_helpers' => array(
+        'factories' => array(
+            'ppForumCanEdit' => function($sm) {
+                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                return new View\CanEdit($service);
+            },
+            'ppForumCanDelete' => function($sm) {
+                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                return new View\CanDelete($service);
+            },
+            'ppForumCanLock' => function($sm) {
+                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                return new View\CanLock($service);
+            },
+            'ppForumCanReply' => function($sm) {
+                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                return new View\CanReply($service);
+            },
+            'ppForumCanUnlock' => function($sm) {
+                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                return new View\CanUnlock($service);
+            },
+        ),
         'invokables' => array(
             'ppForumContent' => 'PixPolForum\View\ContentHelper',
             'ppForumDate' => 'PixPolForum\View\DateHelper',

@@ -6,7 +6,7 @@
  * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
  */
 
-namespace PixPolUserDoctrineORM\Fixture;
+namespace PixPolLicenseDoctrineORM\Fixture;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -17,12 +17,12 @@ class DefaultRoles extends AbstractFixture implements OrderedFixtureInterface
 {
     public function getOrder()
     {
-        return 500;
+        return 600;
     }
 
     public function load(ObjectManager $manager)
     {
-        $this->createRole($manager, 'Owner');
+        $this->createRole($manager, 'License Manager');
 
         $manager->flush();
     }
