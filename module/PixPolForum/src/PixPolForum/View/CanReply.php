@@ -26,7 +26,7 @@ class CanReply extends AbstractHelper
         if ($topic->isLocked()) {
             return false;
         }
-        
+
         return $this->accessService->canCurrentUser('ForumPostReply');
     }
 }

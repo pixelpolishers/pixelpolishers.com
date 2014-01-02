@@ -2,26 +2,30 @@
 
 <h1>Forum</h1>
 
-<?php
-echo $this->partial('partials/breadcrumb', array(
+<?php echo $this->partial('partials/breadcrumb', array(
     'category' => $this->topic->getBoard()->getCategory(),
     'board' => $this->topic->getBoard(),
     'topic' => $this->topic,
-));
-?>
+)); ?>
 
 <h2 id="topic-title"><?php echo $this->topic->getTitle(); ?></h2>
 
-    <?php echo $this->partial('partials/topic-nav'); ?>
+<?php echo $this->partial('partials/topic-nav'); ?>
+
+
+<?php echo $this->paginationControl($this->posts, 'Sliding', 'partials/topic-pages', array(
+    'route' => 'developers/forum/topic/read-page',
+    'topic' => $this->topic,
+)); ?>
 
 <ul id="topic-posts">
-    <?php foreach ($this->topic->getPosts() as $k => $post) { ?>
-        <li class="clearfix <?php echo $k % 2 == 0 ? '' : 'odd'; ?>" id="post<?php echo $k + 1; ?>">
+    <?php foreach ($this->posts as $k => $post) { ?>
+        <li class="clearfix <?php echo $k % 2 == 0 ? '' : 'odd'; ?>" id="post<?php echo $post->getId(); ?>">
             <div class="meta">
                 <a href="<?php echo $this->url('account/view-profile', array(
                     'user' => $post->getCreatedBy()->getId(),
                 )); ?>"><?php echo $this->gravatar($post->getCreatedBy()->getEmail()); ?></a>
-                
+
                 <a href="<?php echo $this->url('account/view-profile', array(
                     'user' => $post->getCreatedBy()->getId(),
                 )); ?>"><?php echo $post->getCreatedBy()->getDisplayName(); ?></a>
@@ -33,12 +37,17 @@ echo $this->partial('partials/breadcrumb', array(
                 <div class="content-meta">
                     <?php echo $this->ppForumDate($post->getCreatedOn()); ?>
                     |
-                    <a href="#post<?php echo $k + 1; ?>">#<?php echo $k + 1; ?></a>
+                    <a href="#post<?php echo $post->getId(); ?>">#<?php echo $post->getId(); ?></a>
                 </div>
             </div>
         </li>
     <?php } ?>
 </ul>
+
+<?php echo $this->paginationControl($this->posts, 'Sliding', 'partials/topic-pages', array(
+    'route' => 'developers/forum/topic/read-page',
+    'topic' => $this->topic,
+)); ?>
 
 <?php
 echo $this->partial('partials/topic-nav', array(

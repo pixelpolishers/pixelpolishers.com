@@ -86,3 +86,31 @@ body .forum-breadcrumb a {
     color: #666;
     padding: 5px 10px;
 }
+
+.topic-paginator {
+    font-size: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.topic-paginator ol {
+    display: inline-block;
+}
+
+.topic-paginator .item {
+    background-color: #F9F9F9;
+    border: 1px solid #EEE;
+    display: inline-block;
+    margin: 0px;
+}
+
+.topic-paginator .item a,
+.topic-paginator .item span {
+    color: #666;
+    display: block;
+    padding: 0px 7px;
+}
+
+.topic-paginator .item.current {
+    border: 1px solid #CCC;
+}

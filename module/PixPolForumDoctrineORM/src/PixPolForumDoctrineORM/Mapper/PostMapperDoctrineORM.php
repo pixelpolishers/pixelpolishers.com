@@ -8,9 +8,13 @@
 
 namespace PixPolForumDoctrineORM\Mapper;
 
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use PixPolDoctrineORM\Mapper\AbstractMapper;
 use PixPolForum\Entity\Post;
+use PixPolForum\Entity\Topic;
 use PixPolForum\Mapper\PostMapperInterface;
+use Zend\Paginator\Paginator;
 
 class PostMapperDoctrineORM extends AbstractMapper implements PostMapperInterface
 {
@@ -30,4 +34,15 @@ class PostMapperDoctrineORM extends AbstractMapper implements PostMapperInterfac
         $this->em->remove($post);
         $this->em->flush();
     }
+
+    public function getPostPaginator(Topic $topic)
+    {
+        $query = $this->em->createQuery('SELECT p FROM PixPolForum\Entity\Post p WHERE p.topic = ?1');
+        $query->setParameter(1, $topic);
+
+        $adapter = new DoctrinePaginator(new ORMPaginator($query));
+
+        return new Paginator($adapter);
+    }
+
 }

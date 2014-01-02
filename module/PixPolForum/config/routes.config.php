@@ -71,6 +71,16 @@ return array(
                                 ),
                             ),
                         ),
+                        'read-page' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/:topic/:page',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\TopicController',
+                                    'action' => 'read',
+                                ),
+                            ),
+                        ),
                         'delete' => array(
                             'type' => 'Zend\Mvc\Router\Http\Segment',
                             'options' => array(

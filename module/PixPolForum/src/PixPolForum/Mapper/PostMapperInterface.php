@@ -8,6 +8,9 @@
 
 namespace PixPolForum\Mapper;
 
+use PixPolForum\Entity\Topic;
+
 interface PostMapperInterface
 {
+    public function getPostPaginator(Topic $topic);
 }
