@@ -31,6 +31,16 @@ return array(
                         ),
                     ),
                 ),
+                'board' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Segment',
+                    'options' => array(
+                        'route' => '/board/:board[/:page]',
+                        'defaults' => array(
+                            'controller' => 'PixPolForum\Controller\BoardController',
+                            'action' => 'index',
+                        ),
+                    ),
+                ),
                 'category' => array(
                     'type' => 'Zend\Mvc\Router\Http\Segment',
                     'options' => array(
@@ -64,17 +74,7 @@ return array(
                         'read' => array(
                             'type' => 'Zend\Mvc\Router\Http\Segment',
                             'options' => array(
-                                'route' => '/:topic',
-                                'defaults' => array(
-                                    'controller' => 'PixPolForum\Controller\TopicController',
-                                    'action' => 'read',
-                                ),
-                            ),
-                        ),
-                        'read-page' => array(
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array(
-                                'route' => '/:topic/:page',
+                                'route' => '/:topic[/:page]',
                                 'defaults' => array(
                                     'controller' => 'PixPolForum\Controller\TopicController',
                                     'action' => 'read',

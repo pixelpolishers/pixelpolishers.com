@@ -8,6 +8,9 @@
 
 namespace PixPolForum\Mapper;
 
+use PixPolForum\Entity\Board;
+
 interface TopicMapperInterface
 {
+    public function getTopicPaginator(Board $board);
 }

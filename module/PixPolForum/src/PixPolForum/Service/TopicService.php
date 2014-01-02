@@ -8,8 +8,13 @@
 
 namespace PixPolForum\Service;
 
+use PixPolForum\Entity\Board;
 use PixPolDoctrineORM\Service\AbstractService;
 
 class TopicService extends AbstractService
 {
+    public function getTopicPaginator(Board $board)
+    {
+        return $this->mapper->getTopicPaginator($board);
+    }
 }

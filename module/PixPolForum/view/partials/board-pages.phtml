@@ -2,7 +2,7 @@
     <div class="forum-paginator clearfix">
         <?php if ($this->previous) { ?>
         <div class="item"><a href="<?php echo $this->url($this->route, array(
-            'topic' => $this->topic->getId(),
+            'board' => $this->board->getId(),
             'page' => $this->previous,
         )); ?>">&lt;</a></div>
         <?php } ?>
@@ -13,7 +13,7 @@
                     <li class="item current"><span><?php echo $page; ?></span></li>
                 <?php } else { ?>
                     <li class="item"><a href="<?php echo $this->url($this->route, array(
-                        'topic' => $this->topic->getId(),
+                        'board' => $this->board->getId(),
                         'page' => $page,
                     )); ?>"><?php echo $page; ?></a></li>
                 <?php } ?>
@@ -22,7 +22,7 @@
 
         <?php if ($this->next) { ?>
         <div class="item"><a href="<?php echo $this->url($this->route, array(
-            'topic' => $this->topic->getId(),
+            'board' => $this->board->getId(),
             'page' => $this->next,
         )); ?>">&gt;</a></div>
         <?php } ?>

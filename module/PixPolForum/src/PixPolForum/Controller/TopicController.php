@@ -61,7 +61,6 @@ class TopicController extends AbstractActionController
             return $this->redirect()->toRoute('developers/forum');
         }
 
-        // Create the paginator itself
         $paginator = $this->ppForumPost()->getPostPaginator($topic);
         $paginator->setCurrentPageNumber($this->params('page', 1));
         $paginator->setItemCountPerPage(10);

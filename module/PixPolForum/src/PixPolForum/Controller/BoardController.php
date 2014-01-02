@@ -20,8 +20,13 @@ class BoardController extends AbstractActionController
             return $this->redirect()->toRoute('developers/forum');
         }
 
+        $paginator = $this->ppForumTopic()->getTopicPaginator($board);
+        $paginator->setCurrentPageNumber($this->params('page', 1));
+        $paginator->setItemCountPerPage(10);
+
         return array(
             'board' => $board,
+            'topics' => $paginator,
         );
     }
 }

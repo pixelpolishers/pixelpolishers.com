@@ -19,8 +19,14 @@
         'board' => $this->board->getId(),
     )); ?>">start a topic</a>
 </p>
+
+<?php echo $this->paginationControl($this->topics, 'Sliding', 'partials/board-pages', array(
+    'route' => 'developers/forum/board',
+    'board' => $this->board,
+)); ?>
+
 <ul>
-    <?php foreach ($this->board->getTopics() as $topic) { ?>
+    <?php foreach ($this->topics as $topic) { ?>
     <li>
         <a href="<?php echo $this->url('developers/forum/topic/read', array(
             'topic' => $topic->getId(),
@@ -28,6 +34,11 @@
     </li>
     <?php } ?>
 </ul>
+
+<?php echo $this->paginationControl($this->topics, 'Sliding', 'partials/board-pages', array(
+    'route' => 'developers/forum/board',
+    'board' => $this->board,
+)); ?>
 
 <p>
     <a href="<?php echo $this->url('developers/forum/topic/create', array(
