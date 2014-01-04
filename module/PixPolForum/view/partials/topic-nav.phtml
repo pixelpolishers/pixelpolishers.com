@@ -10,7 +10,7 @@ if ($this->ppForumCanReply($this->topic)) {
     $items[$url] = 'Reply';
 }
 
-if ($this->ppForumCanReply($this->topic)) {
+if ($this->ppForumCanEdit($this->topic)) {
     $url = $this->url('developers/forum/topic/edit', array(
         'topic' => $this->topic->getId(),
     ));
@@ -18,7 +18,7 @@ if ($this->ppForumCanReply($this->topic)) {
     $items[$url] = 'Edit';
 }
 
-if ($this->ppForumCanReply($this->topic)) {
+if ($this->ppForumCanDelete($this->topic)) {
     $url = $this->url('developers/forum/topic/delete', array(
         'topic' => $this->topic->getId(),
     ));

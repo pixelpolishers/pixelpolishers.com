@@ -32,6 +32,9 @@ class TopicController extends AbstractActionController
                 $topic->setBoard($board);
                 $topic->setCreatedBy($this->ppUserAuth()->getIdentity());
                 $topic->setCreatedOn(new \DateTime());
+                $topic->setLocked(false);
+                $topic->setSticky(false);
+                $topic->setPostCount(1);
                 $this->ppForumTopic()->persist($topic);
 
                 $post = new Post();
@@ -40,6 +43,12 @@ class TopicController extends AbstractActionController
                 $post->setCreatedOn($topic->getCreatedOn());
                 $post->setContent($form->get('content')->getValue());
                 $this->ppForumPost()->persist($post);
+
+                $topic->setLastPost($post);
+                $this->ppForumTopic()->persist($topic);
+
+                $board->setLastTopic($topic);
+                $this->ppForumBoard()->persist($board);
 
                 return $this->redirect()->toRoute('developers/forum/topic/read', array(
                     'topic' => $topic->getId(),
@@ -94,6 +103,12 @@ class TopicController extends AbstractActionController
                 $post->setCreatedBy($this->ppUserAuth()->getIdentity());
                 $post->setCreatedOn(new \DateTime());
                 $this->ppForumPost()->persist($post);
+
+                $topic->setLastPost($post);
+                $this->ppForumTopic()->persist($topic);
+
+                $topic->getBoard()->setLastTopic($topic);
+                $this->ppForumBoard()->persist($topic->getBoard());
 
                 return $this->redirect()->toRoute('developers/forum/topic/read', array(
                     'topic' => $topic->getId(),

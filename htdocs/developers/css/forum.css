@@ -2,15 +2,27 @@
     float: left;
 }
 
-#topic-overview tr.odd {
+#forum-overview .itemCount {
+    font-size: 11px;
+    text-align: center;
+    width: 75px;
+}
+
+#forum-overview .lastPost {
+    font-size: 11px;
+    text-align: center;
+    width: 150px;
+}
+
+#forum-overview tr.odd {
     background-color: #F9F9F9;
 }
 
-#topic-overview th {
+#forum-overview th {
     padding: 3px;
 }
 
-#topic-overview td {
+#forum-overview td {
     padding: 3px;
 }
 

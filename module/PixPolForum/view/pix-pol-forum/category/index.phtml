@@ -8,15 +8,34 @@
 
 <h2><?php echo $this->category->getName(); ?></h2>
 
-<?php if (count($this->category->getBoards())) { ?>
-    <ul>
-    <?php foreach ($this->category->getBoards() as $board) { ?>
-        <li>
-            <h3><a href="<?php echo $this->url('developers/forum/board', array(
-                'board' => $board->getId(),
-            )); ?>"><?php echo $board->getName(); ?></a></h3>
-            <p><?php echo $board->getDescription(); ?></p>
-        </li>
-    <?php } ?>
-    </ul>
-<?php } ?>
+<table id="forum-overview">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Last post</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->category->getBoards() as $board) { ?>
+        <tr>
+            <td>
+                <strong><a href="<?php echo $this->url('developers/forum/board', array(
+                    'board' => $board->getId(),
+                )); ?>"><?php echo $board->getName(); ?></a></strong><br />
+                <?php echo $board->getDescription(); ?>
+            </td>
+            <td class="lastPost"><?php
+
+            $topic = $board->getLastTopic();
+            if ($topic) {
+                $post = $topic->getLastPost();
+                echo $this->ppForumDate($post->getCreatedOn());
+            } else {
+                echo '<em>None yet</em>';
+            }
+
+            ?></td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>

@@ -61,16 +61,6 @@ return array(
                         ),
                     ),
                     'child_routes' => array(
-                        'create' => array(
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array(
-                                'route' => '/create/:board',
-                                'defaults' => array(
-                                    'controller' => 'PixPolForum\Controller\TopicController',
-                                    'action' => 'create',
-                                ),
-                            ),
-                        ),
                         'read' => array(
                             'type' => 'Zend\Mvc\Router\Http\Segment',
                             'options' => array(
@@ -78,6 +68,16 @@ return array(
                                 'defaults' => array(
                                     'controller' => 'PixPolForum\Controller\TopicController',
                                     'action' => 'read',
+                                ),
+                            ),
+                        ),
+                        'create' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/create/:board',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\TopicController',
+                                    'action' => 'create',
                                 ),
                             ),
                         ),

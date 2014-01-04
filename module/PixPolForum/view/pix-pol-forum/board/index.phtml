@@ -7,13 +7,16 @@
     'board' => $this->board
 )); ?>
 
-<h2 id="forum-title"><?php echo $this->board->getName(); ?></h2>
-
 <?php if (!count($this->board->getTopics())) { ?>
-<p>No topics yet. Be the first to <a href="<?php echo $this->url('developers/forum/topic/create', array(
-    'board' => $this->board->getId(),
-)); ?>">start a topic</a>!</p>
+    <div class="clearfix">
+        <h2 id="forum-title"><?php echo $this->board->getName(); ?></h2>
+    </div>
+
+    <p>No topics yet. Be the first to <a href="<?php echo $this->url('developers/forum/topic/create', array(
+        'board' => $this->board->getId(),
+    )); ?>">start a topic</a>!</p>
 <?php } else { ?>
+    <h2 id="forum-title"><?php echo $this->board->getName(); ?></h2>
 
 <?php echo $this->partial('partials/board-nav', array(
     'board' => $this->board,
@@ -24,7 +27,7 @@
     'board' => $this->board,
 )); ?>
 
-<table id="topic-overview">
+<table id="forum-overview">
     <thead>
         <tr>
             <th>Title</th>
@@ -40,8 +43,8 @@
                     'topic' => $topic->getId(),
                 )); ?>"><?php echo $topic->getTitle(); ?></a>
             </td>
-            <td style="text-align: center;"><?php echo $topic->getPostCount() - 1; ?></td>
-            <td style="text-align: center;">
+            <td class="itemCount"><?php echo $topic->getPostCount() - 1; ?></td>
+            <td class="lastPost">
                 <?php echo $this->ppForumDate($topic->getLastPost()->getCreatedOn()); ?>
             </td>
         </tr>
