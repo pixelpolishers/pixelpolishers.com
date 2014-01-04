@@ -6,9 +6,16 @@
         <id name="id" type="bigint" column="id">
             <generator strategy="IDENTITY"/>
         </id>
+
         <field name="locked" type="boolean" column="locked" />
         <field name="sticky" type="boolean" column="sticky" />
         <field name="title" type="string" column="title" />
+
+        <field name="postCount" type="bigint" column="postCount" />
+
+        <many-to-one field="lastPost" target-entity="PixPolForum\Entity\Post">
+            <join-column name="lastPost" referenced-column-name="id" on-delete="NO ACTION" nullable="true" />
+        </many-to-one>
 
         <many-to-one field="board" target-entity="PixPolForum\Entity\Board">
             <join-column name="board_id" referenced-column-name="id" on-delete="CASCADE" />

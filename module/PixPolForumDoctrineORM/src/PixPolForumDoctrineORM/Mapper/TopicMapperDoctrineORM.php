@@ -37,7 +37,12 @@ class TopicMapperDoctrineORM extends AbstractMapper implements TopicMapperInterf
 
     public function getTopicPaginator(Board $board)
     {
-        $query = $this->em->createQuery('SELECT t FROM PixPolForum\Entity\Topic t WHERE t.board = ?1');
+        $query = $this->em->createQuery('
+            SELECT t
+            FROM PixPolForum\Entity\Topic t
+            LEFT JOIN t.lastPost p
+            WHERE t.board = ?1
+            ORDER BY t.sticky DESC, p.createdOn DESC');
         $query->setParameter(1, $board);
 
         $adapter = new DoctrinePaginator(new ORMPaginator($query));

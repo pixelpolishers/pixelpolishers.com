@@ -7,42 +7,56 @@
     'board' => $this->board
 )); ?>
 
-<h2><?php echo $this->board->getName(); ?></h2>
+<h2 id="forum-title"><?php echo $this->board->getName(); ?></h2>
 
 <?php if (!count($this->board->getTopics())) { ?>
 <p>No topics yet. Be the first to <a href="<?php echo $this->url('developers/forum/topic/create', array(
     'board' => $this->board->getId(),
 )); ?>">start a topic</a>!</p>
 <?php } else { ?>
-<p>
-    <a href="<?php echo $this->url('developers/forum/topic/create', array(
-        'board' => $this->board->getId(),
-    )); ?>">start a topic</a>
-</p>
+
+<?php echo $this->partial('partials/board-nav', array(
+    'board' => $this->board,
+)); ?>
 
 <?php echo $this->paginationControl($this->topics, 'Sliding', 'partials/board-pages', array(
     'route' => 'developers/forum/board',
     'board' => $this->board,
 )); ?>
 
-<ul>
-    <?php foreach ($this->topics as $topic) { ?>
-    <li>
-        <a href="<?php echo $this->url('developers/forum/topic/read', array(
-            'topic' => $topic->getId(),
-        )); ?>"><?php echo $topic->getTitle(); ?></a>
-    </li>
+<table id="topic-overview">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Replies</th>
+            <th>Last post</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->topics as $k => $topic) { ?>
+        <tr class="<?php echo $k % 2 == 0 ? 'even' : 'odd'; ?>">
+            <td>
+                <a href="<?php echo $this->url('developers/forum/topic/read', array(
+                    'topic' => $topic->getId(),
+                )); ?>"><?php echo $topic->getTitle(); ?></a>
+            </td>
+            <td style="text-align: center;"><?php echo $topic->getPostCount() - 1; ?></td>
+            <td style="text-align: center;">
+                <?php echo $this->ppForumDate($topic->getLastPost()->getCreatedOn()); ?>
+            </td>
+        </tr>
     <?php } ?>
-</ul>
+    </tbody>
+</table>
 
 <?php echo $this->paginationControl($this->topics, 'Sliding', 'partials/board-pages', array(
     'route' => 'developers/forum/board',
     'board' => $this->board,
 )); ?>
 
-<p>
-    <a href="<?php echo $this->url('developers/forum/topic/create', array(
-        'board' => $this->board->getId(),
-    )); ?>">start a topic</a>
-</p>
+<?php echo $this->partial('partials/board-nav', array(
+    'board' => $this->board,
+    'class' => 'footer',
+)); ?>
+
 <?php } ?>

@@ -19,7 +19,9 @@ class DateHelper extends AbstractHelper
         $diff = $currentDate->diff($date);
 
         $result = '';
-        if ($diff->y > 0) {
+        if ($diff->invert == 0) {
+            throw new \RuntimeException('We cannot parse future date: ' . $date->format('r'));
+        } else if ($diff->y > 0) {
             $result = $this->format($diff->y, 'year', 'years');
         } else if ($diff->m > 0) {
             $result = $this->format($diff->m, 'month', 'months');

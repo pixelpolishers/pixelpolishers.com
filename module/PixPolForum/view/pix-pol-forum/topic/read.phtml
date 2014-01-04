@@ -8,10 +8,11 @@
     'topic' => $this->topic,
 )); ?>
 
-<h2 id="topic-title"><?php echo $this->topic->getTitle(); ?></h2>
+<h2 id="forum-title"><?php echo $this->topic->getTitle(); ?></h2>
 
-<?php echo $this->partial('partials/topic-nav'); ?>
-
+<?php echo $this->partial('partials/topic-nav', array(
+    'topic' => $this->topic,
+)); ?>
 
 <?php echo $this->paginationControl($this->posts, 'Sliding', 'partials/topic-pages', array(
     'route' => 'developers/forum/topic/read',
@@ -49,9 +50,7 @@
     'topic' => $this->topic,
 )); ?>
 
-<?php
-echo $this->partial('partials/topic-nav', array(
+<?php echo $this->partial('partials/topic-nav', array(
     'topic' => $this->topic,
     'class' => 'footer',
-));
-?>
+)); ?>

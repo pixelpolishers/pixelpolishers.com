@@ -6,9 +6,16 @@
         <id name="id" type="integer" column="id">
             <generator strategy="IDENTITY"/>
         </id>
+
         <field name="position" type="integer" column="position" />
         <field name="name" type="string" column="name" />
         <field name="description" type="text" column="description" />
+
+        <field name="topicCount" type="bigint" column="topicCount" />
+
+        <many-to-one field="lastTopic" target-entity="PixPolForum\Entity\Topic">
+            <join-column name="lastTopic" referenced-column-name="id" on-delete="NO ACTION" nullable="true" />
+        </many-to-one>
 
         <many-to-one field="category" target-entity="PixPolForum\Entity\Category">
             <join-column name="category_id" referenced-column-name="id" on-delete="CASCADE" />

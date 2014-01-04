@@ -82,6 +82,10 @@ return array(
     ),
     'view_helpers' => array(
         'factories' => array(
+            'ppForumCanCreateTopic' => function($sm) {
+                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                return new View\CanCreateTopic($service);
+            },
             'ppForumCanEdit' => function($sm) {
                 $service = $sm->getServiceLocator()->get('PixPolAccessService');
                 return new View\CanEdit($service);

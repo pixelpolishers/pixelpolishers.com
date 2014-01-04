@@ -19,6 +19,8 @@ class Topic
     private $createdOn;
     private $createdBy;
     private $tags;
+    private $postCount;
+    private $lastPost;
 
     public function getId()
     {
@@ -125,5 +127,25 @@ class Topic
     public function setTags($tags)
     {
         $this->tags = $tags;
+    }
+
+    public function getPostCount()
+    {
+        return $this->postCount;
+    }
+
+    public function setPostCount($postCount)
+    {
+        $this->postCount = $postCount;
+    }
+
+    public function getLastPost()
+    {
+        return $this->lastPost;
+    }
+
+    public function setLastPost($lastPost)
+    {
+        $this->lastPost = $lastPost;
     }
 }

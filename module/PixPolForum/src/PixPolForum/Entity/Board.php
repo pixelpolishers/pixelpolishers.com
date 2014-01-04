@@ -16,6 +16,8 @@ class Board
     private $description;
     private $category;
     private $topics;
+    private $topicCount;
+    private $lastTopic;
 
     public function getId()
     {
@@ -75,5 +77,25 @@ class Board
     public function setTopics($topics)
     {
         $this->topics = $topics;
+    }
+
+    public function getTopicCount()
+    {
+        return $this->topicCount;
+    }
+
+    public function setTopicCount($topicCount)
+    {
+        $this->topicCount = $topicCount;
+    }
+
+    public function getLastTopic()
+    {
+        return $this->lastTopic;
+    }
+
+    public function setLastTopic($lastTopic)
+    {
+        $this->lastTopic = $lastTopic;
     }
 }

@@ -22,7 +22,7 @@ class BoardController extends AbstractActionController
 
         $paginator = $this->ppForumTopic()->getTopicPaginator($board);
         $paginator->setCurrentPageNumber($this->params('page', 1));
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage(25);
 
         return array(
             'board' => $board,

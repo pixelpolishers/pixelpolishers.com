@@ -44,14 +44,18 @@ class DefaultForum extends AbstractFixture implements OrderedFixtureInterface
         $board->setPosition(0);
         $board->setName('General');
         $board->setDescription('General questions related to Resolver.');
+        $board->setTopicCount(3);
         $manager->persist($board);
 
         $this->createResolverTopics($manager, $board);
+        $manager->persist($board);
     }
 
     private function createResolverTopics(ObjectManager $manager, Board $board)
     {
-        for ($topicIndex = 1; $topicIndex <= 100; ++$topicIndex) {
+        $postsToCreated = 25;
+
+        for ($topicIndex = 1; $topicIndex <= $board->getTopicCount(); ++$topicIndex) {
             $createdOn = $this->getRandomDate();
 
             $isLocked = rand() % 3 == 0;
@@ -73,9 +77,10 @@ class DefaultForum extends AbstractFixture implements OrderedFixtureInterface
             $topic->setTitle($title);
             $topic->setCreatedOn($createdOn);
             $topic->setCreatedBy($this->getUser($manager, 1));
+            $topic->setPostCount($postsToCreated);
             $manager->persist($topic);
 
-            for ($postIndex = 1; $postIndex <= 25; ++$postIndex) {
+            for ($postIndex = 1; $postIndex <= $postsToCreated; ++$postIndex) {
                 $post = new Post();
                 $post->setTopic($topic);
 
@@ -87,10 +92,15 @@ class DefaultForum extends AbstractFixture implements OrderedFixtureInterface
 
                 $post->setCreatedOn($createdOn);
                 $post->setCreatedBy($this->getUser($manager, 1));
+
                 $manager->persist($post);
+                $topic->setLastPost($post);
 
                 $createdOn = $this->getRandomDate($createdOn);
             }
+
+            $manager->persist($topic);
+            $board->setLastTopic($topic);
         }
     }
 
@@ -106,6 +116,7 @@ class DefaultForum extends AbstractFixture implements OrderedFixtureInterface
         $board->setPosition(0);
         $board->setName('General Discussion');
         $board->setDescription('Chat about basically anything');
+        $board->setTopicCount(0);
         $manager->persist($board);
 
         $board = new Board();
@@ -113,6 +124,7 @@ class DefaultForum extends AbstractFixture implements OrderedFixtureInterface
         $board->setPosition(1);
         $board->setName('Website Feedback & Support');
         $board->setDescription('Get support for any website issues & share your feedback!');
+        $board->setTopicCount(0);
         $manager->persist($board);
     }
 
@@ -131,27 +143,27 @@ class DefaultForum extends AbstractFixture implements OrderedFixtureInterface
         return $manager->find('PixPolUser\Entity\User', $id);
     }
 
-    private function getRandomDate(DateTime $smallerThen = null)
+    private function getRandomDate(DateTime $oldDate = null)
     {
-        if ($smallerThen === null) {
-            $smallerThen = new DateTime();
-            $smallerThen->modify('+ 1 year');
+        if ($oldDate === null) {
+            $oldDate = new DateTime();
+            $oldDate->modify('-2 years');
         }
 
-        $dateTime = clone $smallerThen;
+        $dateTime = clone $oldDate;
 
         $amount = rand(1, 100);
         switch (rand(0, 2)) {
             case 0:
-                $dateTime->modify('- ' . $amount . ' minutes');
+                $dateTime->modify('+ ' . $amount . ' minutes');
                 break;
 
             case 1:
-                $dateTime->modify('- ' . $amount . ' hours');
+                $dateTime->modify('+ ' . $amount . ' hours');
                 break;
 
             case 2:
-                $dateTime->modify('- ' . $amount . ' days');
+                $dateTime->modify('+ ' . $amount . ' days');
                 break;
         }
 

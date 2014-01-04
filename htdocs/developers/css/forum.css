@@ -1,5 +1,17 @@
-#topic-title {
+#forum-title {
     float: left;
+}
+
+#topic-overview tr.odd {
+    background-color: #F9F9F9;
+}
+
+#topic-overview th {
+    padding: 3px;
+}
+
+#topic-overview td {
+    padding: 3px;
 }
 
 #topic-posts li {
@@ -47,18 +59,18 @@
     color: #A9A9A9;
 }
 
-.topic-nav ul {
+.forum-nav ul {
     float: right;
     margin-bottom: 10px;
 }
-.topic-nav.footer { margin-top: 10px; }
+.forum-nav.footer { margin-top: 10px; }
 
-.topic-nav li {
+.forum-nav li {
     float: left;
     margin-left: 5px;
 }
 
-.topic-nav li a {
+.forum-nav li a {
     background-color: #F9F9F9;
     border-bottom: 1px solid #EEE;
     color: #666;
@@ -66,7 +78,7 @@
     padding: 5px 10px;
 }
 
-.topic-nav.footer li a {
+.forum-nav.footer li a {
     border-bottom: none;
     border-top: 1px solid #EEE;
 }
