@@ -45,7 +45,13 @@
             </td>
             <td class="itemCount"><?php echo $topic->getPostCount() - 1; ?></td>
             <td class="lastPost">
-                <?php echo $this->ppForumDate($topic->getLastPost()->getCreatedOn()); ?>
+                <?php echo $this->ppForumDate($topic->getLastPost()->getCreatedOn()); ?><br />
+                by
+                <a href="<?php echo $this->url('account/view-profile', array(
+                    'user' => $topic->getLastPost()->getCreatedBy()->getId(),
+                )); ?>">
+                    <?php echo $topic->getLastPost()->getCreatedBy()->getDisplayName(); ?>
+                </a>
             </td>
         </tr>
     <?php } ?>

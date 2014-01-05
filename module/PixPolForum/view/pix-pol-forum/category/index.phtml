@@ -30,6 +30,10 @@
             if ($topic) {
                 $post = $topic->getLastPost();
                 echo $this->ppForumDate($post->getCreatedOn());
+                echo '<br />';
+                echo 'by <a href="' . $this->url('account/view-profile', array(
+                    'user' => $topic->getLastPost()->getCreatedBy()->getId(),
+                )) . '">' . $topic->getLastPost()->getCreatedBy()->getDisplayName() . '</a>';
             } else {
                 echo '<em>None yet</em>';
             }
