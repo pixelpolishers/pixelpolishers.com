@@ -2,6 +2,22 @@
 
 $items = array();
 
+if ($this->ppForumCanBookmark($this->topic)) {
+    if ($this->ppForumBookmark()->doesUserHaveTopic($this->topic, $this->ppIdentity())) {
+        $url = $this->url('developers/forum/bookmark/delete', array(
+            'topic' => $this->topic->getId(),
+        ));
+
+        $items[$url] = 'Remove Bookmark';
+    } else {
+        $url = $this->url('developers/forum/bookmark/create', array(
+            'topic' => $this->topic->getId(),
+        ));
+
+        $items[$url] = 'Bookmark';
+    }
+}
+
 if ($this->ppForumCanReply($this->topic)) {
     $url = $this->url('developers/forum/topic/reply', array(
         'topic' => $this->topic->getId(),

@@ -21,13 +21,32 @@ return array(
             ),
             'may_terminate' => true,
             'child_routes' => array(
-                'board' => array(
+                'bookmark' => array(
                     'type' => 'Zend\Mvc\Router\Http\Segment',
                     'options' => array(
-                        'route' => '/board/:board',
-                        'defaults' => array(
-                            'controller' => 'PixPolForum\Controller\BoardController',
-                            'action' => 'index',
+                        'route' => '/bookmark',
+                    ),
+                    'may_terminate' => false,
+                    'child_routes' => array(
+                        'create' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/create/:topic',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\BookmarkController',
+                                    'action' => 'create',
+                                ),
+                            ),
+                        ),
+                        'delete' => array(
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
+                            'options' => array(
+                                'route' => '/delete/:topic',
+                                'defaults' => array(
+                                    'controller' => 'PixPolForum\Controller\BookmarkController',
+                                    'action' => 'delete',
+                                ),
+                            ),
                         ),
                     ),
                 ),

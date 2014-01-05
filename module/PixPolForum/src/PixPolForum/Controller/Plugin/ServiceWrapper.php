@@ -8,14 +8,13 @@
 
 namespace PixPolForum\Controller\Plugin;
 
-use PixPolForum\Service\BoardService;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 
-class Board extends AbstractPlugin
+class ServiceWrapper extends AbstractPlugin
 {
     private $service;
 
-    public function __construct(BoardService $service)
+    public function __construct($service)
     {
         $this->service = $service;
     }

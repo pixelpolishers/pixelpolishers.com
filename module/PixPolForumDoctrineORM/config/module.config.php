@@ -32,6 +32,10 @@ return array(
                 $em = $sm->get('Doctrine\ORM\EntityManager');
                 return new Mapper\BoardMapperDoctrineORM($em);
             },
+            'PixPolForum\Mapper\BookmarkMapperInterface' => function($sm) {
+                $em = $sm->get('Doctrine\ORM\EntityManager');
+                return new Mapper\BookmarkMapperDoctrineORM($em);
+            },
             'PixPolForum\Mapper\CategoryMapperInterface' => function($sm) {
                 $em = $sm->get('Doctrine\ORM\EntityManager');
                 return new Mapper\CategoryMapperDoctrineORM($em);
