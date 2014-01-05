@@ -14,6 +14,15 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        if ($this->ppUserAuth()->hasIdentity()) {
+            $this->redirect()->toRoute('account/dashboard');
+        }
+
+        return array();
+    }
+
+    public function dashboardAction()
+    {
         return array(
             'user' => $this->ppUserAuth()->getIdentity(),
         );

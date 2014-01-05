@@ -1,30 +1,5 @@
 <?php echo $this->headTitle('Pixel Polishers Account'); ?>
 
-<?php if ($this->user) { ?>
-
-<?php $this->placeholder('submenu')->exchangeArray(array(
-    'account/index' => 'Dashboard',
-    'account/profile' => 'Profile',
-    'account/password' => 'Password',
-)); ?>
-
-<div class="clearfix">
-<div class="profile-photo">
-    <?php echo $this->gravatar($this->user->getEmail(), array(
-        'img_size' => 128
-    )); ?>
-</div>
-
-<h1><?php echo $this->user->getDisplayName(); ?></h1>
-
-<ul>
-    <li>You are a member since <?php echo $this->user->getRegistrationDate()->format('F jS, Y'); ?></li>
-</ul>
-
-</div>
-
-<?php } else { ?>
-
 <p>
     With a Pixel Polishers account you are able to connect to other developers. It becomes possible
     to visit our forums, read our documentation and use the store.
@@ -41,5 +16,3 @@
         <?php echo $this->ppSignUpForm(); ?>
     </div>
 </div>
-
-<?php } ?>

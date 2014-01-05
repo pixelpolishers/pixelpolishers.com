@@ -1,0 +1,77 @@
+<?php echo $this->headTitle('Pixel Polishers Dashboard'); ?>
+<?php echo $this->headLink()->appendStylesheet('/css/widgets.css'); ?>
+
+<?php $this->placeholder('submenu')->exchangeArray(array(
+    'account/dashboard' => 'Dashboard',
+    'account/profile' => 'Profile',
+    'account/password' => 'Password',
+)); ?>
+
+<div class="clearfix">
+    <div class="profile-photo">
+        <?php
+        echo $this->gravatar($this->user->getEmail(), array(
+            'img_size' => 128
+        ));
+        ?>
+    </div>
+
+    <h1><?php echo $this->user->getDisplayName(); ?></h1>
+
+    <ul>
+        <li>You are a member since <?php echo $this->user->getRegistrationDate()->format('F jS, Y'); ?></li>
+        <li><a href="<?php echo $this->url('account/view-profile', array(
+            'user' => $this->user->getId(),
+        )); ?>">View your public profile</a></li>
+    </ul>
+</div>
+
+<div id="widgets-container" class="clearfix">
+    <div class="widget">
+        <?php
+
+        $feed = Zend\Feed\Reader\Reader::import('http://www.gamedev.net/rss/ccs/11-news/');
+
+        echo '<h2 class="rss">' . $feed->getTitle(). '</h2>';
+        echo '<ul>';
+        foreach ($feed as $item) {
+            echo '<li><a href="' . $item->getLink() . '" target="_blank">' . $item->getTitle() . '</a></li>';
+        }
+        echo '</ul>';
+
+        ?>
+    </div>
+
+    <div class="widget">
+        <?php
+
+        $feed = Zend\Feed\Reader\Reader::import('http://www.gamasutra.com/blogs/rss/');
+
+        echo '<h2 class="rss">' . $feed->getTitle(). '</h2>';
+        echo '<ul>';
+        foreach ($feed as $item) {
+            echo '<li><a href="' . $item->getLink() . '" target="_blank">' . $item->getTitle() . '</a></li>';
+        }
+        echo '</ul>';
+
+        ?>
+    </div>
+
+    <div class="widget">
+        <h2>Last 5 Forum Bookmarks</h2>
+
+        <?php $bookmarks = $this->ppForumBookmark()->getLatest(5, $this->ppIdentity());
+        if ($bookmarks) {
+            echo '<ul>';
+            foreach ($bookmarks as $bookmark) {
+                echo '<li><a href="' . $this->url('developers/forum/topic/read', array(
+                    'topic' => $bookmark->getTopic()->getId(),
+                )) . '">' . $bookmark->getTopic()->getTitle() . '</a></li>';
+            }
+            echo '</ul>';
+        } else {
+            echo 'No bookmarks yet.';
+        }
+        ?>
+    </div>
+</div>

@@ -23,4 +23,11 @@ class BookmarkService extends AbstractService
 
         return $bookmark != null;
     }
+
+    public function getLatest($amount, User $user)
+    {
+        return $this->mapper->findBy(array(
+            'user' => $user->getId(),
+        ), null, $amount);
+    }
 }

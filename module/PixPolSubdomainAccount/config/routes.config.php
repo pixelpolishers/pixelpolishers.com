@@ -33,6 +33,16 @@ return array(
                 ),
             ),
         ),
+        'dashboard' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/dashboard',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainAccount\Controller\IndexController',
+                    'action' => 'dashboard',
+                ),
+            ),
+        ),
         'profile' => array(
             'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(

@@ -27,6 +27,12 @@ article {
     padding: 20px 0px;
 }
 
+article dl,
+article ol,
+article ul {
+    margin-bottom: 10px;
+}
+
 article p {
     line-height: 28px;
     margin-bottom: 12px;
