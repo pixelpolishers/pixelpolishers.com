@@ -14,8 +14,12 @@ use PixPolDoctrineORM\Service\AbstractService;
 
 class BookmarkService extends AbstractService
 {
-    public function doesUserHaveTopic(Topic $topic, User $user)
+    public function doesUserHaveTopic(Topic $topic, User $user = null)
     {
+        if (!$user) {
+            return false;
+        }
+        
         $bookmark = $this->mapper->find(array(
             'topic' => $topic->getId(),
             'user' => $user->getId(),

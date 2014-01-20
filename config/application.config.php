@@ -14,7 +14,7 @@ return array(
         'PixPolLicenseDoctrineORM',
         'PixPolSubdomainAccount',
         'PixPolSubdomainApi',
-        //'PixPolSubdomainCompany',
+        'PixPolSubdomainCompany',
         'PixPolSubdomainDevelopers',
         'PixPolSubdomainWww',
         'PixPolTag',

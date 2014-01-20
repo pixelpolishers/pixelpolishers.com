@@ -33,6 +33,11 @@ class UserService
         return $this->mapper->find($id);
     }
 
+    public function findAll()
+    {
+        return $this->mapper->findAll();
+    }
+
     public function findByEmail($email)
     {
         return $this->mapper->findOneBy(array(
@@ -84,5 +89,10 @@ class UserService
         $this->mapper->persist($user);
 
         return $password;
+    }
+
+    public function getAZUsers($letter)
+    {
+        return $this->mapper->getAZUsers($letter);
     }
 }

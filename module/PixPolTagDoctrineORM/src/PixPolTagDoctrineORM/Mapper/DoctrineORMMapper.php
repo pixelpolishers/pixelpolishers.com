@@ -10,6 +10,7 @@ namespace PixPolTagDoctrineORM\Mapper;
 
 use Doctrine\ORM\EntityManager;
 use PixPolTag\Mapper\MapperInterface;
+use PixPolTag\Entity\Tag;
 
 class DoctrineORMMapper implements MapperInterface
 {
@@ -18,5 +19,25 @@ class DoctrineORMMapper implements MapperInterface
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
+    }
+
+    public function find($id)
+    {
+        return $this->em->find($id);
+    }
+
+    public function findAll()
+    {
+        return $this->em->findAll();
+    }
+
+    public function persist(Tag $tag)
+    {
+        return $this->em->persist($tag);
+    }
+
+    public function remove(Tag $tag)
+    {
+        return $this->em->remove($tag);
     }
 }

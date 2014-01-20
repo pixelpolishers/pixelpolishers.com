@@ -1,4 +1,10 @@
-<h2>User: <?php echo $this->user->getDisplayName(); ?></h2>
+<?php $this->placeholder('submenu')->exchangeArray(array(
+    'company/access/user/overview' => 'Accounts',
+    'company/access/role/overview' => 'Roles',
+    'company/access/permission/overview' => 'Permissions',
+)); ?>
+
+<h2><?php echo $this->user->getDisplayName(); ?></h2>
 
 <p>
     Name: <?php echo $this->user->getName(); ?>

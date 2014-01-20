@@ -12,6 +12,17 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class AccessRoleController extends AbstractActionController
 {
+    public function overviewAction()
+    {
+        $roleService = $this->getServiceLocator()->get('PixPolRoleService');
+        $permissionService = $this->getServiceLocator()->get('PixPolPermissionService');
+
+        return array(
+            'roles' => $roleService->findAll(),
+            'permissions' => $permissionService->findAll(),
+        );
+    }
+
     public function createAction()
     {
         $form = $this->getServiceLocator()->get('PixPolSubdomainCompany\Form\RoleForm');

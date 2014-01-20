@@ -9,6 +9,7 @@
 namespace PixPolTag\Service;
 
 use PixPolTag\Mapper\MapperInterface;
+use PixPolTag\Entity\Tag;
 
 class TagService
 {
@@ -17,5 +18,25 @@ class TagService
     public function __construct(MapperInterface $mapper)
     {
         $this->mapper = $mapper;
+    }
+
+    public function find($id)
+    {
+        return $this->mapper->find($id);
+    }
+
+    public function findAll()
+    {
+        return $this->mapper->findAll();
+    }
+
+    public function persist(Tag $tag)
+    {
+        return $this->mapper->persist($tag);
+    }
+
+    public function remove(Tag $tag)
+    {
+        return $this->mapper->remove($tag);
     }
 }

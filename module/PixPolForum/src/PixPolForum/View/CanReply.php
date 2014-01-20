@@ -27,6 +27,10 @@ class CanReply extends AbstractHelper
             return false;
         }
 
+        if (!$this->accessService->getCurrentUser()) {
+            return false;
+        }
+
         return true;//$this->accessService->canCurrentUser('ForumPostReply');
     }
 }

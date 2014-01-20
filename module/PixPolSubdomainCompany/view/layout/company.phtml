@@ -1,10 +1,105 @@
-<ul>
-    <li><a href="<?php echo $this->url('company/index'); ?>">Dashboard</a></li>
-    <li><a href="<?php echo $this->url('company/access'); ?>">Access</a></li>
-    <li><a href="<?php echo $this->url('company/license'); ?>">Licenses</a></li>
-    <li><a href="<?php echo $this->url('developers/index'); ?>">Developers</a></li>
-    <li><a href="<?php echo $this->url('account/index'); ?>">Account</a></li>
-    <li><a href="<?php echo $this->url('www/index'); ?>">Website</a></li>
-</ul>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+    <head>
+        <?php echo $this->headTitle(); ?>
 
-<?php echo $this->content; ?>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="description" content="The open source game development company." />
+
+        <meta property="og:title" content="Pixel Polishers" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="<?php echo $this->basePath('/img/open-graph.png'); ?>" />
+        <meta property="og:url" content="http://www.pixelpolishers.<?php echo $GLOBALS['extension']; ?>" />
+        <meta property="og:description" content="The open source game development company." />
+        <meta property="og:locale" content="en_US" />
+
+        <?php echo $this->headMeta(); ?>
+
+        <link rel="shortlink" href="http://www.pixelpolishers.<?php echo $GLOBALS['extension']; ?>/" />
+        <link rel="canonical" href="http://www.pixelpolishers.<?php echo $GLOBALS['extension']; ?>/" />
+
+        <link rel="shortcut icon" href="<?php echo $this->basePath('/img/favicons/favicon.ico'); ?>" />
+        <link rel="icon" type="image/png" href="<?php echo $this->basePath('/img/favicons/favicon.png'); ?>" />
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $this->basePath('/img/favicons/apple-touch-icon-144x144.png'); ?>" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $this->basePath('/img/favicons/apple-touch-icon-114x114.png'); ?>" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $this->basePath('/img/favicons/apple-touch-icon-72x72.png'); ?>" />
+        <link rel="apple-touch-icon-precomposed" href="<?php echo $this->basePath('/img/favicons/apple-touch-icon.png'); ?>" />
+
+        <link type="text/css" rel="stylesheet" href="http://www.pixelpolishers.<?php echo $GLOBALS['extension']; ?><?php echo $this->basePath('/css/layout.css'); ?>" />
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-git2.js"></script>
+        <script type="text/javascript" src="http://www.pixelpolishers.<?php echo $GLOBALS['extension']; ?>/<?php echo $this->basePath('/js/pixelpolishers.js'); ?>"></script>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-25956726-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+    </head>
+    <body class="purple">
+
+        <header>
+            <div class="container clearfix">
+                <ul id="title-menu">
+                    <li id="logo"><a href="<?php echo $this->url('company/index'); ?>"><span>Pixel Polishers</span></a></li>
+                </ul>
+
+                <nav id="main-menu">
+                    <ul>
+                        <li><a href="<?php echo $this->url('company/index'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo $this->url('company/access'); ?>">Access</a></li>
+                        <li><a href="<?php echo $this->url('company/license'); ?>">Licenses</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <nav id="sub-menu" class="clearfix">
+        <?php if (count($this->placeholder('submenu'))) { ?>
+            <div class="container">
+                <ul>
+                    <?php foreach ($this->placeholder('submenu') as $route => $label) { ?>
+                    <li><a href="<?php echo $this->url($route); ?>"><?php echo $label; ?></a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        <?php } ?>
+        </nav>
+
+        <article>
+            <div class="container">
+                <?php echo $this->content; ?>
+            </div>
+        </article>
+
+        <footer>
+            <div class="container lower clearfix">
+                <p class="copyright">
+                    &copy; <?php echo date('Y'); ?>
+                    <a href="http://www.pixelpolishers.com">Pixel Polishers</a>.
+                    All rights reserved.
+                </p>
+                <p class="credit">
+                    <a href="" class="top">Back to the top</a>
+                </p>
+            </div>
+        </footer>
+
+    </body>
+</html>

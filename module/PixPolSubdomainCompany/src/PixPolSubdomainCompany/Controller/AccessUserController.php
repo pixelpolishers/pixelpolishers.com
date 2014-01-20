@@ -12,6 +12,20 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class AccessUserController extends AbstractActionController
 {
+    public function overviewAction()
+    {
+        $userService = $this->getServiceLocator()->get('PixPolUserService');
+
+        $letter = strtoupper($this->params('letter', 'A'));
+
+        $users = $userService->getAZUsers($letter);
+
+        return array(
+            'users' => $users,
+            'letter' => $letter,
+        );
+    }
+
     public function viewAction()
     {
         $service = $this->getServiceLocator()->get('PixPolUserService');

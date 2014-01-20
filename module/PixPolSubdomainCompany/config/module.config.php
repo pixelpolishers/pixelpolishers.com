@@ -18,6 +18,7 @@ return array(
         'invokables' => array(
             'PixPolSubdomainCompany\Controller\IndexController' => 'PixPolSubdomainCompany\Controller\IndexController',
             'PixPolSubdomainCompany\Controller\AccessController' => 'PixPolSubdomainCompany\Controller\AccessController',
+            'PixPolSubdomainCompany\Controller\AccessPermissionController' => 'PixPolSubdomainCompany\Controller\AccessPermissionController',
             'PixPolSubdomainCompany\Controller\AccessRoleController' => 'PixPolSubdomainCompany\Controller\AccessRoleController',
             'PixPolSubdomainCompany\Controller\AccessUserController' => 'PixPolSubdomainCompany\Controller\AccessUserController',
             'PixPolSubdomainCompany\Controller\LicenseController' => 'PixPolSubdomainCompany\Controller\LicenseController',

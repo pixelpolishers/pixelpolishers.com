@@ -29,6 +29,15 @@ return array(
             ),
             'may_terminate' => false,
             'child_routes' => array(
+                'overview' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Segment',
+                    'options' => array(
+                        'route' => '/overview[/:letter]',
+                        'defaults' => array(
+                            'action' => 'overview',
+                        ),
+                    ),
+                ),
                 'view' => array(
                     'type' => 'Zend\Mvc\Router\Http\Segment',
                     'options' => array(
@@ -68,12 +77,42 @@ return array(
                         ),
                     ),
                 ),
+                'overview' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/overview',
+                        'defaults' => array(
+                            'action' => 'overview',
+                        ),
+                    ),
+                ),
                 'update' => array(
                     'type' => 'Zend\Mvc\Router\Http\Segment',
                     'options' => array(
                         'route' => '/update/:id',
                         'defaults' => array(
                             'action' => 'update',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+        'permission' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/permission',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainCompany\Controller\AccessPermissionController',
+                ),
+            ),
+            'may_terminate' => false,
+            'child_routes' => array(
+                'overview' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Literal',
+                    'options' => array(
+                        'route' => '/overview',
+                        'defaults' => array(
+                            'action' => 'overview',
                         ),
                     ),
                 ),

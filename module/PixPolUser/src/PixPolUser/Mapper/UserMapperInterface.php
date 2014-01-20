@@ -15,4 +15,6 @@ interface UserMapperInterface extends ObjectRepository
 {
     public function persist(User $user);
     public function remove(User $user);
+
+    public function getAZUsers($letter);
 }

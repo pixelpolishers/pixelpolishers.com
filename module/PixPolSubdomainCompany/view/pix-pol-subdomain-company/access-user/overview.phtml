@@ -1,0 +1,54 @@
+<?php $this->placeholder('submenu')->exchangeArray(array(
+    'company/access/user/overview' => 'Accounts',
+    'company/access/role/overview' => 'Roles',
+    'company/access/permission/overview' => 'Permissions',
+)); ?>
+
+<h2>Users</h2>
+
+<div class="paginator clearfix">
+    <ol>
+        <?php foreach (range('A', 'Z') as $letter) { ?>
+            <?php if ($letter == $this->letter) { ?>
+                <li class="item current"><span><?php echo $letter; ?></span></li>
+            <?php } else { ?>
+                <li class="item"><a href="<?php echo $this->url('company/access/user/overview', array(
+                    'letter' => $letter,
+                )); ?>"><?php echo $letter; ?></a></li>
+            <?php } ?>
+        <?php } ?>
+    </ol>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Surname</th>
+        <th>Name</th>
+        <th>E-mail</th>
+    </tr>
+    <?php foreach ($this->users as $user) { ?>
+    <tr>
+        <td style="text-align: center;"><a href="<?php echo $this->url('company/access/user/view', array(
+            'id' => $user->getId(),
+        )); ?>"><?php echo $user->getId(); ?></a></td>
+        <td><?php echo $user->getSurname(); ?></td>
+        <td><?php echo $user->getName(); ?></td>
+        <td><a href="mailto:<?php echo $user->getEmail(); ?>"><?php echo $user->getEmail(); ?></a></td>
+    </tr>
+    <?php } ?>
+</table>
+
+<div class="paginator clearfix">
+    <ol>
+        <?php foreach (range('A', 'Z') as $letter) { ?>
+            <?php if ($letter == $this->letter) { ?>
+                <li class="item current"><span><?php echo $letter; ?></span></li>
+            <?php } else { ?>
+                <li class="item"><a href="<?php echo $this->url('company/access/user/overview', array(
+                    'letter' => $letter,
+                )); ?>"><?php echo $letter; ?></a></li>
+            <?php } ?>
+        <?php } ?>
+    </ol>
+</div>

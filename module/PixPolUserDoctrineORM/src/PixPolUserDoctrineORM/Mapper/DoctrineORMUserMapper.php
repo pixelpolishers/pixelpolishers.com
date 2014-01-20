@@ -30,4 +30,17 @@ class DoctrineORMUserMapper extends AbstractMapper implements UserMapperInterfac
         $this->em->remove($user);
         $this->em->flush();
     }
+
+    public function getAZUsers($letter)
+    {
+        $query = $this->em->createQuery("
+            SELECT u
+            FROM PixPolUser\Entity\User u
+            WHERE u.surname LIKE ?1
+            ORDER BY u.surname ASC");
+
+        $query->setParameter(1, $letter . '%');
+
+        return $query->getResult();
+    }
 }

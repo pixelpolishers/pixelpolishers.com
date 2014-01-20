@@ -348,9 +348,11 @@ body.pink footer a { color: #969694; }
 
 body.purple a { color: purple; }
 body.purple header { background-color: purple; color: #FCFCFC; }
+body.purple header #main-menu { border-right: 1px solid #A36CA8; }
 body.purple header #main-menu a { background-color: purple; color: #FFF; }
 body.purple header #main-menu a:hover { background-color: purple; }
-body.purple #sub-menu { background-color: #890000; }
+body.purple header #main-menu li { border-left: 1px solid #A36CA8; }
+body.purple #sub-menu { background-color: #AA3CAA; }
 body.purple #sub-menu a { color: #FFF; }
 body.purple footer a { color: #969694; }
 
@@ -446,4 +448,34 @@ body.silver footer a { color: #969694; }
     line-height: 50px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+
+
+.paginator {
+    font-size: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.paginator ol {
+    display: inline-block;
+}
+
+.paginator .item {
+    background-color: #F9F9F9;
+    border: 1px solid #EEE;
+    display: inline-block;
+    margin: 0px;
+}
+
+.paginator .item a,
+.paginator .item span {
+    color: #666;
+    display: block;
+    padding: 0px 7px;
+}
+
+.paginator .item.current {
+    border: 1px solid #CCC;
 }

@@ -27,9 +27,9 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
-            'PixPolTagMapper' => function($sm) {
+            'PixPolTag\Mapper\TagMapperInterface' => function($sm) {
                 $em = $sm->get('Doctrine\ORM\EntityManager');
-                
+
                 return new DoctrineORMMapper($em);
             },
         ),

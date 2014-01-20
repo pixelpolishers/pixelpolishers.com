@@ -2,7 +2,7 @@
 
 $items = array();
 
-if ($this->ppForumCanBookmark($this->topic)) {
+if ($this->ppForumCanBookmark($this->topic, $this->ppIdentity())) {
     if ($this->ppForumBookmark()->doesUserHaveTopic($this->topic, $this->ppIdentity())) {
         $url = $this->url('developers/forum/bookmark/delete', array(
             'topic' => $this->topic->getId(),

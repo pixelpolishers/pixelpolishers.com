@@ -1,0 +1,40 @@
+<?php $this->placeholder('submenu')->exchangeArray(array(
+    'company/access/user/overview' => 'Accounts',
+    'company/access/role/overview' => 'Roles',
+    'company/access/permission/overview' => 'Permissions',
+)); ?>
+
+<?php if ($this->ppUserCan('RoleCreate') || $this->ppUserCan('RoleDelete') || $this->ppUserCan('RoleUpdate')) { ?>
+<h2>Roles</h2>
+
+<?php if (count($this->permissions) == 0) { ?>
+<p>You need to create permissions before you can create a role.</p>
+<?php } else { ?>
+<?php if ($this->ppUserCan('RoleCreate')) { ?>
+<p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
+<?php } ?>
+
+<?php if (count($this->roles) != 0) { ?>
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+<?php foreach ($this->roles as $role) { ?>
+    <tr>
+        <td>
+            <a href="<?php echo $this->url('company/access/role/update', array(
+                'id' => $role->getId(),
+            )); ?>"><?php echo $role->getName(); ?></a>
+        </td>
+    </tr>
+<?php } ?>
+</table>
+
+<?php if ($this->ppUserCan('RoleCreate')) { ?>
+<p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
+<?php } ?>
+
+<?php } ?>
+<?php } ?>
+
+<?php } ?>

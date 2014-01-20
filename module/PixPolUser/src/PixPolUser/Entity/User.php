@@ -190,6 +190,16 @@ class User
         return $this->tags;
     }
 
+    public function hasTag($tag)
+    {
+        foreach ($this->getTags() as $tagElement) {
+            if ($tagElement->getTag() == $tag) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function setTags($tags)
     {
         $this->clearTags();

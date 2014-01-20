@@ -9,13 +9,15 @@
 namespace PixPolSubdomainCompany\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class AccessPermissionController extends AbstractActionController
 {
-    public function indexAction()
+    public function overviewAction()
     {
-        $viewModel = new ViewModel();
-        return $viewModel;
+        $permissionService = $this->getServiceLocator()->get('PixPolPermissionService');
+
+        return array(
+            'permissions' => $permissionService->findAll(),
+        );
     }
 }
