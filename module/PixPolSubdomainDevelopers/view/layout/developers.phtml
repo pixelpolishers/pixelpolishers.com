@@ -61,9 +61,9 @@
 
                 <nav id="main-menu">
                     <ul>
-                        <li><a href="<?php echo $this->url('developers/forum'); ?>">Forum</a></li>
                         <li><a href="<?php echo $this->url('developers/docs'); ?>">Documentation</a></li>
-                        <li><a href="<?php echo $this->url('account/index'); ?>">Account</a></li>
+                        <?php /* <li><a href="<?php echo $this->url('developers/forum'); ?>">Forum</a></li>
+                        <li><a href="<?php echo $this->url('account/index'); ?>">Account</a></li> */ ?>
                         <li><a href="<?php echo $this->url('www/index'); ?>">Website</a></li>
                     </ul>
                 </nav>
@@ -95,35 +95,6 @@
         </article>
 
         <footer>
-            <div class="container upper clearfix">
-                <div class="column about">
-                    <h3>Pixel Polishers</h3>
-                    <ul>
-                        <li><a href="<?php echo $this->url('www/company/about'); ?>">About</a></li>
-                        <li><a href="<?php echo $this->url('www/company/legal'); ?>">Legal</a></li>
-                        <li><a href="<?php echo $this->url('www/company/careers'); ?>">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="column">
-                    <h3>Services</h3>
-
-                    <ul>
-                        <li><a href="<?php echo $this->url('www/services/consulting'); ?>">Consulting</a></li>
-                        <li><a href="<?php echo $this->url('www/services/training'); ?>">Training</a></li>
-                        <li><a href="<?php echo $this->url('www/services/certification'); ?>">Certification</a></li>
-                    </ul>
-                </div>
-                <div class="column contact">
-                    <h3>Contact</h3>
-
-                    <ul>
-                        <li class="icon location"><a href="<?php echo $this->url('www/company/contact'); ?>">Office</a></li>
-                        <li class="icon facebook"><a href="http://facebook.com/pixelpolishers">Facebook</a></li>
-                        <li class="icon linkedin"><a href="https://www.linkedin.com/company/pixel-polishers">LinkedIn</a></li>
-                        <li class="icon twitter"><a href="http://twitter.com/pixelpolishers">Twitter</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="container lower clearfix">
                 <p class="copyright">
                     &copy; <?php echo date('Y'); ?>
