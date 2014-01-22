@@ -10,6 +10,7 @@ use PixPolForum\Entity\Board;
 use PixPolForum\Entity\Category;
 use PixPolForum\Entity\Post;
 use PixPolForum\Entity\Topic;
+use Doctrine\Common\Persistence\ObjectManager;
 
 // Change the current working direction:
 chdir(__DIR__ . '/../');
@@ -55,14 +56,14 @@ $userService->persist($defaultUser);
 
 // Create a lot of users:
 $alphabet = range('A', 'Z');
-for ($i = 1; $i <= 100; ++$i) {
-    $defaultUser = new \PixPolUser\Entity\User();
-    $defaultUser->setName('User ' . $i);
-    $defaultUser->setSurname($alphabet[rand(0, count($alphabet) - 1)]);
-    $defaultUser->setPassword($userService->getPassword()->create('test'));
-    $defaultUser->setEmail('user' . $i . '@pixelpolishers.com');
-    $defaultUser->setRegistrationDate(new \DateTime());
-    $em->persist($defaultUser);
+for ($i = 1; $i <= 10; ++$i) {
+    $user = new \PixPolUser\Entity\User();
+    $user->setName('User ' . $i);
+    $user->setSurname($alphabet[rand(0, count($alphabet) - 1)]);
+    $user->setPassword($userService->getPassword()->create('test'));
+    $user->setEmail('user' . $i . '@pixelpolishers.com');
+    $user->setRegistrationDate(new \DateTime());
+    $em->persist($user);
 }
 $em->flush();
 
@@ -115,7 +116,7 @@ function createResolverTopics(ObjectManager $manager, Board $board)
         $topic->setSticky($isSticky);
         $topic->setTitle($title);
         $topic->setCreatedOn($createdOn);
-        $topic->setCreatedBy($defaultUser);
+        $topic->setCreatedBy($GLOBALS['defaultUser']);
         $topic->setPostCount($postsToCreated);
         $manager->persist($topic);
 

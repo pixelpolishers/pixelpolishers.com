@@ -9,62 +9,22 @@
 <?php if (count($this->latestUsers) == 0) { ?>
 <p>No users yet.</p>
 <?php } else { ?>
-<ul>
-<?php foreach ($this->latestUsers as $user) { ?>
-    <li><a href="<?php echo $this->url('company/access/user/view', array(
-        'id' => $user->getId(),
-    )); ?>"><?php echo $user->getDisplayName(); ?></a></li>
-<?php } ?>
-</ul>
-<?php } ?>
-
-<?php if ($this->ppUserCan('RoleCreate') || $this->ppUserCan('RoleDelete') || $this->ppUserCan('RoleUpdate')) { ?>
-<h2>Roles</h2>
-
-<?php if (count($this->permissions) == 0) { ?>
-<p>You need to create permissions before you can create a role.</p>
-<?php } else { ?>
-<?php if ($this->ppUserCan('RoleCreate')) { ?>
-<p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
-<?php } ?>
-
-<?php if (count($this->roles) != 0) { ?>
-<ul>
-<?php foreach ($this->roles as $role) { ?>
-    <li><a href="<?php echo $this->url('company/access/role/update', array(
-        'id' => $role->getId(),
-    )); ?>"><?php echo $role->getName(); ?></a></li>
-<?php } ?>
-</ul>
-
-<?php if ($this->ppUserCan('RoleCreate')) { ?>
-<p><a href="<?php echo $this->url('company/access/role/create'); ?>">Create</a></p>
-<?php } ?>
-
-<?php } ?>
-<?php } ?>
-
-<?php } ?>
-
-<?php if ($this->ppUserCan('PermissionView')) { ?>
-
-<h2>Permissions</h2>
-
-<?php if (count($this->permissions) == 0) { ?>
-<p><a href="<?php echo $this->url('company/access/permission/create'); ?>">Create the first permission</a></p>
-<?php } else { ?>
 <table>
     <tr>
+        <th>ID</th>
+        <th>Surname</th>
         <th>Name</th>
-        <th>Module</th>
+        <th>E-mail</th>
     </tr>
-<?php foreach ($this->permissions as $permission) { ?>
+    <?php foreach ($this->latestUsers as $user) { ?>
     <tr>
-        <td><?php echo $permission->getName(); ?></td>
-        <td><?php echo $permission->getModule(); ?></td>
-    </li>
-<?php } ?>
+        <td style="text-align: center;"><a href="<?php echo $this->url('company/access/user/view', array(
+            'id' => $user->getId(),
+        )); ?>"><?php echo $user->getId(); ?></a></td>
+        <td><?php echo $user->getSurname(); ?></td>
+        <td><?php echo $user->getName(); ?></td>
+        <td><a href="mailto:<?php echo $user->getEmail(); ?>"><?php echo $user->getEmail(); ?></a></td>
+    </tr>
+    <?php } ?>
 </table>
-<?php } ?>
-
 <?php } ?>
