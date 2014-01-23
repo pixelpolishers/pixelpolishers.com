@@ -1,19 +1,19 @@
 <?php echo $this->headTitle('Pixel Polishers Legal Information'); ?>
 <?php $this->placeholder('submenu')->exchangeArray(array(
     'www/company/legal/copyright-policy' => 'Copyright Policy',
-    'www/company/legal/privacy-policy' => 'Privacy Policy',
-    'www/company/legal/terms-of-use' => 'Terms of Use',
+    //'www/company/legal/privacy-policy' => 'Privacy Policy',
+    //'www/company/legal/terms-of-use' => 'Terms of Use',
 )); ?>
 
 <h1>Legal Information</h1>
 
 <p>
-    This page contains links to important legal information including privacy and copyright
-    information.
+    This page contains links to important legal information<?php /* including privacy and copyright
+    information*/ ?>.
 </p>
 
 <ul>
     <li><a href="<?php echo $this->url('www/company/legal/copyright-policy'); ?>">Copyright Policy</a></li>
-    <li><a href="<?php echo $this->url('www/company/legal/privacy-policy'); ?>">Privacy Policy</a></li>
-    <li><a href="<?php echo $this->url('www/company/legal/terms-of-use'); ?>">Terms of Use</a></li>
+    <?php /*<li><a href="<?php echo $this->url('www/company/legal/privacy-policy'); ?>">Privacy Policy</a></li>
+    <li><a href="<?php echo $this->url('www/company/legal/terms-of-use'); ?>">Terms of Use</a></li>*/ ?>
 </ul>
