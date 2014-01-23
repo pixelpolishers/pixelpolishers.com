@@ -9,20 +9,17 @@
 namespace PixPolSubdomainWww\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
 class CompanyController extends AbstractActionController
 {
     public function aboutAction()
     {
-        $viewModel = new ViewModel();
-        return $viewModel;
+        return array();
     }
 
     public function careersAction()
     {
-        $viewModel = new ViewModel();
-        return $viewModel;
+        return array();
     }
 
     public function contactAction()
@@ -62,4 +59,8 @@ class CompanyController extends AbstractActionController
         );
     }
 
+    public function websiteAction()
+    {
+        return array();
+    }
 }
