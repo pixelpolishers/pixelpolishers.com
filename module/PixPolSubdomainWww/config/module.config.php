@@ -16,7 +16,6 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'PixPolSubdomainWww\Controller\IndexController' => 'PixPolSubdomainWww\Controller\IndexController',
             'PixPolSubdomainWww\Controller\CompanyController' => 'PixPolSubdomainWww\Controller\CompanyController',
             'PixPolSubdomainWww\Controller\LegalController' => 'PixPolSubdomainWww\Controller\LegalController',
             'PixPolSubdomainWww\Controller\TechnologyController' => 'PixPolSubdomainWww\Controller\TechnologyController',

@@ -28,8 +28,8 @@ return array(
             'options' => array(
                 'route' => '/',
                 'defaults' => array(
-                    'controller' => 'PixPolSubdomainWww\Controller\IndexController',
-                    'action' => 'index',
+                    'controller' => 'PixPolSubdomainWww\Controller\CompanyController',
+                    'action' => 'about',
                 ),
             ),
         ),
