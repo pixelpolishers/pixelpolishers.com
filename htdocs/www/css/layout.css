@@ -446,6 +446,11 @@ body.silver footer a { color: #969694; }
     min-width: 128px;
 }
 
+.catalog {
+    list-style-type: none;
+    margin: 0px;
+}
+
 .catalog li a {
     background-color: #F9F9F9;
     border: 1px solid #CCC;

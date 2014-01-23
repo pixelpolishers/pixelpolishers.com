@@ -62,6 +62,8 @@ code {
 
 #manual-toc ul {
     background-color: #F9F9F9;
+    list-style-type: none;
+    margin: 0px;
 }
 
 #manual-toc li {
