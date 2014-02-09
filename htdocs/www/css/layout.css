@@ -43,6 +43,10 @@ article p {
     margin-bottom: 12px;
 }
 
+.blue article p {
+    line-height: 20px;
+}
+
 body {
     background-color: #262624;
     color: #FFF;
@@ -51,7 +55,6 @@ body {
     line-height: 1.7em;
     overflow-y: scroll;
 }
-
 
 hr {
     border: 0;
@@ -73,6 +76,10 @@ table {
 td, th {
     border: 1px solid #E1E4E5;
     padding: 10px;
+}
+
+.blue td, .blue th {
+    padding: 5px;
 }
 
 th {
