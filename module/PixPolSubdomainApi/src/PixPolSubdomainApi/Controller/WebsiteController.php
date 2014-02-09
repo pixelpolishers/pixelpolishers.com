@@ -39,24 +39,16 @@ class WebsiteController extends AbstractActionController
 
     public function buildDocsAction()
     {
-        $f = fopen('htdocs/developers/docs.json', 'w');
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
-            fwrite($f, 'Invalid request!');
-            fclose($f);
             throw new \RuntimeException('Invalid request.');
         }
 
         $refs = array('refs/heads/master', 'refs/heads/develop');
         $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
         if (!$this->isValidPayload($payload, $refs)) {
-            fwrite($f, 'Invalid ref: ' . print_r($payload, true));
-            fclose($f);
             throw new \RuntimeException('Invalid request.');
         }
-
-        fwrite($f, 'Payload: ' . print_r($payload, true));
-        fclose($f);
 
         $json = json_decode($payload);
         $config = $this->getServiceLocator()->get('Config');
@@ -64,7 +56,15 @@ class WebsiteController extends AbstractActionController
         $generator = new DocsGenerator();
         $generator->setReference($json->ref);
         $generator->setRepository($json->repository->name);
-        $generator->generate($config['makedocs']);
+        
+        try {
+            $generator->generate($config['makedocs']);
+        } catch (\Exception $e) {
+            $f = fopen(getcwd() . '/docs-errors.log', 'w');
+            fwrite($f, $e->getMessage() . PHP_EOL . PHP_EOL);
+            fwrite($f, print_r($generator, true));
+            fclose($f);
+        }
 
         return $this->getResponse();
     }
