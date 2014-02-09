@@ -56,11 +56,11 @@ class WebsiteController extends AbstractActionController
         $generator = new DocsGenerator();
         $generator->setReference($json->ref);
         $generator->setRepository($json->repository->name);
-        
+
         try {
             $generator->generate($config['makedocs']);
         } catch (\Exception $e) {
-            $f = fopen(getcwd() . '/docs-errors.log', 'w');
+            $f = fopen(__DIR__ . '/../../../../../docs-errors.log', 'w');
             fwrite($f, $e->getMessage() . PHP_EOL . PHP_EOL);
             fwrite($f, print_r($generator, true));
             fclose($f);
