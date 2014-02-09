@@ -246,6 +246,14 @@ header #logo a {
     float: right;
 }
 
+.wide #main-menu {
+    border-right: none;
+}
+
+.wide header .container {
+    padding-right: 0px;
+}
+
 #main-menu li {
     border-left: 1px solid #FFF;
     float: left;
@@ -399,6 +407,11 @@ body.silver footer a { color: #969694; }
 .container {
     margin: 0 auto;
     width: 800px;
+}
+
+.wide .container {
+    padding: 0px 10px;
+    width: auto;
 }
 
 .left {

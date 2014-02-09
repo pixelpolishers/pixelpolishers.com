@@ -52,12 +52,14 @@ code {
 
 #manual-content {
     float: right;
-    width: 550px;
+    max-width: 80%;
+    width: 80%;
 }
 
 #manual-toc {
     float: left;
-    width: 220px;
+    min-width: 200px;
+    width: 18%;
 }
 
 #manual-toc ul {
