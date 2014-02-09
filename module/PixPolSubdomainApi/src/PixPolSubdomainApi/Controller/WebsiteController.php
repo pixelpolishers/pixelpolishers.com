@@ -44,6 +44,10 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('Invalid request.');
         }
 
+        $f = fopen(__DIR__ . '/../../../../../payload.log', 'w');
+        fwrite($f, print_r($_POST['payload'], true));
+        fclose($f);
+
         $refs = array('refs/heads/master', 'refs/heads/develop');
         $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
         if (!$this->isValidPayload($payload, $refs)) {
@@ -63,6 +67,7 @@ class WebsiteController extends AbstractActionController
             $f = fopen(__DIR__ . '/../../../../../docs-errors.log', 'w');
             fwrite($f, $e->getMessage() . PHP_EOL . PHP_EOL);
             fwrite($f, print_r($generator, true));
+            fwrite($f, print_r($config['makedocs'], true));
             fclose($f);
         }
 
