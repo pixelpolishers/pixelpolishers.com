@@ -1,7 +1,7 @@
 {
-	"name": "pixelpolishers/pixelpolishers.com",
-	"description": "The website pixelpolishers.com",
-	"license": "proprietary",
+    "name": "pixelpolishers/pixelpolishers.com",
+    "description": "The website pixelpolishers.com",
+    "license": "proprietary",
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
@@ -11,7 +11,7 @@
         "doctrine/doctrine-orm-module": "*",
         "hybridauth/hybridauth": "*"
     },
-	"require-dev": {
-		"phpunit/phpunit": "*"
-	}
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
 }
