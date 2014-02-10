@@ -8,7 +8,6 @@
 
 namespace PixPolSubdomainApi\Controller;
 
-use PixPolSubdomainApi\Service\DocsGenerator;
 use Symfony\Component\Process\Process;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -39,38 +38,9 @@ class WebsiteController extends AbstractActionController
 
     public function buildDocsAction()
     {
-        $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
-        if (!$this->isValidIp($remoteAddress->getIpAddress())) {
-            throw new \RuntimeException('Invalid request.');
-        }
-
-        $f = fopen(__DIR__ . '/../../../../../payload.log', 'w');
-        fwrite($f, print_r($_POST['payload'], true));
-        fclose($f);
-
-        $refs = array('refs/heads/master', 'refs/heads/develop');
-        $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
-        if (!$this->isValidPayload($payload, $refs)) {
-            throw new \RuntimeException('Invalid request.');
-        }
-
-        $json = json_decode($payload);
-        $config = $this->getServiceLocator()->get('Config');
-
-        $generator = new DocsGenerator();
-        $generator->setReference($json->ref);
-        $generator->setRepository($json->repository->name);
-
-        try {
-            $generator->generate($config['makedocs']);
-        } catch (\Exception $e) {
-            $f = fopen(__DIR__ . '/../../../../../docs-errors.log', 'w');
-            fwrite($f, $e->getMessage() . PHP_EOL . PHP_EOL);
-            fwrite($f, print_r($generator, true));
-            fwrite($f, print_r($config['makedocs'], true));
-            fclose($f);
-        }
-
+        var_dump($_POST);
+        var_dump($_GET);
+        var_dump($_SERVER);
         return $this->getResponse();
     }
 

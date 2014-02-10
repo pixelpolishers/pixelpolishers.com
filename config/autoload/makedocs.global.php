@@ -10,48 +10,31 @@ $GLOBALS['extension'] = isset($GLOBALS['extension']) ? $GLOBALS['extension'] : '
 
 return array(
     'makedocs' => array(
-        'resolver' => array(
-            'name' => 'Resolver',
-            'alias' => array(
-                'refs/heads/develop' => 'latest',
-            ),
-            'repository' => 'https://github.com/pixelpolishers/resolver.git',
-            'input' => __DIR__ . '/../../data/makedocs/src/resolver',
-            'builders' => array(
-                'html' => array(
-                    'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/resolver/{version}',
-                    'themeDirectory' => realpath(__DIR__ . '/../../data/makedocs/theme'),
-                    'outputDirectory' => __DIR__ . '/../../data/makedocs/output/resolver/html/{version}',
+        'listeners' => array(
+            'resolver' => array(
+                'driver' => 'git',
+                'source' => __DIR__ . '/../../data/makedocs/src/resolver',
+                'repository' => 'https://github.com/pixelpolishers/resolver.git',
+                'builders' => array(
+                    array(
+                        'type' => 'html',
+                        'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/resolver/{version}',
+                        'theme' => realpath(__DIR__ . '/../../data/makedocs/theme'),
+                        'output' => __DIR__ . '/../../data/makedocs/output/resolver/html/{version}',
+                    ),
                 ),
             ),
-        ),
-        'makedocs' => array(
-            'name' => 'MakeDocs',
-            'alias' => array(
-                'refs/heads/develop' => 'latest',
-            ),
-            'repository' => 'https://github.com/pixelpolishers/makedocs.git',
-            'input' => __DIR__ . '/../../data/makedocs/src/makedocs',
-            'builders' => array(
-                'html' => array(
-                    'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/makedocs/{version}',
-                    'themeDirectory' => realpath(__DIR__ . '/../../data/makedocs/theme'),
-                    'outputDirectory' => __DIR__ . '/../../data/makedocs/output/makedocs/html/{version}',
-                ),
-            ),
-        ),
-        'website' => array(
-            'name' => 'Website',
-            'alias' => array(
-                'refs/heads/evelop' => 'latest',
-            ),
-            'repository' => 'https://github.com/pixelpolishers/pixelpolishers.com.git',
-            'input' => __DIR__ . '/../../data/makedocs/src/website',
-            'builders' => array(
-                'html' => array(
-                    'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/website/{version}',
-                    'themeDirectory' => realpath(__DIR__ . '/../../data/makedocs/theme'),
-                    'outputDirectory' => __DIR__ . '/../../data/makedocs/output/website/html/{version}',
+            'makedocs' => array(
+                'driver' => 'git',
+                'source' => __DIR__ . '/../../data/makedocs/src/makedocs',
+                'repository' => 'https://github.com/pixelpolishers/makedocs.git',
+                'builders' => array(
+                    array(
+                        'type' => 'html',
+                        'baseUrl' => 'http://developers.pixelpolishers.' . $GLOBALS['extension'] . '/docs/manual/makedocs/{version}',
+                        'theme' => realpath(__DIR__ . '/../../data/makedocs/theme'),
+                        'output' => __DIR__ . '/../../data/makedocs/output/makedocs/html/{version}',
+                    ),
                 ),
             ),
         ),
