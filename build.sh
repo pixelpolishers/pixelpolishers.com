@@ -8,6 +8,3 @@ php composer.phar update --no-interaction --no-dev --verbose
 
 # Make sure that all the needed files are executable:
 chmod 0777 build.sh
-chmod 0777 bin/install.sh
-chmod 0777 bin/reinstall.sh
-chmod 0777 bin/uninstall.sh
