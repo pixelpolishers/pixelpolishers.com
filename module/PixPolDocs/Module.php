@@ -6,7 +6,9 @@
  * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
  */
 
-namespace PixPolSubdomainDevelopers;
+namespace PixPolDocs;
+
+use Zend\ModuleManager\ModuleManager;
 
 class Module
 {
@@ -25,19 +27,13 @@ class Module
     {
         return include __DIR__ . '/config/module.config.php';
     }
-    
-    public function onBootstrap($e)
-    {
-        $eventManager = $e->getApplication()->getEventManager()->getSharedManager();
-        $eventManager->attach('Zend\Mvc\Controller\AbstractController', 'dispatch', function($e) {
-            $controller = $e->getTarget();
-            $controllerClass = get_class($controller);
-            $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
 
-            $validNamespaces = array('PixPolSubdomainDevelopers', 'PixPolWiki', 'PixPolForum');
-            if (in_arraY($moduleNamespace, $validNamespaces)) {
-                $controller->layout('layout/developers');
-            }
+    public function init(ModuleManager $moduleManager)
+    {
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+        $sharedEvents->attach(__NAMESPACE__, 'dispatch', function($e) {
+            $controller = $e->getTarget();
+            $controller->layout('layout/developers');
         }, 100);
     }
 }

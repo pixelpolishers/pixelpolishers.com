@@ -7,6 +7,7 @@
  */
 return array(
     'modules' => array(
+        'PixPolDocs',
         'PixPolForum',
         'PixPolLicense',
         'PixPolSubdomainAccount',

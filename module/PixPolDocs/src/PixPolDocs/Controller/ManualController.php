@@ -6,18 +6,13 @@
  * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
  */
 
-namespace PixPolSubdomainDevelopers\Controller;
+namespace PixPolDocs\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-class DocsController extends AbstractActionController
+class ManualController extends AbstractActionController
 {
     public function indexAction()
-    {
-        return array();
-    }
-
-    public function manualAction()
     {
         $project = $this->params('project');
         $version = $this-> params('version');

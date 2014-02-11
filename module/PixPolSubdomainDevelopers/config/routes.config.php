@@ -53,42 +53,21 @@ return array(
                 ),
             ),
         ),
-        'docs' => array(
+        'wiki' => array(
             'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
-                'route' => '/docs',
+                'route' => '/docs/wiki',
                 'defaults' => array(
-                    'controller' => 'PixPolSubdomainDevelopers\Controller\DocsController',
+                    'controller' => 'PixPolWiki\Controller\PageController',
                     'action' => 'index',
                 ),
             ),
             'may_terminate' => true,
             'child_routes' => array(
-                'manual' => array(
-                    'type' => 'Zend\Mvc\Router\Http\Regex',
-                    'options' => array(
-                        'regex' => '/manual/(?<project>[a-zA-Z0-9_-]+)/(?<version>[\.a-zA-Z0-9_-]+)(/(?<page>.*))?',
-                        'spec' => '/manual/%project%/%version%/%page%',
-                        'defaults' => array(
-                            'controller' => 'PixPolSubdomainDevelopers\Controller\DocsController',
-                            'action' => 'manual',
-                        ),
-                    ),
-                ),
-                'wiki' => array(
-                    'type' => 'Zend\Mvc\Router\Http\Literal',
-                    'options' => array(
-                        'route' => '/wiki',
-                        'defaults' => array(
-                            'controller' => 'PixPolWiki\Controller\PageController',
-                            'action' => 'index',
-                        ),
-                    ),
-                ),
-                'wiki_page' => array(
+                'page' => array(
                     'type' => 'Zend\Mvc\Router\Http\Segment',
                     'options' => array(
-                        'route' => '/wiki/:page',
+                        'route' => '/:page',
                         'defaults' => array(
                             'controller' => 'PixPolWiki\Controller\PageController',
                             'action' => 'page',

@@ -6,7 +6,7 @@
  * @link https://github.com/pixelpolishers/pixelpolishers.com for the canonical source repository
  */
 
-namespace PixPolSubdomainDevelopers;
+namespace PixPolDocs;
 
 return array(
     'router' => array(
@@ -16,7 +16,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'PixPolSubdomainDevelopers\Controller\IndexController' => 'PixPolSubdomainDevelopers\Controller\IndexController',
+            'PixPolDocs\Controller\IndexController' => 'PixPolDocs\Controller\IndexController',
+            'PixPolDocs\Controller\ManualController' => 'PixPolDocs\Controller\ManualController',
         ),
     ),
     'view_manager' => array(
