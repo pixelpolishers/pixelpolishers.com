@@ -38,10 +38,11 @@ class WebsiteController extends AbstractActionController
 
     public function buildDocsAction()
     {
-        var_dump($_POST);
-        var_dump($_GET);
-        var_dump($_SERVER);
-        return $this->getResponse();
+        $webhook = $this->getServiceLocator()->get('MakeDocs\WebHook\GitHub');
+
+        $result = $webhook->listen();
+
+        return $this->getResponse()->setContent($result);
     }
 
     public function buildWebsiteAction()

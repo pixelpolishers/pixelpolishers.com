@@ -6,10 +6,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",
-        "pixelpolishers/makedocs-zf2": "*",
-        "symfony/process": "*",
-        "doctrine/doctrine-orm-module": "*",
-        "hybridauth/hybridauth": "*"
+        "pixelpolishers/makedocs-zf2": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"

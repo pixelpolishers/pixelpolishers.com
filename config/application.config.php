@@ -7,25 +7,16 @@
  */
 return array(
     'modules' => array(
-        'PixPolDoctrineORM',
         'PixPolForum',
-        'PixPolForumDoctrineORM',
         'PixPolLicense',
-        'PixPolLicenseDoctrineORM',
         'PixPolSubdomainAccount',
         'PixPolSubdomainApi',
         'PixPolSubdomainCompany',
         'PixPolSubdomainDevelopers',
         'PixPolSubdomainWww',
         'PixPolTag',
-        'PixPolTagDoctrineORM',
         'PixPolUser',
-        'PixPolUserDoctrineORM',
         'PixPolWiki',
-        'PixPolWikiDoctrineORM',
-        'DoctrineModule',
-        'DoctrineORMModule',
-        'DoctrineDataFixtureModule',
         'MakeDocsZf2',
     ),
     'module_listener_options' => array(

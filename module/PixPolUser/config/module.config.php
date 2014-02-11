@@ -33,6 +33,9 @@ return array(
         'enable_default_container_manager' => true,
     ),
     'service_manager' => array(
+        'invokables' => array(
+            'Zend\Authentication\AuthenticationService' => 'Zend\Authentication\AuthenticationService',
+        ),
         'factories' => array(
             'CurrentPassword' => 'PixPolUser\View\Helper\UserCanFactory2',
             'PixPolAccessService' => 'PixPolUser\Service\AccessServiceFactory',

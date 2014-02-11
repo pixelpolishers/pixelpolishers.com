@@ -19,7 +19,7 @@ class DocsController extends AbstractActionController
 
     public function manualAction()
     {
-        $project= $this->params('project');
+        $project = $this->params('project');
         $version = $this-> params('version');
         $page = $this->params('page', 'index');
 
@@ -28,13 +28,13 @@ class DocsController extends AbstractActionController
         }
 
         $config = $this->getServiceLocator()->get('Config');
-        $docsConfig = $config['makedocs'];
+        $docsConfig = $config['makedocs']['listeners'];
 
         if (!array_key_exists($project, $docsConfig)) {
             return $this->notFoundAction();
         }
 
-        $pageDir = $docsConfig[$project]['builders']['html']['outputDirectory'];
+        $pageDir = $docsConfig[$project]['builders'][0]['output'];
         $pageDir = str_replace('{version}', $version, $pageDir);
         $pageDir = realpath($pageDir);
 
