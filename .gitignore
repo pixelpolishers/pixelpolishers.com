@@ -7,4 +7,5 @@
 /svn/
 /vendor/
 /composer.lock
+/composer.phar
 /data/logs
