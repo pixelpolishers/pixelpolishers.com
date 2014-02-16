@@ -1,3 +1,4 @@
+/.vagrant/
 /.vhost
 /nbproject/
 /nbproject/private/
@@ -9,3 +10,4 @@
 /composer.lock
 /composer.phar
 /data/logs
+/phpmyadmin
