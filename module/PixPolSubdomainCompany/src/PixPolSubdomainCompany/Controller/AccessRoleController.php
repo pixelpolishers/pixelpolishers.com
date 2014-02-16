@@ -14,7 +14,7 @@ class AccessRoleController extends AbstractActionController
 {
     public function overviewAction()
     {
-        $roleService = $this->getServiceLocator()->get('PixPolRoleService');
+        $roleService = $this->getServiceLocator()->get('PixPolUser\Service\Role');
         $permissionService = $this->getServiceLocator()->get('PixPolPermissionService');
 
         return array(
@@ -33,7 +33,7 @@ class AccessRoleController extends AbstractActionController
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $service = $this->getServiceLocator()->get('PixPolRoleService');
+                $service = $this->getServiceLocator()->get('PixPolUser\Service\Role');
                 $service->persist($form->getData());
 
                 return $this->redirect()->toRoute('company/access');
@@ -47,7 +47,7 @@ class AccessRoleController extends AbstractActionController
 
     public function deleteAction()
     {
-        $service = $this->getServiceLocator()->get('PixPolRoleService');
+        $service = $this->getServiceLocator()->get('PixPolUser\Service\Role');
         $entity = $service->find($this->params('id'));
 
         if (!$entity) {
@@ -76,7 +76,7 @@ class AccessRoleController extends AbstractActionController
 
     public function updateAction()
     {
-        $service = $this->getServiceLocator()->get('PixPolRoleService');
+        $service = $this->getServiceLocator()->get('PixPolUser\Service\Role');
         $entity = $service->find($this->params('id'));
 
         if (!$entity) {

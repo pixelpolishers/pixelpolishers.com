@@ -28,7 +28,7 @@ class RequestController extends AbstractActionController
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $service = $this->getServiceLocator()->get('PixPolUserService');
+                $service = $this->getServiceLocator()->get('PixPolUser\Service\User');
                 $user = $service->findByEmail($form->get('email')->getValue());
 
                 if ($user) {

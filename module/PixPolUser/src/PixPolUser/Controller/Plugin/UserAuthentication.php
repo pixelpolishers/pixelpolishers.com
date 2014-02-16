@@ -17,7 +17,7 @@ use Zend\ServiceManager\ServiceManagerAwareInterface;
 class UserAuthentication extends AbstractPlugin implements ServiceManagerAwareInterface
 {
     const AUTH_SERVICE_NAME = 'Zend\Authentication\AuthenticationService';
-    const USER_SERVICE_NAME = 'PixPolUserService';
+    const USER_SERVICE_NAME = 'PixPolUser\Service\User';
 
     protected $authAdapter;
     protected $authService;
@@ -92,23 +92,21 @@ class UserAuthentication extends AbstractPlugin implements ServiceManagerAwareIn
 
     public function signIn($identity, $credential)
     {
-        $self = $this;
         $result = false;
+
         $authService = $this->getAuthService();
 
         $adapter = $authService->getAdapter();
-        $adapter->setIdentityValue($identity);
-        $adapter->setCredentialValue($credential);
-        $adapter->getOptions()->setCredentialCallable(function($identity, $credentialValue) use($self) {
-            return $self->getUserService()->getPassword()->verify($identity, $credentialValue);
-        });
+        $adapter->setIdentity($identity);
+        $adapter->setCredential($credential);
 
         $authResult = $authService->authenticate($adapter);
         if ($authResult->isValid()) {
             $result = true;
 
-            // Write the identity to the storage device:
-            $authService->getStorage()->write($authResult->getIdentity());
+            // Write the id to the storage device:
+            $userObject = $adapter->getResultRowObject();
+            $authService->getStorage()->write((int)$userObject->id);
         }
 
         return $result;

@@ -10,7 +10,6 @@ namespace PixPolUser\Service;
 
 use PixPolUser\Entity\User;
 use PixPolUser\Mapper\UserMapperInterface;
-use Zend\Crypt\Password\Bcrypt;
 
 class UserService
 {
@@ -54,6 +53,7 @@ class UserService
 
     public function persist(User $user)
     {
+        // Store the user:
         $this->mapper->persist($user);
     }
 

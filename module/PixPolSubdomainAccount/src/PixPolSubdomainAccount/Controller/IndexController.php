@@ -43,7 +43,7 @@ class IndexController extends AbstractActionController
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $service = $this->getServiceLocator()->get('PixPolUserService');
+                $service = $this->getServiceLocator()->get('PixPolUser\Service\User');
                 $password = $service->getPassword()->create($form->get('password')->getValue());
                 $user->setPassword($password);
                 $service->persist($user);

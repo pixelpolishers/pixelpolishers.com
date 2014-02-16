@@ -9,17 +9,24 @@
 namespace PixPolForum\Service;
 
 use PixPolForum\Entity\Topic;
+use PixPolForum\Mapper\BookmarkMapperInterface;
 use PixPolUser\Entity\User;
-use PixPolDoctrineORM\Service\AbstractService;
 
-class BookmarkService extends AbstractService
+class BookmarkService
 {
+    private $mapper;
+
+    public function __construct(BookmarkMapperInterface $mapper)
+    {
+        $this->mapper = $mapper;
+    }
+
     public function doesUserHaveTopic(Topic $topic, User $user = null)
     {
         if (!$user) {
             return false;
         }
-        
+
         $bookmark = $this->mapper->find(array(
             'topic' => $topic->getId(),
             'user' => $user->getId(),

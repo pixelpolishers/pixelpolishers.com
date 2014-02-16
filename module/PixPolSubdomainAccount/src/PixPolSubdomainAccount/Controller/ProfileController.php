@@ -28,7 +28,7 @@ class ProfileController extends AbstractActionController
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $service = $this->getServiceLocator()->get('PixPolUserService');
+                $service = $this->getServiceLocator()->get('PixPolUser\Service\User');
                 $service->persist($user);
 
                 return $this->redirect()->toRoute('account/index');
@@ -45,7 +45,7 @@ class ProfileController extends AbstractActionController
     {
         $id = $this->params('user');
 
-        $service = $this->getServiceLocator()->get('PixPolUserService');
+        $service = $this->getServiceLocator()->get('PixPolUser\Service\User');
         $user = $service->find($id);
 
         if (!$user) {

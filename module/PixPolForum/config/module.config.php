@@ -35,28 +35,38 @@ return array(
             'PixPolForum\Form\TopicForm' => 'PixPolForum\Form\TopicForm',
         ),
         'factories' => array(
-            'PixPolForum\Service\BoardService' => function($sm) {
-                $mapper = $sm->get('PixPolForum\Mapper\BoardMapperInterface');
+            'PixPolForum\Mapper\Board' => function($sm) {
+                $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+
+                return new Mapper\BoardMapperZendDb($dbAdapter);
+            },
+            'PixPolForum\Mapper\Bookmark' => function($sm) {
+                $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+
+                return new Mapper\BookmarkMapperZendDb($dbAdapter);
+            },
+            'PixPolForum\Service\Board' => function($sm) {
+                $mapper = $sm->get('PixPolForum\Mapper\Board');
 
                 return new Service\BoardService($mapper);
             },
-            'PixPolForum\Service\BookmarkService' => function($sm) {
-                $mapper = $sm->get('PixPolForum\Mapper\BookmarkMapperInterface');
+            'PixPolForum\Service\Bookmark' => function($sm) {
+                $mapper = $sm->get('PixPolForum\Mapper\Bookmark');
 
                 return new Service\BookmarkService($mapper);
             },
-            'PixPolForum\Service\CategoryService' => function($sm) {
-                $mapper = $sm->get('PixPolForum\Mapper\CategoryMapperInterface');
+            'PixPolForum\Service\Category' => function($sm) {
+                $mapper = $sm->get('PixPolForum\Mapper\Category');
 
                 return new Service\CategoryService($mapper);
             },
-            'PixPolForum\Service\PostService' => function($sm) {
-                $mapper = $sm->get('PixPolForum\Mapper\PostMapperInterface');
+            'PixPolForum\Service\Post' => function($sm) {
+                $mapper = $sm->get('PixPolForum\Mapper\Post');
 
                 return new Service\PostService($mapper);
             },
-            'PixPolForum\Service\TopicService' => function($sm) {
-                $mapper = $sm->get('PixPolForum\Mapper\TopicMapperInterface');
+            'PixPolForum\Service\Topic' => function($sm) {
+                $mapper = $sm->get('PixPolForum\Mapper\Topic');
 
                 return new Service\TopicService($mapper);
             },
@@ -65,27 +75,27 @@ return array(
     'controller_plugins' => array(
         'factories' => array(
             'ppForumBoard' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolForum\Service\BoardService');
+                $service = $sm->getServiceLocator()->get('PixPolForum\Service\Board');
 
                 return new Controller\Plugin\ServiceWrapper($service);
             },
             'ppForumBookmark' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolForum\Service\BookmarkService');
+                $service = $sm->getServiceLocator()->get('PixPolForum\Service\Bookmark');
 
                 return new Controller\Plugin\ServiceWrapper($service);
             },
             'ppForumCategory' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolForum\Service\CategoryService');
+                $service = $sm->getServiceLocator()->get('PixPolForum\Service\Category');
 
                 return new Controller\Plugin\ServiceWrapper($service);
             },
             'ppForumPost' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolForum\Service\PostService');
+                $service = $sm->getServiceLocator()->get('PixPolForum\Service\Post');
 
                 return new Controller\Plugin\ServiceWrapper($service);
             },
             'ppForumTopic' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolForum\Service\TopicService');
+                $service = $sm->getServiceLocator()->get('PixPolForum\Service\Topic');
 
                 return new Controller\Plugin\ServiceWrapper($service);
             },
@@ -94,36 +104,36 @@ return array(
     'view_helpers' => array(
         'factories' => array(
             'ppForumBookmark' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolForum\Service\BookmarkService');
-                
+                $service = $sm->getServiceLocator()->get('PixPolForum\Service\Bookmark');
+
                 return new View\ServiceWrapper($service);
             },
             'ppForumCanBookmark' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                $service = $sm->getServiceLocator()->get('PixPolUser\Service\Access');
                 return new View\CanBookmark($service);
             },
             'ppForumCanCreateTopic' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                $service = $sm->getServiceLocator()->get('PixPolUser\Service\Access');
                 return new View\CanCreateTopic($service);
             },
             'ppForumCanEdit' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                $service = $sm->getServiceLocator()->get('PixPolUser\Service\Access');
                 return new View\CanEdit($service);
             },
             'ppForumCanDelete' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                $service = $sm->getServiceLocator()->get('PixPolUser\Service\Access');
                 return new View\CanDelete($service);
             },
             'ppForumCanLock' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                $service = $sm->getServiceLocator()->get('PixPolUser\Service\Access');
                 return new View\CanLock($service);
             },
             'ppForumCanReply' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                $service = $sm->getServiceLocator()->get('PixPolUser\Service\Access');
                 return new View\CanReply($service);
             },
             'ppForumCanUnlock' => function($sm) {
-                $service = $sm->getServiceLocator()->get('PixPolAccessService');
+                $service = $sm->getServiceLocator()->get('PixPolUser\Service\Access');
                 return new View\CanUnlock($service);
             },
         ),

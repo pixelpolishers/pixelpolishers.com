@@ -14,7 +14,7 @@ class AccessUserController extends AbstractActionController
 {
     public function overviewAction()
     {
-        $userService = $this->getServiceLocator()->get('PixPolUserService');
+        $userService = $this->getServiceLocator()->get('PixPolUser\Service\User');
 
         $letter = strtoupper($this->params('letter', 'A'));
 
@@ -28,7 +28,7 @@ class AccessUserController extends AbstractActionController
 
     public function viewAction()
     {
-        $service = $this->getServiceLocator()->get('PixPolUserService');
+        $service = $this->getServiceLocator()->get('PixPolUser\Service\User');
         $entity = $service->find($this->params('id'));
 
         if (!$entity) {

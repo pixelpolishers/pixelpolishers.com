@@ -19,10 +19,10 @@ class ProfileFormFactory implements FactoryInterface
     {
         $form = new ProfileForm();
 
-        $userAuthService = $serviceLocator->get('PixPolAccessService');
+        $userAuthService = $serviceLocator->get('PixPolUser\Service\Access');
         $identity = $userAuthService->getCurrentUser();
 
-        $passwordValidator = new VerifyPassword($serviceLocator->get('PixPolUserService'), $identity->getEmail());
+        $passwordValidator = new VerifyPassword($serviceLocator->get('PixPolUser\Service\User'), $identity->getEmail());
 
         $passwordField = $form->getInputFilter()->get('currentPassword');
         $validatorChain = $passwordField->getValidatorChain();

@@ -16,7 +16,7 @@ class UserServiceFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $mapper = $serviceLocator->get('PixPolUserMapper');
+        $mapper = $serviceLocator->get('PixPolUser\Mapper\User');
 
         return new UserService($mapper);
     }

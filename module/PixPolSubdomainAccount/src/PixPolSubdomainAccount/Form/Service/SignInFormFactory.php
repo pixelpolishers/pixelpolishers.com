@@ -27,7 +27,7 @@ class SignInFormFactory implements FactoryInterface
 //        $validatorChain = $emailField->getValidatorChain();
 //        $validatorChain->attach($userValidator);
 //
-//        $passwordValidator = new VerifyPassword($serviceLocator->get('PixPolUserService'), $emailField);
+//        $passwordValidator = new VerifyPassword($serviceLocator->get('PixPolUser\Service\User'), $emailField);
 //        $validatorChain = $passwordField->getValidatorChain();
 //        $validatorChain->attach($passwordValidator);
 

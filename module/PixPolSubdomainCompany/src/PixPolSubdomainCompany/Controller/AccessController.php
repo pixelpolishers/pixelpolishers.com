@@ -14,8 +14,8 @@ class AccessController extends AbstractActionController
 {
     public function indexAction()
     {
-        $userService = $this->getServiceLocator()->get('PixPolUserService');
-        $roleService = $this->getServiceLocator()->get('PixPolRoleService');
+        $userService = $this->getServiceLocator()->get('PixPolUser\Service\User');
+        $roleService = $this->getServiceLocator()->get('PixPolUser\Service\Role');
         $permissionService = $this->getServiceLocator()->get('PixPolPermissionService');
 
         return array(

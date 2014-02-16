@@ -7,9 +7,9 @@
  */
 return array(
     'modules' => array(
+        'PixPolCli',
         'PixPolDocs',
-        'PixPolForum',
-        'PixPolLicense',
+        'PixPolEmployee',
         'PixPolSubdomainAccount',
         'PixPolSubdomainApi',
         'PixPolSubdomainCompany',
@@ -17,7 +17,6 @@ return array(
         'PixPolSubdomainWww',
         'PixPolTag',
         'PixPolUser',
-        'PixPolWiki',
         'MakeDocsZf2',
     ),
     'module_listener_options' => array(

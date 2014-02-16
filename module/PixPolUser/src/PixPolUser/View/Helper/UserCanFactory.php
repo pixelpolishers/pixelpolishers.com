@@ -15,7 +15,7 @@ class UserCanFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $accessService = $serviceLocator->getServiceLocator()->get('PixPolAccessService');
+        $accessService = $serviceLocator->getServiceLocator()->get('PixPolUser\Service\Access');
 
         return new UserCan($accessService);
     }

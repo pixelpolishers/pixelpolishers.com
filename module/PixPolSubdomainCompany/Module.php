@@ -71,7 +71,7 @@ class Module
         }
 
         $application = $e->getApplication();
-        $accessService = $application->getServiceManager()->get('PixPolAccessService');
+        $accessService = $application->getServiceManager()->get('PixPolUser\Service\Access');
 
         $currentUser = $accessService->getCurrentUser();
         if ($currentUser && $currentUser->hasTag('employee')) {

@@ -8,11 +8,12 @@
 
 namespace PixPolUser\Mapper;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use PixPolUser\Entity\Role;
 
-interface RoleMapperInterface extends ObjectRepository
+interface RoleMapperInterface
 {
+    public function find($id);
+    public function findAll();
     public function persist(Role $role);
     public function remove(Role $role);
 }

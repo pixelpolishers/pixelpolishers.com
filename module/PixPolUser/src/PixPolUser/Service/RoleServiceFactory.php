@@ -15,7 +15,7 @@ class RoleServiceFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $mapper = $serviceLocator->get('PixPolRoleMapper');
+        $mapper = $serviceLocator->get('PixPolUser\Mapper\Role');
 
         return new RoleService($mapper);
     }

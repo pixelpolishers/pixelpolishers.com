@@ -9,8 +9,9 @@
 namespace PixPolUser\Entity;
 
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
+use PixPolTag\Collection\TagCollection;
 use PixPolTag\Entity\Tag;
+use PixPolUser\Collection\RoleCollection;
 
 class User
 {
@@ -19,6 +20,7 @@ class User
     private $password;
     private $name;
     private $surname;
+    private $displayName;
     private $githubAccount;
     private $twitterAccount;
     private $facebookUrl;
@@ -85,7 +87,16 @@ class User
 
     public function getDisplayName()
     {
-        return $this->name . ' ' . $this->surname;
+        if (!$this->displayName) {
+            return $this->name . ' ' . $this->surname;
+        }
+
+        return $this->displayName;
+    }
+
+    public function setDisplayName($displayName)
+    {
+        $this->displayName = $displayName;
     }
 
     public function getGithubAccount()
@@ -154,7 +165,7 @@ class User
     public function getRoles()
     {
         if ($this->roles === null) {
-            $this->roles = new ArrayCollection();
+            $this->roles = new RoleCollection();
         }
         return $this->roles;
     }
@@ -185,7 +196,7 @@ class User
     public function getTags()
     {
         if ($this->tags === null) {
-            $this->tags = new ArrayCollection();
+            $this->tags = new TagCollection();
         }
         return $this->tags;
     }
