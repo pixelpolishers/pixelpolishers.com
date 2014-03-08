@@ -25,8 +25,8 @@ class ResolverController extends AbstractActionController
         $router->setResolverUrl('/resolver/resolver.json');
 
         $server = new \PixelPolishers\Resolver\Server\Server($router, $adapter);
-        $server->run();
+        $content = $server->run();
 
-        return $this->response();
+        return $this->getResponse()->setContent($content);
     }
 }
