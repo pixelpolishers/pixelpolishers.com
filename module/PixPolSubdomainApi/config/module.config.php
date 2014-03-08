@@ -17,6 +17,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'PixPolSubdomainApi\Controller\IndexController' => 'PixPolSubdomainApi\Controller\IndexController',
+            'PixPolSubdomainApi\Controller\ResolverController' => 'PixPolSubdomainApi\Controller\ResolverController',
             'PixPolSubdomainApi\Controller\WebsiteController' => 'PixPolSubdomainApi\Controller\WebsiteController',
         ),
     ),

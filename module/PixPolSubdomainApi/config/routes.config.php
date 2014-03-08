@@ -34,7 +34,7 @@ return array(
             ),
         ),
         'build-website' => array(
-            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
                 'route' => '/website/build',
                 'defaults' => array(
@@ -44,12 +44,22 @@ return array(
             ),
         ),
         'build-docs' => array(
-            'type' => 'Zend\Mvc\Router\Http\Segment',
+            'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
                 'route' => '/website/build-docs',
                 'defaults' => array(
                     'controller' => 'PixPolSubdomainApi\Controller\WebsiteController',
                     'action' => 'buildDocs',
+                ),
+            ),
+        ),
+        'resolver' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/resolver/:page',
+                'defaults' => array(
+                    'controller' => 'PixPolSubdomainApi\Controller\ResolverController',
+                    'action' => 'catchAll',
                 ),
             ),
         ),
