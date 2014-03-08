@@ -14,6 +14,9 @@ class ResolverController extends AbstractActionController
 {
     public function catchAllAction()
     {
+        $dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+        $pdo = $dbAdapter->getDriver()->getConnection()->getResource();
+        
         $adapter = new \PixelPolishers\Resolver\Adapter\Pdo\Pdo($pdo);
         $adapter->setTablePrefix('resolver_');
 
