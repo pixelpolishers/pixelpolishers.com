@@ -13,7 +13,7 @@ return array(
         'PixPolSubdomainAccount',
         'PixPolSubdomainApi',
         'PixPolSubdomainCompany',
-        'PixPolSubdomainDevelopers',
+        //'PixPolSubdomainDevelopers',
         'PixPolSubdomainWww',
         'PixPolTag',
         'PixPolUser',
