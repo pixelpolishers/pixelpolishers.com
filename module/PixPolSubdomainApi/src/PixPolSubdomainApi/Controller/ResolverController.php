@@ -16,11 +16,11 @@ class ResolverController extends AbstractActionController
     {
         $dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
         $pdo = $dbAdapter->getDriver()->getConnection()->getResource();
-        
+
         $adapter = new \PixelPolishers\Resolver\Adapter\Pdo\Pdo($pdo);
         $adapter->setTablePrefix('resolver_');
 
-        $router = new PixelPolishers\Resolver\Server\Router\Router();
+        $router = new \PixelPolishers\Resolver\Server\Router\Router();
         $router->setSearchUrl('/resolver/search');
         $router->setResolverUrl('/resolver/resolver.json');
 
