@@ -18,7 +18,7 @@
 
     <h1><?php echo $this->user->getDisplayName(); ?></h1>
 
-    <ul>
+    <ul class="member-facts">
         <li>You are a member since <?php echo $this->user->getRegistrationDate()->format('F jS, Y'); ?></li>
         <li><a href="<?php echo $this->url('account/view-profile', array(
             'user' => $this->user->getId(),
