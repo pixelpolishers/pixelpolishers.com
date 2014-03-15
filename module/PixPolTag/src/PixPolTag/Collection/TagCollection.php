@@ -8,11 +8,17 @@
 
 namespace PixPolTag\Collection;
 
+use ArrayIterator;
 use PixPolTag\Entity\Tag;
 
 class TagCollection implements \Countable, \IteratorAggregate
 {
     private $data;
+
+    public function __construct()
+    {
+        $this->data = array();
+    }
 
     public function add(Tag $tag)
     {
@@ -31,6 +37,6 @@ class TagCollection implements \Countable, \IteratorAggregate
 
     public function getIterator()
     {
-        return $this->data;
+        return new ArrayIterator($this->data);
     }
 }

@@ -10,6 +10,7 @@ namespace PixPolEmployee\Service;
 
 use PixPolEmployee\Entity\Employee;
 use PixPolEmployee\Mapper\EmployeeMapperInterface;
+use PixPolUser\Entity\User;
 
 class EmployeeService
 {
@@ -28,6 +29,13 @@ class EmployeeService
     public function findAll()
     {
         return $this->mapper->findAll();
+    }
+
+    public function findForUser(User $user)
+    {
+        return $this->mapper->findOneBy(array(
+            'user_id' => $user->getId(),
+        ));
     }
 
     public function persist(Employee $employee)

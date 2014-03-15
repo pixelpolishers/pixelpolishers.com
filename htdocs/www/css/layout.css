@@ -370,7 +370,7 @@ body.purple a { color: purple; }
 body.purple header { background-color: purple; color: #FCFCFC; }
 body.purple header #main-menu { border-right: 1px solid #A36CA8; }
 body.purple header #main-menu a { background-color: purple; color: #FFF; }
-body.purple header #main-menu a:hover { background-color: purple; }
+body.purple header #main-menu a:hover { background-color: #964996; }
 body.purple header #main-menu li { border-left: 1px solid #A36CA8; }
 body.purple #sub-menu { background-color: #AA3CAA; }
 body.purple #sub-menu a { color: #FFF; }
