@@ -33,12 +33,12 @@ class PackageService
 
     public function findPackage($vendor, $name)
     {
-        return $this->adapter->findPackageByName($vendor . '/' . $name);
+        return $this->adapter->findPackageByFullname($vendor . '/' . $name);
     }
 
     public function findVersion($vendor, $name, $version)
     {
-        $package = $this->adapter->findPackageByName($vendor . '/' . $name);
+        $package = $this->adapter->findPackageByFullname($vendor . '/' . $name);
 
         foreach ($package->getVersions() as $packageVersion) {
             if ($packageVersion->getVersion() == $version) {

@@ -80,8 +80,10 @@ class PackageController extends AbstractActionController
 
         $request = $this->getRequest();
         if ($request->isPost()) {
+            $user = $this->ppUserAuth()->getIdentity();
+
             $submitService = $this->getServiceLocator()->get('PixPolResolver\Service\Submit');
-            $submitService->submitPackage($request->getPost('resolver-url'));
+            $submitService->submitPackage($user, $request->getPost('resolver-url'));
 
             return $this->redirect()->toRoute('developers/resolver');
         }
@@ -99,8 +101,42 @@ class PackageController extends AbstractActionController
             return $this->notFoundAction();
         }
 
+        $owningPackage = false;
+        if ($this->ppUserAuth()->hasIdentity()) {
+            $userId = $this->ppUserAuth()->getIdentity()->getId();
+            $maintainerId = $package->getUserId();
+
+            $owningPackage = $userId == $maintainerId;
+        }
+
+        $devVersions = array();
+        $semVersions = array();
+
+        foreach ($package->getVersions() as $version) {
+            if (strpos($version->getVersion(), 'dev-') === 0) {
+                $devVersions[] = $version;
+            } else {
+                $semVersions[] = $version;
+            }
+        }
+
+        usort($devVersions, function($a, $b) {
+            return strcmp($a->getVersion(), $v->getVersion());
+        });
+
+        usort($semVersions, function($a, $b) {
+            $semVerA = \PixelPolishers\Resolver\SemanticVersion::fromString($a->getVersion());
+            $semVerB = \PixelPolishers\Resolver\SemanticVersion::fromString($b->getVersion());
+
+            return version_compare($semVerA, $semVerB, '<');
+        });
+
+        $sortedVersions = array_merge($devVersions, $semVersions);
+        
         return array(
             'package' => $package,
+            'sortedVersions' => $sortedVersions,
+            'owningPackage' => $owningPackage,
         );
     }
 }

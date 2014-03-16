@@ -25,8 +25,6 @@
     }
 
     function handleSearchResults(data, textStatus, jqXHR) {
-        var foundPackage = false;
-
         $('#result-loader').hide();
         resultContainer.empty();
 
