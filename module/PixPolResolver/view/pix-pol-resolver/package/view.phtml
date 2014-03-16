@@ -1,0 +1,41 @@
+<?php
+
+$this->headTitle('Resolver package "' . $this->package->getFullname() . '"');
+$this->headLink()->appendStylesheet('/css/resolver.css');
+
+?>
+
+<div style="position: relative">
+    <h1><?php echo $this->package->getFullname(); ?></h1>
+
+    <div>
+        <ul>
+            <li><a href="<?php echo $this->url('developers/resolver/force-update', array(
+                'vendor' => $this->package->getVendor()->getName(),
+                'name' => $this->package->getName(),
+            )); ?>">Force Update</a></li>
+            <li><a href="<?php echo $this->url('developers/resolver/delete', array(
+                'vendor' => $this->package->getVendor()->getName(),
+                'name' => $this->package->getName(),
+            )); ?>">Delete</a></li>
+        </ul>
+    </div>
+
+    <?php foreach ($this->package->getVersions() as $version) { ?>
+    <div class="package-version-row">
+        <h3><?php echo $version->getVersion(); ?></h3>
+
+        <div class="package-version-buttons">
+            <a href="<?php echo $this->url('developers/resolver/delete-version', array(
+                'vendor' => $this->package->getVendor()->getName(),
+                'name' => $this->package->getName(),
+                'version' => $version->getVersion(),
+            )); ?>">delete</a>
+        </div>
+
+        <p>
+            <pre>"<?php echo $this->package->getFullname(); ?>": "<?php echo $version->getVersion(); ?>"</pre>
+        </p>
+    </div>
+    <?php } ?>
+</div>

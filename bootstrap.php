@@ -27,5 +27,5 @@ chdir(__DIR__);
 include 'vendor/autoload.php';
 
 // Run the application!
-Zend\Mvc\Application::init(include 'config/application.config.php')->run()->send();
+Zend\Mvc\Application::init(include 'config/application.config.php')->run();
 

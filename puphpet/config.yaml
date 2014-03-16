@@ -134,6 +134,7 @@ php:
     modules:
         php:
             - cli
+            - curl
             - intl
             - mcrypt
         pear: {  }

@@ -1,0 +1,31 @@
+<?php
+
+$this->headTitle('Submit a Resolver package - Pixel Polishers Developers');
+$this->headScript()->appendFile($this->basePath('/js/URI.js'));
+$this->headScript()->appendFile($this->basePath('/js/resolver.js'));
+$this->headLink()->appendStylesheet('/css/resolver.css');
+
+?>
+
+<div style="position: relative">
+    <h1>
+        Submit Resolver Package
+        <a class="header-button" href="<?php echo $this->url('developers/resolver'); ?>">Cancel</a>
+    </h1>
+
+    <form action="" method="post">
+        <input type="text" name="resolver-url" id="resolver-url" value="" placeholder="http://...repository..url..." class="wide-input" />
+
+        <div id="resolver-status" style="color: red;"></div>
+
+        <div class="package-row" style="display: none;">
+            <h3>title</h3>
+            <p>description</p>
+        </div>
+
+        <div style="text-align: center;">
+            <input type="submit" name="resolver-lookup" id="resolver-lookup" value="Lookup" />
+            <input type="submit" name="resolver-submit" id="resolver-submit" value="Submit" />
+        </div>
+    </form>
+</div>

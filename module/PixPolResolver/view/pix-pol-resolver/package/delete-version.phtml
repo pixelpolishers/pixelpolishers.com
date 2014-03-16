@@ -1,0 +1,13 @@
+<?php
+
+$this->headTitle('Version "' . $this->version->getVersion() . '" deleted');
+$this->headLink()->appendStylesheet('/css/resolver.css');
+$this->headMeta()->appendHttpEquiv('Refresh', '2;URL=/resolver');
+
+?>
+
+<div style="position: relative">
+    <h1><?php echo $this->version->getVersion(); ?> Deleted</h1>
+
+    <p>The version has been deleted.</p>
+</div>

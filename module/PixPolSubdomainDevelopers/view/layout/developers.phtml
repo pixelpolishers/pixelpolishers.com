@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr" class="no-js">
     <head>
         <?php echo $this->headTitle(); ?>
+        <?php echo $this->headMeta(); ?>
 
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
@@ -61,6 +62,7 @@
 
                 <nav id="main-menu">
                     <ul>
+                        <li><a href="<?php echo $this->url('developers/resolver'); ?>">Resolver</a></li>
                         <li><a href="<?php echo $this->url('developers/docs'); ?>">Documentation</a></li>
                         <?php /* <li><a href="<?php echo $this->url('developers/forum'); ?>">Forum</a></li> */ ?>
                         <li><a href="<?php echo $this->url('account/index'); ?>">Account</a></li>
@@ -107,6 +109,8 @@
                 </p>
             </div>
         </footer>
+
+        <?php echo $this->headScript(); ?>
 
     </body>
 </html>

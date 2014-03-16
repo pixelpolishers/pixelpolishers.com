@@ -8,7 +8,15 @@
 
 namespace PixPolSubdomainApi\Controller;
 
+use PixelPolishers\Resolver\Adapter\Pdo\Pdo;
+use PixelPolishers\Resolver\Server\Controller\LookupController;
+use PixelPolishers\Resolver\Server\Controller\SearchController;
+use PixelPolishers\Resolver\Server\Controller\ResolverController as ResServController;
+use PixelPolishers\Resolver\Search\AdapterSearchProvider;
+use PixelPolishers\Resolver\Server\Router\Router;
+use PixelPolishers\Resolver\Server\Server;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Http\Header\ContentType;
 
 class ResolverController extends AbstractActionController
 {
@@ -17,16 +25,24 @@ class ResolverController extends AbstractActionController
         $dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
         $pdo = $dbAdapter->getDriver()->getConnection()->getResource();
 
-        $adapter = new \PixelPolishers\Resolver\Adapter\Pdo\Pdo($pdo);
+        $adapter = new Pdo($pdo);
         $adapter->setTablePrefix('resolver_');
 
-        $router = new \PixelPolishers\Resolver\Server\Router\Router();
-        $router->setSearchUrl('/resolver/search');
-        $router->setResolverUrl('/resolver/resolver.json');
+        $searchProvider = new AdapterSearchProvider($adapter);
 
-        $server = new \PixelPolishers\Resolver\Server\Server($router, $adapter);
+        $router = new Router();
+        $router->setController('/resolver/lookup', new LookupController());
+        $router->setController('/resolver/search', new SearchController($searchProvider));
+        $router->setController('/resolver/resolver.json', new ResServController());
+
+        $server = new Server($router, $adapter);
         $content = $server->run();
 
-        return $this->getResponse()->setContent($content);
+        $typeHeader = ContentType::fromString('Content-Type: application/json');
+
+        $response = $this->getResponse();
+        $response->getHeaders()->addHeader($typeHeader);
+        $response->setContent($content);
+        return $response;
     }
 }

@@ -10,6 +10,7 @@ return array(
         'PixPolCli',
         'PixPolDocs',
         'PixPolEmployee',
+        'PixPolResolver',
         'PixPolSubdomainAccount',
         'PixPolSubdomainApi',
         'PixPolSubdomainCompany',

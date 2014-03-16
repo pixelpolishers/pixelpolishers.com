@@ -1,0 +1,25 @@
+<?php
+
+$this->headTitle('Pixel Polishers\' Resolver');
+$this->headScript()->appendFile($this->basePath('/js/resolver.js'));
+$this->headLink()->appendStylesheet('/css/resolver.css');
+
+?>
+
+<div style="position: relative">
+    <h1>
+        Resolver
+        <a class="header-button" href="<?php echo $this->url('developers/resolver/submit'); ?>">Submit Package</a>
+    </h1>
+
+    <div>
+        <input type="text" name="resolver-query" id="resolver-query" value=""
+               placeholder="Search for packages..." class="wide-input" />
+    </div>
+
+    <div id="result-loader" style="text-align: center; margin-top: 10px; display: none;">
+        <img src="/img/loader-big.gif" alt="Loading..." />
+    </div>
+
+    <div id="result-overview"></div>
+</div>
