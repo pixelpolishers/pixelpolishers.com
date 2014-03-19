@@ -5,16 +5,18 @@ $this->headScript()->appendFile($this->basePath('/js/URI.js'));
 $this->headScript()->appendFile($this->basePath('/js/resolver.js'));
 $this->headLink()->appendStylesheet('/css/resolver.css');
 
+$this->placeholder('submenu')->exchangeArray(array(
+    'developers/resolver' => 'Search',
+    'developers/resolver/submit' => 'Submit',
+));
+
 ?>
 
 <div style="position: relative">
-    <h1>
-        Submit Resolver Package
-        <a class="header-button" href="<?php echo $this->url('developers/resolver'); ?>">Cancel</a>
-    </h1>
+    <h1>Submit Resolver Package</h1>
 
     <form action="" method="post">
-        <input type="text" name="resolver-url" id="resolver-url" value="" placeholder="http://...repository..url..." class="wide-input" />
+        <input type="text" name="resolver-url" id="resolver-url" value="" placeholder="http://" class="wide-input" />
 
         <div id="resolver-status" style="color: red;"></div>
 

@@ -14,11 +14,31 @@ use PixPolUser\Entity\User;
 
 class SubmitService
 {
+    /**
+     *
+     * @var AdapterInterface
+     */
     private $adapter;
+
+    /**
+     *
+     * @var GitHubImporter
+     */
+    private $gitHubImporter;
 
     public function __construct(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
+    }
+
+    public function getGitHubImporter()
+    {
+        return $this->gitHubImporter;
+    }
+
+    public function setGitHubImporter(GitHubImporter $gitHubImporter)
+    {
+        $this->gitHubImporter = $gitHubImporter;
     }
 
     public function submitPackage(User $user, $url)
@@ -26,10 +46,15 @@ class SubmitService
         $urlData = parse_url($url);
 
         // Parse the repository and collect all versions:
-        if ($urlData['host'] === 'github.com') {
+        if ($urlData['host'] === 'github.com' && $this->gitHubImporter !== null) {
             $package = $this->parseGitHubPackage($url);
         } else {
             throw new \Exception('Invalid service, ' . $urlData['host'] . ' is not supported.');
+        }
+
+        $existingPackage = $this->adapter->findPackageByFullname($package->getFullname());
+        if ($existingPackage !== null) {
+            throw new \Exception('The package "' . $existingPackage->getFullname() . '" already exists.');
         }
 
         $package->setUserId($user->getId());
@@ -40,8 +65,6 @@ class SubmitService
 
     private function parseGitHubPackage($url)
     {
-        $importer = new GitHubImporter();
-
-        return $importer->import($url);
+        return $this->gitHubImporter->import($url);
     }
 }

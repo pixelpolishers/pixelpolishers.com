@@ -80,12 +80,16 @@ class PackageController extends AbstractActionController
 
         $request = $this->getRequest();
         if ($request->isPost()) {
+            $url = $request->getPost('resolver-url');
             $user = $this->ppUserAuth()->getIdentity();
 
             $submitService = $this->getServiceLocator()->get('PixPolResolver\Service\Submit');
-            $submitService->submitPackage($user, $request->getPost('resolver-url'));
+            $package = $submitService->submitPackage($user, $url);
 
-            return $this->redirect()->toRoute('developers/resolver');
+            return $this->redirect()->toRoute('developers/resolver/view', array(
+                'name' => $package->getName(),
+                'vendor' => $package->getVendor()->getName(),
+            ));
         }
     }
 
@@ -132,7 +136,7 @@ class PackageController extends AbstractActionController
         });
 
         $sortedVersions = array_merge($devVersions, $semVersions);
-        
+
         return array(
             'package' => $package,
             'sortedVersions' => $sortedVersions,

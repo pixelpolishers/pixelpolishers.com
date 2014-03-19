@@ -4,10 +4,15 @@ $this->headTitle('Package "' . $this->package->getFullname() . '" deleted');
 $this->headLink()->appendStylesheet('/css/resolver.css');
 $this->headMeta()->appendHttpEquiv('Refresh', '2;URL=/resolver');
 
+$this->placeholder('submenu')->exchangeArray(array(
+    'developers/resolver' => 'Search',
+    'developers/resolver/submit' => 'Submit',
+));
+
 ?>
 
 <div style="position: relative">
-    <h1><?php echo $this->package->getFullname(); ?> Deleted</h1>
+    <h1>Package "<?php echo $this->package->getFullname(); ?>" deleted</h1>
 
     <p>The package has been deleted.</p>
 </div>

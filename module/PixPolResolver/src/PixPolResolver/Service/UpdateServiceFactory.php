@@ -21,6 +21,8 @@ class UpdateServiceFactory implements FactoryInterface
         $adapter = new \PixelPolishers\Resolver\Adapter\Pdo\Pdo($pdo);
         $adapter->setTablePrefix('resolver_');
 
-        return new UpdateService($adapter);
+        $service = new UpdateService($adapter);
+        $service->setGitHubImporter($serviceLocator->get('PixPolResolver\GitHubImporter'));
+        return $service;
     }
 }

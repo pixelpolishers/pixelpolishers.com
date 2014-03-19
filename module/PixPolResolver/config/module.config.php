@@ -25,6 +25,22 @@ return array(
             'PixPolResolver\Service\Package' => 'PixPolResolver\Service\PackageServiceFactory',
             'PixPolResolver\Service\Submit' => 'PixPolResolver\Service\SubmitServiceFactory',
             'PixPolResolver\Service\Update' => 'PixPolResolver\Service\UpdateServiceFactory',
+            'PixPolResolver\GitHubImporter' => function($sm) {
+                $config = $sm->get('Config');
+                if (!array_key_exists('github', $config)) {
+                    throw new \RuntimeException('No GitHub configuration present.');
+                }
+                $importer = new \PixelPolishers\Resolver\Importer\GitHubImporter();
+                $importer->setClientId($config['github']['client_id']);
+                $importer->setClientSecret($config['github']['client_secret']);
+                return $importer;
+            },
+        ),
+    ),
+    'view_helpers' => array(
+        'invokables' => array(
+            'ppResolverReferenceButton' => 'PixPolResolver\View\Helper\ReferenceButton',
+            'ppResolverReferenceUrl' => 'PixPolResolver\View\Helper\ReferenceUrl',
         ),
     ),
     'view_manager' => array(

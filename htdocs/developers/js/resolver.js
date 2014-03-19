@@ -2,23 +2,34 @@
     var resultContainer;
 
     function handleLookup(data, textStatus, jqXHR) {
-        $('.package-row h3').html(data.name);
-        $('.package-row p').html(data.description);
+        lookupPackage(data.name, function(result) {
+            if (!result || result.packages[0].status === 404) {
+                var name = $('<div />').html(data.name).text();
+                var description = $('<div />').html(data.description).text();
 
-        $('.package-row').show();
+                $('.package-row h3').html(name);
+                $('.package-row p').html(description);
 
-        $('#resolver-lookup').hide();
-        $('#resolver-submit').show();
+                $('.package-row').show();
+
+                $('#resolver-lookup').hide();
+                $('#resolver-submit').show();
+            } else {
+                $('#resolver-status').html('The package "' + data.name + '" already exists.');
+            }
+        });
     }
 
     function handlePackageResult(json) {
         var item;
 
         var url = '/resolver/package/' + json.fullname;
+        var fullname = $('<div />').html(json.fullname).text();
+        var description = $('<div />').html(json.description).text();
 
         item = '<div class="package-row">';
-        item += '<h3><a href="' + url + '">' + json.fullname + '</a></h3>';
-        item += '<p><a href="' + url + '">' + json.description + '</a></p>';
+        item += '<h3><a href="' + url + '">' + fullname + '</a></h3>';
+        item += '<p><a href="' + url + '">' + description + '</a></p>';
         item += '</div>';
 
         resultContainer.append(item);
@@ -35,6 +46,16 @@
                 handlePackageResult(data.packages[i]);
             }
         }
+    }
+
+    function lookupPackage(query, callback) {
+        var url, parts = location.hostname.split('.');
+        parts.shift();
+
+        url = window.location.protocol + '//api.' + parts.join('.');
+        $.getJSON(url + '/resolver/lookup?callback=?', {
+            'q': query
+        }, callback);
     }
 
     function searchForPackages(query) {
@@ -55,7 +76,7 @@
         $('#resolver-query').keyup(function() {
             var val = $(this).val();
 
-            if (val !== '') {
+            if (val.length > 3) {
                 clearTimeout(handle);
 
                 resultContainer.empty();
@@ -77,8 +98,12 @@
                 type: 'GET',
                 dataType: 'json',
                 success: handleLookup,
-                error: function() {
-                    $('#resolver-status').html('The repository "' + repoName + '" could not be loaded. Are you sure there is a resolver.json file present?');
+                error: function(xhr) {
+                    if (xhr.status === 403) {
+                        $('#resolver-status').html('You do not seem to have access to the GitHub API: ' + xhr.responseJSON.message);
+                    } else {
+                        $('#resolver-status').html('The repository "' + repoName + '" could not be loaded. Are you sure there is a resolver.json file present?');
+                    }
                     $('#resolver-status').show();
                 },
                 beforeSend: function(xhr) {

@@ -15,28 +15,45 @@ use PixelPolishers\Resolver\Importer\GitHubImporter;
 class UpdateService
 {
     private $adapter;
+    private $gitHubImporter;
 
     public function __construct(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
     }
 
+    public function getGitHubImporter()
+    {
+        return $this->gitHubImporter;
+    }
+
+    public function setGitHubImporter(GitHubImporter $gitHubImporter)
+    {
+        $this->gitHubImporter = $gitHubImporter;
+    }
+
     public function update(Package $package)
     {
-        switch ($package->getRepositoryType()) {
-            case 'github':
-                $this->updateGitHub($package);
-                break;
+        if ($package->getRepositoryType() == 'github' && $this->gitHubImporter !== null) {
+            $newPackage = $this->getGitHubPackage($package->getRepositoryUrl());
+        } else {
+            throw new \RuntimeException('The repository type "' . $package->getRepositoryType() . '" is not supported.');
         }
 
-        $package->setUpdatedAt(new \DateTime());
+        $this->updatePackage($package, $newPackage);
+
         $this->adapter->persistPackage($package);
     }
 
-    public function updateGitHub(Package $oldPackage)
+    private function getGitHubPackage($url)
     {
-        $importer = new GitHubImporter();
-        $newPackage = $importer->import($oldPackage->getRepositoryUrl());
+        return $this->gitHubImporter->import($url);
+    }
+
+    private function updatePackage(Package $oldPackage, Package $newPackage)
+    {
+        $oldPackage->setUpdatedAt(new \DateTime());
+        $oldPackage->setDescription($newPackage->getDescription());
 
         // Remove all versions that do not exist anymore and update the existing versions:
         foreach ($oldPackage->getVersions() as $version) {
@@ -45,6 +62,8 @@ class UpdateService
                 $oldPackage->removeVersion($version);
             } else {
                 $version->setReferenceHash($newVersion->getReferenceHash());
+                $version->setLicense($newVersion->getLicense());
+                $version->setUpdatedAt(new \DateTime());
             }
         }
 

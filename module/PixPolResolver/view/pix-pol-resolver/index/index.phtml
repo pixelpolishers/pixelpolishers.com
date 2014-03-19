@@ -4,13 +4,15 @@ $this->headTitle('Pixel Polishers\' Resolver');
 $this->headScript()->appendFile($this->basePath('/js/resolver.js'));
 $this->headLink()->appendStylesheet('/css/resolver.css');
 
+$this->placeholder('submenu')->exchangeArray(array(
+    'developers/resolver' => 'Search',
+    'developers/resolver/submit' => 'Submit',
+));
+
 ?>
 
 <div style="position: relative">
-    <h1>
-        Resolver
-        <a class="header-button" href="<?php echo $this->url('developers/resolver/submit'); ?>">Submit Package</a>
-    </h1>
+    <h1>Resolver</h1>
 
     <div>
         <input type="text" name="resolver-query" id="resolver-query" value=""

@@ -21,6 +21,8 @@ class SubmitServiceFactory implements FactoryInterface
         $adapter = new \PixelPolishers\Resolver\Adapter\Pdo\Pdo($pdo);
         $adapter->setTablePrefix('resolver_');
 
-        return new SubmitService($adapter);
+        $service = new SubmitService($adapter);
+        $service->setGitHubImporter($serviceLocator->get('PixPolResolver\GitHubImporter'));
+        return $service;
     }
 }

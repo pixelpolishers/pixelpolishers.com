@@ -3,19 +3,26 @@
 $this->headTitle('Resolver package "' . $this->package->getFullname() . '"');
 $this->headLink()->appendStylesheet('/css/resolver.css');
 
+$this->placeholder('submenu')->exchangeArray(array(
+    'developers/resolver' => 'Search',
+    'developers/resolver/submit' => 'Submit',
+));
+
 ?>
 
 <div style="position: relative">
     <h1><a href="<?php echo $this->package->getRepositoryUrl(); ?>" target="_blank"><?php echo $this->package->getFullname(); ?></a></h1>
 
+    <p><?php echo strip_tags($this->package->getDescription()); ?></p>
+
     <?php if ($this->owningPackage) { ?>
-    <div>
+    <div id="resolver-menu">
         <ul>
             <li><a href="<?php echo $this->url('developers/resolver/force-update', array(
                 'vendor' => $this->package->getVendor()->getName(),
                 'name' => $this->package->getName(),
             )); ?>">Force Update</a></li>
-            <li><a href="<?php echo $this->url('developers/resolver/delete', array(
+            <li><a class="delete" href="<?php echo $this->url('developers/resolver/delete', array(
                 'vendor' => $this->package->getVendor()->getName(),
                 'name' => $this->package->getName(),
             )); ?>">Delete</a></li>
@@ -35,18 +42,19 @@ $this->headLink()->appendStylesheet('/css/resolver.css');
 
         <h3><?php echo $displayVersion; ?></h3>
 
-        <?php if ($this->owningPackage) { ?>
         <div class="package-version-buttons">
-            <a href="<?php echo $this->url('developers/resolver/delete-version', array(
+            <span title="License"><?php echo strip_tags($version->getLicense()); ?></span>
+            <?php echo $this->ppResolverReferenceButton($version); ?>
+            <?php if ($this->owningPackage) { ?>
+            <a class="delete" href="<?php echo $this->url('developers/resolver/delete-version', array(
                 'vendor' => $this->package->getVendor()->getName(),
                 'name' => $this->package->getName(),
                 'version' => $version->getVersion(),
             )); ?>">delete</a>
+            <?php } ?>
         </div>
-        <?php } ?>
 
         <p>
-            <pre><?php echo $version->getReferenceHash(); ?></pre>
             <pre>"<?php echo $this->package->getFullname(); ?>": "<?php echo $displayVersion; ?>"</pre>
         </p>
     </div>

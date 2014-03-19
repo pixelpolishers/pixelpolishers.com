@@ -2,7 +2,12 @@
 
 $this->headTitle('Version "' . $this->version->getVersion() . '" deleted');
 $this->headLink()->appendStylesheet('/css/resolver.css');
-$this->headMeta()->appendHttpEquiv('Refresh', '2;URL=/resolver');
+$this->headMeta()->appendHttpEquiv('Refresh', '2;URL=/resolver/package/' . $this->version->getPackage()->getFullname());
+
+$this->placeholder('submenu')->exchangeArray(array(
+    'developers/resolver' => 'Search',
+    'developers/resolver/submit' => 'Submit',
+));
 
 ?>
 
