@@ -89,8 +89,11 @@ class SignUpForm extends Form
 
     private function addAgreeElement($name = 'agree')
     {
+        $privacyUrl = '/company/legal/privacy-policy';
+        $termsOfUseUrl = '/company/legal/terms-of-use';
+
         $agreeElement = new Checkbox($name);
-        $agreeElement->setLabel('I agree to the Terms of Use and Privacy Policy.');
+        $agreeElement->setLabel('I agree to the <a href="' . $termsOfUseUrl . '">Terms of Use</a> and <a href="' . $privacyUrl . '">Privacy Policy</a>.');
         $agreeElement->setCheckedValue('agreed');
         $agreeElement->setAttribute('id', $name);
         $this->add($agreeElement);
