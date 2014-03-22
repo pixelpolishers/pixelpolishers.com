@@ -74,6 +74,16 @@ return array(
                         ),
                     ),
                 ),
+                'vendor' => array(
+                    'type' => 'Zend\Mvc\Router\Http\Segment',
+                    'options' => array(
+                        'route' => '/vendor/:name',
+                        'defaults' => array(
+                            'controller' => 'PixPolResolver\Controller\VendorController',
+                            'action' => 'view',
+                        ),
+                    ),
+                ),
                 'view' => array(
                     'type' => 'Zend\Mvc\Router\Http\Segment',
                     'options' => array(

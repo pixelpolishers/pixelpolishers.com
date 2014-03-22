@@ -10,6 +10,7 @@ namespace PixPolResolver\Service;
 
 use PixelPolishers\Resolver\Adapter\AdapterInterface;
 use PixelPolishers\Resolver\Entity\Package;
+use PixelPolishers\Resolver\Entity\Vendor;
 use PixelPolishers\Resolver\Entity\Version;
 
 class PackageService
@@ -47,5 +48,10 @@ class PackageService
         }
 
         return null;
+    }
+
+    public function findByVendor(Vendor $vendor)
+    {
+        return $this->adapter->findPackageByVendor($vendor);
     }
 }

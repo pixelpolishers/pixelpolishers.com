@@ -31,6 +31,10 @@ input[type="text"].wide-input {
     position: relative;
 }
 
+body.blue .package-version-row a {
+    color: #262624;
+}
+
 .package-version-row h3,
 .package-version-row p {
     margin: 0px;

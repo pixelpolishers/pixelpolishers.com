@@ -11,7 +11,17 @@ $this->placeholder('submenu')->exchangeArray(array(
 ?>
 
 <div style="position: relative">
-    <h1><a href="<?php echo $this->package->getRepositoryUrl(); ?>" target="_blank"><?php echo $this->package->getFullname(); ?></a></h1>
+    <h1>
+        <a href="<?php echo $this->url('developers/resolver/vendor', array(
+            'name' => $this->package->getVendor()->getName(),
+        )); ?>">
+            <?php echo $this->package->getVendor()->getName(); ?>
+        </a>
+        /
+        <a href="<?php echo $this->package->getRepositoryUrl(); ?>" target="_blank">
+            <?php echo $this->package->getName(); ?>
+        </a>
+    </h1>
 
     <p><?php echo strip_tags($this->package->getDescription()); ?></p>
 

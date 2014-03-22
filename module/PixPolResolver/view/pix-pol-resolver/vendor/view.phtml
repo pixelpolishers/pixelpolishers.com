@@ -1,0 +1,32 @@
+<?php
+
+$this->headTitle('Resolver vendor "' . $this->vendor->getName() . '"');
+$this->headLink()->appendStylesheet('/css/resolver.css');
+
+$this->placeholder('submenu')->exchangeArray(array(
+    'developers/resolver' => 'Search',
+    'developers/resolver/submit' => 'Submit',
+));
+
+?>
+
+<div style="position: relative">
+    <h1><?php echo strip_tags($this->vendor->getName()); ?></h1>
+
+    <?php foreach ($this->packages as $package) { ?>
+    <div class="package-version-row">
+        <h3>
+            <a href="<?php echo $this->url('developers/resolver/view', array(
+                'vendor' => $package->getVendor()->getName(),
+                'name' => $package->getName(),
+            )); ?>">
+                <?php echo strip_tags($package->getFullname()); ?>
+            </a>
+        </h3>
+
+        <p>
+            <?php echo strip_tags($package->getDescription()); ?>
+        </p>
+    </div>
+    <?php } ?>
+</div>

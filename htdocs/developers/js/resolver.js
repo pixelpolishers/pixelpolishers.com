@@ -1,7 +1,11 @@
 (function() {
     var resultContainer;
 
-    function handleLookup(data, textStatus, jqXHR) {
+    function handleSourceForgeLookup(data, textStatus, jqXHR) {
+        console.log(data);
+    }
+
+    function handleGithubLookup(data, textStatus, jqXHR) {
         lookupPackage(data.name, function(result) {
             if (!result || result.packages[0].status === 404) {
                 var name = $('<div />').html(data.name).text();
@@ -88,6 +92,31 @@
             }
         });
 
+        function doSourceForgeLookup(repoUri) {
+            var repoName = repoUri.pathname().replace(/^\/|\/$/g, '');
+
+            if (repoName.substr(0, 2) === 'p/') {
+                repoName = repoName.substring(2);
+            } else if (repoName.substr(0, 9) === 'projects/') {
+                repoName = repoName.substring(9);
+            } else {
+                $('#resolver-status').html('Please use the project url to submit your package.');
+                $('#resolver-status').show();
+                return;
+            }
+
+            $.ajax({
+                url: 'https://sourceforge.net/api/project/name/' + repoName + '/json',
+                type: 'GET',
+                dataType: 'json',
+                success: handleSourceForgeLookup,
+                error: function(xhr) {
+                    $('#resolver-status').html('The repository "' + repoName + '" could not be loaded. Are you sure the project exists?');
+                    $('#resolver-status').show();
+                }
+            });
+        }
+
         function doGithubLookup(repoUri) {
             var repoName = repoUri.pathname().substr(1);
             var url = 'https://api.github.com/repos/' + repoName;
@@ -97,7 +126,7 @@
                 url: url,
                 type: 'GET',
                 dataType: 'json',
-                success: handleLookup,
+                success: handleGithubLookup,
                 error: function(xhr) {
                     if (xhr.status === 403) {
                         $('#resolver-status').html('You do not seem to have access to the GitHub API: ' + xhr.responseJSON.message);
@@ -125,6 +154,10 @@
 
             if (repoUri.domain() === 'github.com') {
                 doGithubLookup(repoUri);
+            //} else if (repoUri.subdomain() === 'code' && repoUri.domain() === 'google.com') {
+            //    doGoogleCodeLookup(repoUri);
+            //} else if (repoUri.domain() === 'sourceforge.net') {
+            //    doSourceForgeLookup(repoUri);
             } else {
                 $('#resolver-status').html('The service ' + repoUri.domain() + ' is not supported!');
                 $('#resolver-status').show();

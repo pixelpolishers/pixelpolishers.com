@@ -18,11 +18,13 @@ return array(
         'invokables' => array(
             'PixPolResolver\Controller\IndexController' => 'PixPolResolver\Controller\IndexController',
             'PixPolResolver\Controller\PackageController' => 'PixPolResolver\Controller\PackageController',
+            'PixPolResolver\Controller\VendorController' => 'PixPolResolver\Controller\VendorController',
         ),
     ),
     'service_manager' => array(
         'factories' => array(
             'PixPolResolver\Service\Package' => 'PixPolResolver\Service\PackageServiceFactory',
+            'PixPolResolver\Service\Vendor' => 'PixPolResolver\Service\VendorServiceFactory',
             'PixPolResolver\Service\Submit' => 'PixPolResolver\Service\SubmitServiceFactory',
             'PixPolResolver\Service\Update' => 'PixPolResolver\Service\UpdateServiceFactory',
             'PixPolResolver\GitHubImporter' => function($sm) {
