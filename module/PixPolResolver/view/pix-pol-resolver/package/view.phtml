@@ -53,7 +53,9 @@ $this->placeholder('submenu')->exchangeArray(array(
         <h3><?php echo $displayVersion; ?></h3>
 
         <div class="package-version-buttons">
+            <?php if ($version->getLicense()) { ?>
             <span title="License"><?php echo strip_tags($version->getLicense()); ?></span>
+            <?php } ?>
             <?php echo $this->ppResolverReferenceButton($version); ?>
             <?php if ($this->owningPackage) { ?>
             <a class="delete" href="<?php echo $this->url('developers/resolver/delete-version', array(

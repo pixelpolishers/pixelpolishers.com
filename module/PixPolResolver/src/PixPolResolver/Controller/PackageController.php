@@ -53,6 +53,10 @@ class PackageController extends AbstractActionController
 
     public function forceUpdateAction()
     {
+        if (!$this->ppUserAuth()->hasIdentity()) {
+            return $this->redirect()->toRoute('account/index');
+        }
+        
         $packageVendor = $this->params('vendor');
         $packageName = $this->params('name');
 
@@ -62,9 +66,10 @@ class PackageController extends AbstractActionController
         if (!$package) {
             return $this->notFoundAction();
         }
-
-        $updateService = $this->getServiceLocator()->get('PixPolResolver\Service\Update');
-        $updateService->update($package);
+        
+        $importer = $this->getServiceLocator()->get('PixPolResolver\GitHubImporter');
+        $importer->setUser($this->ppUserAuth()->getIdentity()->getId());
+        $importer->import('https://github.com/' . $package->getFullname());
 
         return $this->redirect()->toRoute('developers/resolver/view', array(
             'vendor' => $packageVendor,
@@ -83,8 +88,9 @@ class PackageController extends AbstractActionController
             $url = $request->getPost('resolver-url');
             $user = $this->ppUserAuth()->getIdentity();
 
-            $submitService = $this->getServiceLocator()->get('PixPolResolver\Service\Submit');
-            $package = $submitService->submitPackage($user, $url);
+            $importer = $this->getServiceLocator()->get('PixPolResolver\GitHubImporter');
+            $importer->setUser($user->getId());
+            $package = $importer->import($url);
 
             return $this->redirect()->toRoute('developers/resolver/view', array(
                 'name' => $package->getName(),

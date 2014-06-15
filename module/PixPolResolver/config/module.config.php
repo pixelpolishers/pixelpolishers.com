@@ -25,14 +25,19 @@ return array(
         'factories' => array(
             'PixPolResolver\Service\Package' => 'PixPolResolver\Service\PackageServiceFactory',
             'PixPolResolver\Service\Vendor' => 'PixPolResolver\Service\VendorServiceFactory',
-            'PixPolResolver\Service\Submit' => 'PixPolResolver\Service\SubmitServiceFactory',
-            'PixPolResolver\Service\Update' => 'PixPolResolver\Service\UpdateServiceFactory',
             'PixPolResolver\GitHubImporter' => function($sm) {
                 $config = $sm->get('Config');
                 if (!array_key_exists('github', $config)) {
                     throw new \RuntimeException('No GitHub configuration present.');
                 }
-                $importer = new \PixelPolishers\Resolver\Importer\GitHubImporter();
+                
+                $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                $pdo = $dbAdapter->getDriver()->getConnection()->getResource();
+
+                $adapter = new \PixelPolishers\Resolver\Adapter\Pdo\Pdo($pdo);
+                $adapter->setTablePrefix('resolver_');
+                
+                $importer = new \PixelPolishers\Resolver\Importer\GitHubImporter($adapter);
                 $importer->setClientId($config['github']['client_id']);
                 $importer->setClientSecret($config['github']['client_secret']);
                 return $importer;
