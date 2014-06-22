@@ -53,12 +53,16 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('No build file found.');
         }
 
-        /*$process = new Process($buildFile);
-        $process->run();
+        $process = new Process($buildFile);
+        
+        $extension = empty($GLOBALS['extension']) ? 'com' : $GLOBALS['extension'];
+        if ($extension === 'com') {
+            $process->run();
+        }
 
         if (!$process->isSuccessful()) {
             // TODO: Send an e-mail.
-        }*/
+        }
 
         return $this->getResponse();
     }
