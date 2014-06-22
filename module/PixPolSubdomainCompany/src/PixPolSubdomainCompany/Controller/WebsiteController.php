@@ -26,7 +26,11 @@ class WebsiteController extends AbstractActionController
         }
 
         $process = new Process($buildFile);
-        //$process->run();
+        
+        $extension = empty($GLOBALS['extension']) ? 'com' : $GLOBALS['extension'];
+        if ($extension === 'com') {
+            $process->run();
+        }
         
         return array(
             'buildFile' => $buildFile,
