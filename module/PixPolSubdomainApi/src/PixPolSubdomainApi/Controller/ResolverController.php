@@ -89,6 +89,7 @@ class ResolverController extends AbstractActionController
                 
                 if ($verRef === $jsonObject->ref) {
                     $version->setReferenceHash($headCommit->id);
+                    $version->setUpdatedAt(new \DateTime());
                     $adapter->persistVersion($version);
                     $content[] = 'Persisted version';
                     break;
