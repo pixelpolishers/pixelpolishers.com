@@ -83,7 +83,7 @@ class ResolverController extends AbstractActionController
 
             $versions = $adapter->findVersionsByPackageId($package->getId());
             foreach ($versions as $version) {
-                $verRef = 'refs/heads/' . substr($version->getReferenceName(), 4);
+                $verRef = 'refs/heads/' . $version->getReferenceName();
                 
                 $content[] = 'Comparing "' . $verRef . '" with "' . $jsonObject->ref . '"...';
                 
