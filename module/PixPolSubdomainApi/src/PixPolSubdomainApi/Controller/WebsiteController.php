@@ -36,16 +36,7 @@ class WebsiteController extends AbstractActionController
         return false;
     }
 
-    public function buildDocsAction()
-    {
-        $webhook = $this->getServiceLocator()->get('MakeDocs\WebHook\GitHub');
-
-        $result = $webhook->listen();
-
-        return $this->getResponse()->setContent($result);
-    }
-
-    public function buildWebsiteAction()
+    public function updateAction()
     {
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
@@ -62,12 +53,12 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('No build file found.');
         }
 
-        $process = new Process($buildFile);
+        /*$process = new Process($buildFile);
         $process->run();
 
         if (!$process->isSuccessful()) {
             // TODO: Send an e-mail.
-        }
+        }*/
 
         return $this->getResponse();
     }

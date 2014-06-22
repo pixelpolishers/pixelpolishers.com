@@ -6,8 +6,8 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.*",
-        "pixelpolishers/makedocs-zf2": "*",
-        "pixelpolishers/resolver-php-server": "*"
+        "pixelpolishers/resolver-php-server": "*",
+        "symfony/process": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"

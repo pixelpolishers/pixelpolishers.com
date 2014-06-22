@@ -1,0 +1,9 @@
+<h2>Executing <?php echo $buildFile; ?></h2>
+
+<pre style="width: 100% overflow: auto">
+<?php if ($process->isSuccessful()) { ?>
+<?php echo $process->getOutput(); ?>
+<?php } else { ?>
+<?php echo $process->getErrorOutput(); ?>
+<?php } ?>
+</pre>

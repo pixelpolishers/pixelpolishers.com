@@ -35,5 +35,6 @@ return array(
         ),
         'access' => include __DIR__ . '/routes.access.config.php',
         'license' => include __DIR__ . '/routes.license.config.php',
+        'website' => include __DIR__ . '/routes.website.config.php',
     ),
 );
