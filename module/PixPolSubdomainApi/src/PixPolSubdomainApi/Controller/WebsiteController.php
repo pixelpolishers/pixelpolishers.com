@@ -81,8 +81,9 @@ class WebsiteController extends AbstractActionController
 
         if (!$process->isSuccessful()) {
             // TODO: Send an e-mail.
+            return $this->getResponse()->setContent($process->getErrorOutput());
         }
 
-        return $this->getResponse();
+        return $this->getResponse()->setContent($process->getOutput());
     }
 }
