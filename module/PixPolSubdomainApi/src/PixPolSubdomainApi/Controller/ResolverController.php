@@ -34,8 +34,7 @@ class ResolverController extends AbstractActionController
         $searchProvider = new AdapterSearchProvider($adapter);
 
         if ($this->params('page') === 'update') {
-            $this->updatePackage($adapter);
-            return $this->getResponse();
+            return $this->updatePackage($adapter);
         }
 
         $router = new Router();
@@ -57,7 +56,7 @@ class ResolverController extends AbstractActionController
     private function updatePackage(AdapterInterface $adapter)
     {
         if (empty($_SERVER['HTTP_X_GITHUB_EVENT']) || $_SERVER['HTTP_X_GITHUB_EVENT'] !== 'push') {
-            return;
+            return $this->getResponse();
         }
 
         $jsonData = $this->getRequest()->getContent();
@@ -67,23 +66,32 @@ class ResolverController extends AbstractActionController
         $repoName = $jsonObject->repository->name;
         $repoOrganization = $jsonObject->repository->organization;
         $fullName = $repoOrganization . '/' . $repoName;
+        
+        $content = array();
 
         $package = $adapter->findPackageByFullname($fullName);
         if (!$package) {
-            return;
-        }
+            $content[] = 'Couldn\'t find package: ' . $fullName;
+        } else {
+            $headCommit = $jsonObject->head_commit;
+            
+            $content[] = 'Trying to find version "' . $jsonObject->ref . '" for ' . $fullName;
 
-        $headCommit = $jsonObject->head_commit;
-        
-        $versions = $adapter->findVersionsByPackageId($package->getId());
-        foreach ($versions as $version) {
-            $verRef = 'refs/heads/' . substr($version->getReferenceName(), 4);
-            if ($verRef === $jsonObject->ref) {
-                $version->setReferenceHash($headCommit->id);
-                $adapter->persistVersion($version);
-                break;
+            $versions = $adapter->findVersionsByPackageId($package->getId());
+            foreach ($versions as $version) {
+                $verRef = 'refs/heads/' . substr($version->getReferenceName(), 4);
+                
+                $content[] = 'Comparing "' . $verRef . '" with "' . $jsonObject->ref . '"...';
+                
+                if ($verRef === $jsonObject->ref) {
+                    $version->setReferenceHash($headCommit->id);
+                    $adapter->persistVersion($version);
+                    $content[] = 'Persisted version';
+                    break;
+                }
             }
         }
+        
+        return $this->getResponse()->setContent(implode(PHP_EOL, $content));
     }
-
 }
