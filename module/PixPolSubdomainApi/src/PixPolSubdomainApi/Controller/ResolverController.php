@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of pixelpolishers.com.
  *
@@ -8,6 +9,7 @@
 
 namespace PixPolSubdomainApi\Controller;
 
+use PixelPolishers\Resolver\Adapter\AdapterInterface;
 use PixelPolishers\Resolver\Adapter\Pdo\Pdo;
 use PixelPolishers\Resolver\Server\Controller\LookupController;
 use PixelPolishers\Resolver\Server\Controller\SearchController;
@@ -20,6 +22,7 @@ use Zend\Http\Header\ContentType;
 
 class ResolverController extends AbstractActionController
 {
+
     public function catchAllAction()
     {
         $dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
@@ -29,6 +32,11 @@ class ResolverController extends AbstractActionController
         $adapter->setTablePrefix('resolver_');
 
         $searchProvider = new AdapterSearchProvider($adapter);
+
+        if ($this->params('page') === 'update') {
+            $this->updatePackage($adapter);
+            return $this->getResponse();
+        }
 
         $router = new Router();
         $router->setController('/resolver/lookup', new LookupController());
@@ -45,4 +53,37 @@ class ResolverController extends AbstractActionController
         $response->setContent($content);
         return $response;
     }
+
+    private function updatePackage(AdapterInterface $adapter)
+    {
+        if (empty($_SERVER['HTTP_X_GITHUB_EVENT']) || $_SERVER['HTTP_X_GITHUB_EVENT'] !== 'push') {
+            return;
+        }
+
+        $jsonData = $this->getRequest()->getContent();
+        $jsonObject = json_decode($jsonData);
+
+        // Find the package based on the repository name:
+        $repoName = $jsonObject->repository->name;
+        $repoOrganization = $jsonObject->repository->organization;
+        $fullName = $repoOrganization . '/' . $repoName;
+
+        $package = $adapter->findPackageByFullname($fullName);
+        if (!$package) {
+            return;
+        }
+
+        $headCommit = $jsonObject->head_commit;
+        
+        $versions = $adapter->findVersionsByPackageId($package->getId());
+        foreach ($versions as $version) {
+            $verRef = 'refs/heads/' . substr($version->getReferenceName(), 4);
+            if ($verRef === $jsonObject->ref) {
+                $version->setReferenceHash($headCommit->id);
+                $adapter->persistVersion($version);
+                break;
+            }
+        }
+    }
+
 }
