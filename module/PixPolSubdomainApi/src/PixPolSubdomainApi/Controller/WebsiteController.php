@@ -28,11 +28,16 @@ class WebsiteController extends AbstractActionController
 
     private function isValidPayload($payload, $refs = array('refs/heads/master'))
     {
+        if ($_SERVER['HTTP_X_GITHUB_EVENT'] !== 'push') {
+            return false;
+        }
+        
         if ($payload) {
             $json = json_decode($payload);
 
             return in_array($json->ref, $refs);
         }
+        
         return false;
     }
 
@@ -50,7 +55,7 @@ class WebsiteController extends AbstractActionController
             throw new \RuntimeException('Invalid request.');
         }
 
-        $payload = array_key_exists('payload', $_POST) ? $_POST['payload'] : '';
+        $payload = $this->getRequest()->getContent();
         if (!$this->isValidPayload($payload)) {
             throw new \RuntimeException('Invalid request.');
         }
