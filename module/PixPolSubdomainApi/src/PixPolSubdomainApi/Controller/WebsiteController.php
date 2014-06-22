@@ -43,7 +43,14 @@ class WebsiteController extends AbstractActionController
 
     public function updateAction()
     {
-        $f = fopen('data/github/' . time() . '-' . date('Y-m-d-His') . '.log', 'a+');
+        $logDirectory = 'data/github/' . $_SERVER['HTTP_X_GITHUB_EVENT'] . '/';
+        $logPath = $logDirectory . time() . '-' . date('Y-m-d-His') . '.log';
+        
+        if (!is_dir($logDirectory)) {
+            mkdir($logDirectory);
+        }
+        
+        $f = fopen($logPath, 'a+');
         fwrite($f, print_r($_SERVER, true));
         fwrite($f, print_r($_GET, true));
         fwrite($f, print_r($_POST, true));
