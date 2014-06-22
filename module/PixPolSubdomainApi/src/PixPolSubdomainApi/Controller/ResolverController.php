@@ -55,12 +55,16 @@ class ResolverController extends AbstractActionController
 
     private function updatePackage(AdapterInterface $adapter)
     {
+        $_SERVER['HTTP_X_GITHUB_EVENT'] = 'push';
         if (empty($_SERVER['HTTP_X_GITHUB_EVENT']) || $_SERVER['HTTP_X_GITHUB_EVENT'] !== 'push') {
-            return $this->getResponse();
+            return $this->getResponse()->setContent('No event data.');
         }
 
         $jsonData = $this->getRequest()->getContent();
         $jsonObject = json_decode($jsonData);
+        if (!$jsonObject) {
+            return $this->getResponse()->setContent('No json data.');
+        }
 
         // Find the package based on the repository name:
         $repoName = $jsonObject->repository->name;
