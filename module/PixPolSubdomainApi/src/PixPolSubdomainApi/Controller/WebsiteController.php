@@ -38,6 +38,13 @@ class WebsiteController extends AbstractActionController
 
     public function updateAction()
     {
+        $f = fopen('data/github/' . time() . '-' . date('Y-m-d-His') . '.log', 'a+');
+        fwrite($f, print_r($_SERVER, true));
+        fwrite($f, print_r($_GET, true));
+        fwrite($f, print_r($_POST, true));
+        fwrite($f, $this->getRequest()->getContent());
+        fclose($f);
+        
         $remoteAddress = new \Zend\Http\PhpEnvironment\RemoteAddress();
         if (!$this->isValidIp($remoteAddress->getIpAddress())) {
             throw new \RuntimeException('Invalid request.');
